@@ -312,6 +312,14 @@
                                     <constraint firstItem="WxQ-Np-FSh" firstAttribute="top" secondItem="f0O-BD-Z0q" secondAttribute="bottom" constant="15" id="FW2-bS-gA7"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICW-Hy-aOh">
+                                <rect key="frame" x="144" y="395" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add product"/>
+                                <connections>
+                                    <segue destination="cgY-is-ExB" kind="show" id="Q8X-ou-Rsb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90411072969999995" green="0.97391456369999996" blue="0.91190296410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -332,6 +340,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc1-4Y-ylK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85.599999999999994" y="949.47526236881572"/>
+        </scene>
+        <!--Add Product View Controller-->
+        <scene sceneID="ftG-eI-Gf5">
+            <objects>
+                <viewController id="cgY-is-ExB" customClass="AddProductViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="arI-EO-pel"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xjz-Va-ZRy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hqp-l7-FSj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cJ9-br-Bww">
+                                <rect key="frame" x="16" y="100" width="343" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-XS-DOe">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product barcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNg-D6-H2V">
+                                        <rect key="frame" x="0.0" y="40" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gluten free" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocC-ea-0RC">
+                                        <rect key="frame" x="0.0" y="80" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELK-Vr-z5V">
+                                        <rect key="frame" x="0.0" y="120" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ELK-Vr-z5V" secondAttribute="trailing" id="APB-D7-cpn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ocC-ea-0RC" secondAttribute="trailing" id="BxB-ul-F3t"/>
+                                    <constraint firstAttribute="trailing" secondItem="nNg-D6-H2V" secondAttribute="trailing" id="C1f-qk-4CU"/>
+                                    <constraint firstItem="ocC-ea-0RC" firstAttribute="leading" secondItem="cJ9-br-Bww" secondAttribute="leading" id="CUK-o2-b5l"/>
+                                    <constraint firstItem="ELK-Vr-z5V" firstAttribute="leading" secondItem="cJ9-br-Bww" secondAttribute="leading" id="PTq-L9-Uhv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y05-XS-DOe" secondAttribute="trailing" id="gVX-UA-tzx"/>
+                                    <constraint firstItem="nNg-D6-H2V" firstAttribute="leading" secondItem="cJ9-br-Bww" secondAttribute="leading" id="rNN-HA-d8F"/>
+                                    <constraint firstItem="Y05-XS-DOe" firstAttribute="leading" secondItem="cJ9-br-Bww" secondAttribute="leading" id="rs8-wa-Isw"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-AZ-tDi">
+                                <rect key="frame" x="172" y="284" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addNewProductButton:" destination="cgY-is-ExB" eventType="touchUpInside" id="6hn-zF-gxi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cJ9-br-Bww" firstAttribute="top" secondItem="arI-EO-pel" secondAttribute="bottom" constant="36" id="Agf-XN-3D8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cJ9-br-Bww" secondAttribute="trailing" id="hnD-FC-jnD"/>
+                            <constraint firstItem="cJ9-br-Bww" firstAttribute="leading" secondItem="hqp-l7-FSj" secondAttribute="leadingMargin" id="qHJ-Af-vUD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="categoryTxt" destination="ELK-Vr-z5V" id="Hfl-5G-C4o"/>
+                        <outlet property="glutenTxt" destination="ocC-ea-0RC" id="onR-p8-GJE"/>
+                        <outlet property="productCodeTxt" destination="nNg-D6-H2V" id="XBJ-Ja-ain"/>
+                        <outlet property="productNameTxt" destination="Y05-XS-DOe" id="rLm-Cq-CVS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2KJ-Ac-ynv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="948.57571214392806"/>
         </scene>
     </scenes>
 </document>

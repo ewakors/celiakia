@@ -22,6 +22,7 @@ enum Router: URLRequestConvertible {
     case findProductByBarcode(barcode: String)
     case findProductByName(name: String)
     case findProductByBarcodeAndName(barcode: String, name: String)
+    case addNewProduct(name: String, barcode: String, gluten: Bool, category: String)
 
     
     static let baseURLString = "http://127.0.0.1:8000/api/"
@@ -38,6 +39,8 @@ enum Router: URLRequestConvertible {
             return .get
         case .findProductByBarcodeAndName:
             return .get
+        case .addNewProduct:
+            return .post
             
         }
     }
@@ -59,6 +62,9 @@ enum Router: URLRequestConvertible {
             Router.addToken = false
             return "products/"
         case .findProductByBarcodeAndName(let barcode, let name):
+            Router.addToken = false
+            return "products/"
+        case .addNewProduct(let name, let barcode, let gluten, let category):
             Router.addToken = false
             return "products/"
         }
@@ -98,6 +104,8 @@ enum Router: URLRequestConvertible {
         case .findProductByBarcodeAndName(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["barcode": parameters.barcode, "name": parameters.name])
 
+        case .addNewProduct(let parameters):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
         }
         
         return urlRequest
