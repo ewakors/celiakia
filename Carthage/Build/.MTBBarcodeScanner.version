@@ -1,0 +1,19 @@
+{
+  "commitish" : "5.0.0",
+  "iOS" : [
+    {
+      "hash" : "9b6db28926462dcb77d7b8516e1bc8778fdf02f0f151eb356a29fcb3aff55adb",
+      "name" : "MTBBarcodeScanner"
+    }
+  ],
+  "xcodeVersion" : "Xcode 8.2.1\nBuild version 8C1002",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
