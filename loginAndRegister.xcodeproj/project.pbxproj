@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B131EA64B220095CD8E /* AppDelegate.swift */; };
 		C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B151EA64B220095CD8E /* LoginViewController.swift */; };
-		C3250B191EA64B220095CD8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3250B171EA64B220095CD8E /* Main.storyboard */; };
 		C3250B1B1EA64B220095CD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3250B1A1EA64B220095CD8E /* Assets.xcassets */; };
 		C3250B1E1EA64B220095CD8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3250B1C1EA64B220095CD8E /* LaunchScreen.storyboard */; };
 		C3250B291EA64B230095CD8E /* loginAndRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B281EA64B230095CD8E /* loginAndRegisterTests.swift */; };
@@ -25,6 +24,12 @@
 		C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */; };
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; };
+		C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */; };
+		C3F354171EB08E6000EAB032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F354151EB08E6000EAB032 /* Main.storyboard */; };
+		C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; };
+		C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */; };
+		C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */,
+				C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */,
 				C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */,
 				C3250B4C1EA653490095CD8E /* Alamofire.framework in CopyFiles */,
 				C3250B4D1EA653490095CD8E /* SwiftyJSON.framework in CopyFiles */,
@@ -63,7 +70,6 @@
 		C3250B101EA64B220095CD8E /* loginAndRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginAndRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3250B131EA64B220095CD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3250B151EA64B220095CD8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C3250B181EA64B220095CD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3250B1A1EA64B220095CD8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3250B1D1EA64B220095CD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3250B1F1EA64B220095CD8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +87,10 @@
 		C37C8D3D1EA752E300D8380B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../API.swift; sourceTree = "<group>"; };
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
+		C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
+		C3F354161EB08E6000EAB032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C3F354181EB09E0400EAB032 /* JSQMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessages.framework; path = Carthage/Build/iOS/JSQMessages.framework; sourceTree = "<group>"; };
+		C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */,
+				C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */,
 				C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */,
 				C3250B491EA653360095CD8E /* Alamofire.framework in Frameworks */,
 				C3250B4A1EA653360095CD8E /* SwiftyJSON.framework in Frameworks */,
@@ -140,9 +152,9 @@
 				C37C8D3D1EA752E300D8380B /* API.swift */,
 				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
 				C3250B441EA64CD50095CD8E /* Router.swift */,
+				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
 				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
 				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
-				C3250B171EA64B220095CD8E /* Main.storyboard */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -171,6 +183,7 @@
 				C3250B131EA64B220095CD8E /* AppDelegate.swift */,
 				C3250B1A1EA64B220095CD8E /* Assets.xcassets */,
 				C3250B1C1EA64B220095CD8E /* LaunchScreen.storyboard */,
+				C3F354151EB08E6000EAB032 /* Main.storyboard */,
 				C3250B1F1EA64B220095CD8E /* Info.plist */,
 			);
 			name = support;
@@ -179,6 +192,8 @@
 		C3250B461EA653360095CD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */,
+				C3F354181EB09E0400EAB032 /* JSQMessages.framework */,
 				C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */,
 				C3250B471EA653360095CD8E /* Alamofire.framework */,
 				C3250B481EA653360095CD8E /* SwiftyJSON.framework */,
@@ -297,9 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F354171EB08E6000EAB032 /* Main.storyboard in Resources */,
 				C3250B1E1EA64B220095CD8E /* LaunchScreen.storyboard in Resources */,
 				C3250B1B1EA64B220095CD8E /* Assets.xcassets in Resources */,
-				C3250B191EA64B220095CD8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +345,7 @@
 				C3250B431EA64C610095CD8E /* RegisterViewController.swift in Sources */,
 				C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */,
 				C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */,
+				C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,20 +382,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C3250B171EA64B220095CD8E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C3250B181EA64B220095CD8E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C3250B1C1EA64B220095CD8E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C3250B1D1EA64B220095CD8E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C3F354151EB08E6000EAB032 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3F354161EB08E6000EAB032 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -15,6 +15,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var usernameTxt: UITextField!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        
+//        if Router.token != "" {
+//            print("token \(Router.token)")
+//            self.performSegue(withIdentifier: "showApp", sender: nil)
+//        }
+//        else {
+//            print("you must login")
+//        }
+        
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,13 +40,23 @@ class LoginViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-                print(json)
                 
-                self.performSegue(withIdentifier: "searchProduct", sender: nil)
+                if let json = json {
+                    
+                    let token = json["key"].stringValue
+                    
+                    print("-----")
+                    print(token)
+                    print("-----")
+                    
+                    UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
+                    Router.token = token
+                    self.performSegue(withIdentifier: "showApp", sender: nil)
+                }
                 
             } else {
-                print("error")
-                let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
+                print("login error")
+                let alertController = UIAlertController(title: "Error", message: "Login or password failed", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)

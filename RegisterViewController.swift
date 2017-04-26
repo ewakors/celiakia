@@ -22,15 +22,8 @@ class RegisterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    @IBAction func registerButton(_ sender: Any) {
-        //registerUser(username: "newUser", password1: "newuser123", password2: "naweuser123")
+    @IBAction func saveButton(_ sender: Any) {
         let request = Router.registerUser(username: "root2", password1: "rootroot",password2: "rootroot")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
@@ -56,14 +49,8 @@ class RegisterViewController: UIViewController {
             }
         }
 
-        
     }
 
-    
-    func registerUser(username: String, password1: String, password2: String) {
-        
-        
-    }
 }
 
 

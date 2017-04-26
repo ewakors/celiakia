@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static let udTokenKey = "udTokenKey"
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let token = UserDefaults.standard.string(forKey: "udTokenKey") {
+            Router.token = token
+        }
+        
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        IQKeyboardManager.shared().shouldHidePreviousNext = false
+        
         return true
     }
 

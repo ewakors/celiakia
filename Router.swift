@@ -18,12 +18,11 @@ enum Router: URLRequestConvertible {
     static var addToken = true
     
     case loginUser(username: String, password: String)
+    case logout()
     case registerUser(username: String, password1: String, password2: String)
-    case findProductByBarcode(barcode: String)
-    case findProductByName(name: String)
-    case findProductByBarcodeAndName(barcode: String, name: String)
+    case userDetails()
+    case findProduct(key: String)
     case addNewProduct(name: String, barcode: String, gluten: Bool, category: String)
-
     
     static let baseURLString = "http://127.0.0.1:8000/api/"
     
@@ -31,13 +30,13 @@ enum Router: URLRequestConvertible {
         switch self {
         case .loginUser:
             return .post
+        case .logout:
+            return .post
         case .registerUser:
             return .post
-        case .findProductByBarcode:
+        case .userDetails:
             return .get
-        case .findProductByName:
-            return .get
-        case .findProductByBarcodeAndName:
+        case .findProduct:
             return .get
         case .addNewProduct:
             return .post
@@ -52,20 +51,15 @@ enum Router: URLRequestConvertible {
         case .loginUser:
             Router.addToken = false
             return "auth/login/"
+        case .logout:
+            return "auth/logout/"
         case .registerUser:
-            Router.addToken = false
             return "registration/"
-        case .findProductByBarcode(let barcode):
-            Router.addToken = false
-            return "products/"
-        case .findProductByName(let name):
-            Router.addToken = false
-            return "products/"
-        case .findProductByBarcodeAndName(let barcode, let name):
-            Router.addToken = false
+        case .userDetails:
+            return "auth/user/"
+        case .findProduct(let key):
             return "products/"
         case .addNewProduct(let name, let barcode, let gluten, let category):
-            Router.addToken = false
             return "products/"
         }
     }
@@ -85,24 +79,24 @@ enum Router: URLRequestConvertible {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         if Router.addToken == true {
+            print(Router.token)
             urlRequest.setValue("token \(Router.token)", forHTTPHeaderField: "Authorization")
         }
         
         switch self {
         case .loginUser(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username, "password":(parameters.password)])
-
+            
+        case .logout():
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+            
         case .registerUser(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username, "password1":(parameters.password1), "password2":parameters.password2])
-            
-        case .findProductByBarcode(let barcode):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["barcode":barcode])
-            
-        case .findProductByName(let name):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":name])
-            
-        case .findProductByBarcodeAndName(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["barcode": parameters.barcode, "name": parameters.name])
+         
+        case .userDetails():
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .findProduct(let key):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
 
         case .addNewProduct(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
