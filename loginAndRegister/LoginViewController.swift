@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         
-        let request = Router.loginUser(username: "root", password: "rootroot")
+        let request = Router.loginUser(username: "ewa", password: "ewaewa123")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
@@ -55,13 +55,13 @@ class LoginViewController: UIViewController {
                 }
                 
             } else {
-                print("login error")
-                let alertController = UIAlertController(title: "Error", message: "Login or password failed", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+//                print(json?["msg"].stringValue)
+//                let alertController = UIAlertController(title: "Error", message: "Login or password failed", preferredStyle: .alert)
+//                
+//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                alertController.addAction(defaultAction)
+//                
+//                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

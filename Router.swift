@@ -19,8 +19,10 @@ enum Router: URLRequestConvertible {
     
     case loginUser(username: String, password: String)
     case logout()
-    case registerUser(username: String, password1: String, password2: String)
+    case registerUser(username: String, email: String, password1: String, password2: String)
     case userDetails()
+    case passwordReset(email: String)
+    case passwordChange(old_password: String, new_password1: String, new_password2: String)
     case findProduct(key: String)
     case addNewProduct(name: String, barcode: String, gluten: Bool, category: String)
     
@@ -36,6 +38,10 @@ enum Router: URLRequestConvertible {
             return .post
         case .userDetails:
             return .get
+        case .passwordReset:
+            return .post
+        case .passwordChange:
+            return .post
         case .findProduct:
             return .get
         case .addNewProduct:
@@ -54,9 +60,13 @@ enum Router: URLRequestConvertible {
         case .logout:
             return "auth/logout/"
         case .registerUser:
-            return "registration/"
+            return "registration/account-confirm-email/"
         case .userDetails:
             return "auth/user/"
+        case .passwordReset:
+            return "auth/password/reset/"
+        case .passwordChange:
+            return "auth/password/change/"
         case .findProduct(let key):
             return "products/"
         case .addNewProduct(let name, let barcode, let gluten, let category):
@@ -91,10 +101,16 @@ enum Router: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
         case .registerUser(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username, "password1":(parameters.password1), "password2":parameters.password2])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username,"email":parameters.email, "password1":(parameters.password1), "password2":parameters.password2])
          
         case .userDetails():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+            
+        case .passwordReset(let email):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["email":email])
+            
+        case .passwordChange(let parameters):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["ols_password":parameters.old_password, "new_password1":(parameters.new_password1), "new_password2":parameters.new_password2])
         case .findProduct(let key):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */; };
+		C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */; };
+		C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */; };
 		C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B131EA64B220095CD8E /* AppDelegate.swift */; };
 		C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B151EA64B220095CD8E /* LoginViewController.swift */; };
 		C3250B1B1EA64B220095CD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3250B1A1EA64B220095CD8E /* Assets.xcassets */; };
@@ -67,6 +70,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = ../EditProfileViewController.swift; sourceTree = "<group>"; };
+		C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C3250B101EA64B220095CD8E /* loginAndRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginAndRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3250B131EA64B220095CD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3250B151EA64B220095CD8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +158,12 @@
 				C37C8D3D1EA752E300D8380B /* API.swift */,
 				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
 				C3250B441EA64CD50095CD8E /* Router.swift */,
+				C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */,
 				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
 				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
 				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
+				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
+				C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */,
 				C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */,
 				C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */,
 				C3250B451EA64CD50095CD8E /* Router.swift in Sources */,
@@ -346,7 +356,9 @@
 				C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */,
 				C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */,
 				C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */,
+				C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
+				C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

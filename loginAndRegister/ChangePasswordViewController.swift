@@ -1,36 +1,30 @@
 //
-//  RegisterViewController.swift
+//  ChangePasswordViewController.swift
 //  loginAndRegister
 //
-//  Created by Ewa Korszaczuk on 18.04.2017.
+//  Created by Ewa Korszaczuk on 26.04.2017.
 //  Copyright © 2017 Ewa Korszaczuk. All rights reserved.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
-class RegisterViewController: UIViewController {
+class ChangePasswordViewController: UIViewController {
 
-    @IBOutlet weak var password2Txt: UITextField!
-    @IBOutlet weak var password1Txt: UITextField!
-    @IBOutlet weak var emailTxt: UITextField!
-    @IBOutlet weak var usernameTxt: UITextField!
-    
+    @IBOutlet weak var confirmPasswordTXT: UITextField!
+    @IBOutlet weak var newPasswordTXT: UITextField!
+    @IBOutlet weak var oldPasswordTXT: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.registerUser(username: "ewa", email: "ewakorszaczuk@vp.pl", password1: "ewaewa123",password2: "ewaewa123")
+        let request = Router.passwordChange(old_password: "ewaewa123", new_password1: "ewaewa1234", new_password2: "ewaewa1234")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
                 print(json)
-                let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Success", message: "Password changed", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
@@ -38,7 +32,7 @@ class RegisterViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                print("error \(json?["email"].stringValue)")
+                print("error change password \(json?["email"].stringValue)")
                 let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -49,9 +43,5 @@ class RegisterViewController: UIViewController {
         }
 
     }
-
+    
 }
-
-
-
-
