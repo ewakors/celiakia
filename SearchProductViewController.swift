@@ -51,14 +51,15 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     let gluten = json![0]["gluten_free"].stringValue
                     let name = json![0]["name"].stringValue
                     let barcode = json![0]["bar_code"].stringValue
-                    //print(json)
+                    let category = json![0]["category"].stringValue
+                    print(json)
                     print(name)
                     print(barcode)
-                    
+                    print(category)
                     if name != "" {
                         
                         if gluten == "True" {
-                            let alertController = UIAlertController(title: "GLUTEN FREE", message: "\(name) \n\(barcode)", preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "GLUTEN FREE", message: "Name: \(name) \nBarcode: \(barcode)\nCategory: \(category)", preferredStyle: .alert)
                             
                             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                             alertController.addAction(defaultAction)
@@ -67,7 +68,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             print("GLUTEN FREE!!!")
                         }
                         if gluten == "False"  {
-                            let alertController = UIAlertController(title: "PRODUCT WITH GLUTEN", message: "\(name) \n\(barcode)", preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "PRODUCT WITH GLUTEN", message: "Name: \(name) \nBarcode: \(barcode)\nCategory: \(category)", preferredStyle: .alert)
                             
                             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                             alertController.addAction(defaultAction)

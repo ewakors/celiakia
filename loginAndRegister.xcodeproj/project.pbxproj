@@ -23,6 +23,7 @@
 		C3250B4C1EA653490095CD8E /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B471EA653360095CD8E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3250B4D1EA653490095CD8E /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B481EA653360095CD8E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */; };
+		C37102311EB380260007BDEF /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37102301EB380260007BDEF /* Base.swift */; };
 		C37C8D3E1EA752E300D8380B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3D1EA752E300D8380B /* API.swift */; };
 		C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */; };
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -90,6 +91,7 @@
 		C3250B471EA653360095CD8E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C3250B481EA653360095CD8E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductViewController.swift; path = ../AddProductViewController.swift; sourceTree = "<group>"; };
+		C37102301EB380260007BDEF /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Base.swift; path = ../Base.swift; sourceTree = "<group>"; };
 		C37C8D3D1EA752E300D8380B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../API.swift; sourceTree = "<group>"; };
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
@@ -154,16 +156,11 @@
 			isa = PBXGroup;
 			children = (
 				C3250B411EA64B3E0095CD8E /* support */,
-				C3250B151EA64B220095CD8E /* LoginViewController.swift */,
+				C3B16BA51EBC5D0D004DCE29 /* product */,
+				C37102301EB380260007BDEF /* Base.swift */,
 				C37C8D3D1EA752E300D8380B /* API.swift */,
-				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
+				C3B16BA41EBC5CF8004DCE29 /* user */,
 				C3250B441EA64CD50095CD8E /* Router.swift */,
-				C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */,
-				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
-				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
-				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
-				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
-				C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -208,6 +205,28 @@
 				C3250B481EA653360095CD8E /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3B16BA41EBC5CF8004DCE29 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				C3250B151EA64B220095CD8E /* LoginViewController.swift */,
+				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
+				C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */,
+				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
+				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
+				C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */,
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
+		C3B16BA51EBC5D0D004DCE29 /* product */ = {
+			isa = PBXGroup;
+			children = (
+				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
+				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
+			);
+			name = product;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C37102311EB380260007BDEF /* Base.swift in Sources */,
 				C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */,
 				C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */,
 				C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */,

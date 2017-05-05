@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="muv-Ge-kgZ">
-                                <rect key="frame" x="16" y="44" width="343" height="272"/>
+                                <rect key="frame" x="16" y="88" width="343" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbv-nS-8rT">
                                         <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
@@ -634,12 +634,18 @@
                                     <constraint firstItem="Y05-XS-DOe" firstAttribute="leading" secondItem="cJ9-br-Bww" secondAttribute="leading" id="rs8-wa-Isw"/>
                                 </constraints>
                             </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-b2-3NZ">
+                                <rect key="frame" x="16" y="258" width="343" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cJ9-br-Bww" firstAttribute="top" secondItem="arI-EO-pel" secondAttribute="bottom" constant="36" id="Agf-XN-3D8"/>
+                            <constraint firstItem="3D6-b2-3NZ" firstAttribute="leading" secondItem="hqp-l7-FSj" secondAttribute="leadingMargin" id="HTo-Zb-wZe"/>
+                            <constraint firstItem="3D6-b2-3NZ" firstAttribute="trailing" secondItem="hqp-l7-FSj" secondAttribute="trailingMargin" id="La9-gi-eJZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cJ9-br-Bww" secondAttribute="trailing" id="hnD-FC-jnD"/>
                             <constraint firstItem="cJ9-br-Bww" firstAttribute="leading" secondItem="hqp-l7-FSj" secondAttribute="leadingMargin" id="qHJ-Af-vUD"/>
+                            <constraint firstItem="3D6-b2-3NZ" firstAttribute="top" secondItem="cJ9-br-Bww" secondAttribute="bottom" constant="8" symbolic="YES" id="rLa-rs-yhS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add product" id="NVT-gj-A0m">
@@ -650,6 +656,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryPickerView" destination="3D6-b2-3NZ" id="BcF-L6-ewe"/>
                         <outlet property="categoryTxt" destination="ELK-Vr-z5V" id="Hfl-5G-C4o"/>
                         <outlet property="glutenTxt" destination="ocC-ea-0RC" id="onR-p8-GJE"/>
                         <outlet property="productCodeTxt" destination="nNg-D6-H2V" id="XBJ-Ja-ain"/>

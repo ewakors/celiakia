@@ -24,6 +24,7 @@ enum Router: URLRequestConvertible {
     case passwordReset(email: String)
     case passwordChange(old_password: String, new_password1: String, new_password2: String)
     case findProduct(key: String)
+    case getCategory ()
     case addNewProduct(name: String, barcode: String, gluten: Bool, category: String)
     
     static let baseURLString = "http://127.0.0.1:8000/api/"
@@ -43,6 +44,8 @@ enum Router: URLRequestConvertible {
         case .passwordChange:
             return .post
         case .findProduct:
+            return .get
+        case .getCategory:
             return .get
         case .addNewProduct:
             return .post
@@ -69,8 +72,10 @@ enum Router: URLRequestConvertible {
             return "auth/password/change/"
         case .findProduct(let key):
             return "products/"
+        case .getCategory():
+            return "categories/"
         case .addNewProduct(let name, let barcode, let gluten, let category):
-            return "products/"
+            return "products/new/"
         }
     }
     
@@ -113,7 +118,8 @@ enum Router: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["ols_password":parameters.old_password, "new_password1":(parameters.new_password1), "new_password2":parameters.new_password2])
         case .findProduct(let key):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
-
+        case .getCategory():
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case .addNewProduct(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
         }
