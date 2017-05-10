@@ -540,6 +540,13 @@
                                     <constraint firstItem="bRe-0Z-JDR" firstAttribute="leading" secondItem="f0O-BD-Z0q" secondAttribute="leading" id="uYi-Gg-T21"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7v-8V-ok4">
+                                <rect key="frame" x="135" y="308" width="107" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90411072969999995" green="0.97391456369999996" blue="0.91190296410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -563,6 +570,7 @@
                     <navigationItem key="navigationItem" id="awK-5s-F94"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="name" destination="e7v-8V-ok4" id="yqi-PR-K8I"/>
                         <outlet property="productTextView" destination="9cH-8S-1xc" id="Pgv-bs-vOx"/>
                         <outlet property="scanncerView" destination="bRe-0Z-JDR" id="6fM-cn-d45"/>
                         <outlet property="searchBar" destination="pfc-nh-58c" id="I9P-z5-D72"/>

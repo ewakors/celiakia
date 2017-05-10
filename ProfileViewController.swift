@@ -12,25 +12,26 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel.text = ""
         emailLabel.text = ""
         userDetails()
     }
-    
+   
+   
     func userDetails()
     {
         let request = Router.userDetails()
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
-            
+            var user: User = User(json: json!)
             if error == false {
                 print(json)
-                
-                self.usernameLabel.text = (json!["username"].stringValue)
-                self.emailLabel.text = json?["email"].stringValue
-                print(self.usernameLabel.text)
+                self.usernameLabel.text = user.getName()
+                self.emailLabel.text = user.getEmail()
             } else {
                 print("error user details")
  

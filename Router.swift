@@ -25,7 +25,7 @@ enum Router: URLRequestConvertible {
     case passwordChange(old_password: String, new_password1: String, new_password2: String)
     case findProduct(key: String)
     case getCategory ()
-    case addNewProduct(name: String, barcode: String, gluten: Bool, category: String)
+    case addNewProduct(name: String, barcode: String, gluten: Bool, category: Int)
     
     static let baseURLString = "http://127.0.0.1:8000/api/"
     
@@ -63,18 +63,18 @@ enum Router: URLRequestConvertible {
         case .logout:
             return "auth/logout/"
         case .registerUser:
-            return "registration/account-confirm-email/"
+            return "registration/"
         case .userDetails:
             return "auth/user/"
         case .passwordReset:
             return "auth/password/reset/"
         case .passwordChange:
             return "auth/password/change/"
-        case .findProduct(let key):
+        case .findProduct:
             return "products/"
         case .getCategory():
             return "categories/"
-        case .addNewProduct(let name, let barcode, let gluten, let category):
+        case .addNewProduct:
             return "products/new/"
         }
     }
@@ -86,8 +86,6 @@ enum Router: URLRequestConvertible {
         let url = try Router.baseURLString.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        
-        
         
         urlRequest.httpMethod = method.rawValue
         
@@ -116,11 +114,15 @@ enum Router: URLRequestConvertible {
             
         case .passwordChange(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["ols_password":parameters.old_password, "new_password1":(parameters.new_password1), "new_password2":parameters.new_password2])
+            
         case .findProduct(let key):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
+            
         case .getCategory():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+            
         case .addNewProduct(let parameters):
+            print(parameters)
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
         }
         

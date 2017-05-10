@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.registerUser(username: "ewa", email: "ewakorszaczuk@vp.pl", password1: "ewaewa123",password2: "ewaewa123")
+        let request = Router.registerUser(username: "root", email: "ewakorszaczuk@vp.pl", password1: "rootroot",password2: "rootroot")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
@@ -38,7 +38,7 @@ class RegisterViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                print("error \(json?["email"].stringValue)")
+                print("register error \(json?["email"].stringValue)")
                 let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

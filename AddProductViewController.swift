@@ -17,45 +17,49 @@ class AddProductViewController: UIViewController {
     @IBOutlet weak var productCodeTxt: UITextField!
     @IBOutlet weak var productNameTxt: UITextField!
 
-    var resultValues = [String]()
+    var resultCategories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.categoryPickerView.delegate = self
         self.categoryPickerView.dataSource = self
+    
         showCategory()
     }
 
     @IBAction func addNewProductButton(_ sender: Any) {
-        let request = Router.addNewProduct(name: "bulka", barcode: "1234567", gluten: true, category: "1")
-        
-        API.sharedInstance.sendRequest(request: request) { (json, error) in
-            
-            if error == false {
-                print(json)
-                let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
+
+        let r = categoryPickerView.selectedRow(inComponent: 0)
+
+        if r != -1 {
+            print(resultCategories[r].getId())
+            print(resultCategories[r].getName())
+            let request = Router.addNewProduct(name: "makaron", barcode: "1234", gluten: true, category: resultCategories[r].getId())
+                        
+            API.sharedInstance.sendRequest(request: request) { (json, error) in
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-                //self.performSegue(withIdentifier: "searchProduct", sender: nil)
-                
-            } else {
-                print("error")
-                let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                if error == false {
+                    print(json)
+                    let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                } else {
+                    print("error")
+                    let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
-}
-
-extension AddProductViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func showCategory()
     {
@@ -64,18 +68,12 @@ extension AddProductViewController: UIPickerViewDelegate, UIPickerViewDataSource
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-                var count : Int = json!.count
-                for i in 0..<count {
-                    if let category = json?[i]["name"].string {
-                        print(category)
-                        
-                        self.resultValues.append(category)
-
-                    }
+                
+                if let resultJSON = json {
+                    self.resultCategories = Category.arrayFromJSON(json: resultJSON)
+                    self.categoryPickerView.reloadAllComponents()
                 }
-               
-                self.categoryPickerView.reloadAllComponents()
-
+                
             } else {
                 print("error show category")
                 
@@ -83,15 +81,27 @@ extension AddProductViewController: UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
 
+}
+
+extension AddProductViewController: UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return resultValues.count
+        return resultCategories.count
+    }
+}
+
+extension AddProductViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(resultCategories[row].getId())
+        print(resultCategories[row].getName())
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return resultValues[row]
+        return resultCategories[row].getName()
     }
-
 }
