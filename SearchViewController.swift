@@ -12,10 +12,7 @@ import SwiftyJSON
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
-    var resultProducts = [Product]()
-    
-    //let tableData = ["One", "Two", "One-Two"]
-    var filterTableData = [String]()
+    var resultProducts = [Product]()    
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
@@ -42,56 +39,30 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.resultSearchController.isActive) {
-            return self.filterTableData.count
-        } else {
-            return resultProducts.count
-        }
+        return resultProducts.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        cell.textLabel?.text = self.resultSearchController.isActive ? filterTableData[indexPath.row] : resultProducts[indexPath.row].getName()
-        
+        cell.textLabel?.text = resultProducts[indexPath.row].getName()
         return cell
-    }
-
-    func displayProductInfo(request: URLRequestConvertible)
-    {
-        API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
-            
-            if error == false {
-                
-                if let resultJSON = json {
-
-                    let product: Product = Product(json: json!)
-                    print(resultJSON.arrayValue)
-                    self.tableView.reloadData()
-                }
-                else {
-                    print("ERROR.brak produktow")
-                }
-            }
-        })
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
-        
-        filterTableData.removeAll(keepingCapacity: false)
-        
-        let searchProduct = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let text = searchController.searchBar.text
         let request = Router.findProduct(key: searchController.searchBar.text!.lowercased())
         
-        print(request)
-
-        let array = (resultProducts as NSArray).filtered(using: searchProduct)
-        filterTableData = array as! [String]
-        displayProductInfo(request: request)
-        
+        API.sharedInstance.sendRequest(request: request) { (json, erorr) in
+            if erorr == false {
+                if let json = json {
+                    self.resultProducts = Product.arrayFromJSON(json: json)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
-
 }
-
 
