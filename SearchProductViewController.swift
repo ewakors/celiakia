@@ -53,17 +53,37 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     func displayProductInfo(request: URLRequestConvertible)
     {
+        
+        API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
 
-            API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
+            if error == false {
                 
-                if error == false {
-                    
-                    if let resultJSON = json {
-                        self.resultProducts = Product.arrayFromJSON(json: resultJSON)
-
-                        let product: Product = Product(json: json!)
-                        print(resultJSON.arrayValue)
+                if let resultJSON = json {
+                    self.resultProducts = Product.arrayFromJSON(json: resultJSON)
+                    if self.resultProducts.count > 0 {
+                        print("resultProducts.count > 1 \(self.resultProducts.count)")
+                    }
+                    let product: Product = Product(json: json!)
+                    print(resultJSON.arrayValue)
+                    print(resultJSON.count)
+                    if resultJSON.arrayValue.isEmpty {
+                        let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                         
+                        let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                            self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+                            print("yes button tapped")
+                        })
+                        alertController.addAction(yesAction)
+                        
+                        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                            print("cancle button tapped")
+                        })
+                        alertController.addAction(cancleAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                        print("brak produktow w bazie")
+                    }
+                    else {
                         let alert = UIAlertController(title: "Product", message: "\n\n\n\n\n\n", preferredStyle: .alert);
                         self.picker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
                         alert.view.addSubview(self.picker);
@@ -71,55 +91,16 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         alert.addAction(defaultAction)
                         
                         self.present(alert, animated: true, completion: {
-                             self.picker.frame.size.width = alert.view.frame.size.width
+                            self.picker.frame.size.width = alert.view.frame.size.width
                         })
-                        
-                    if product.getName() != "" {
-                        
-                        if product.getGluten() == "True" {
-                            let alertController = UIAlertController(title: "GLUTEN FREE", message: "Name: \(product.getName()) \nBarcode: \(product.getBarcode())\nCategory: \(product.getCategory())", preferredStyle: .alert)
-                            
-                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                            alertController.addAction(defaultAction)
-                            
-                            self.present(alertController, animated: true, completion: nil)
-                            print("GLUTEN FREE!!!")
-                        }
-                        if product.getGluten() == "False"  {
-                            let alertController = UIAlertController(title: "PRODUCT WITH GLUTEN", message: "Name: \(product.getName()) \nBarcode: \(product.getBarcode())\nCategory: \(product.getCategory())", preferredStyle: .alert)
-                            
-                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                            alertController.addAction(defaultAction)
-                            
-                            self.present(alertController, animated: true, completion: nil)
-                            print("GLUTEN :(( !!!")
-                        }
                     }
-                    
-//                    if ( name == "" && barcode == "" && gluten == "" ) {
-//                        let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
-//                        
-//                        let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-//                            self.performSegue(withIdentifier: "addProductSegue", sender: nil)
-//                            print("yes button tapped")
-//                        })
-//                        alertController.addAction(yesAction)
-//                        
-//                        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
-//                            print("cancle button tapped")
-//                        })
-//                        alertController.addAction(cancleAction)
-//                        
-//                        self.present(alertController, animated: true, completion: nil)
-//                        print("brak produktow w bazie")
-//                    }
                 }
                 else {
                     print("ERROR.brak produktow")
                 }
-                }
-            })
- }
+            }
+        })
+    }
     
     func findProduct() {
         productTextView.text = searchBar.text
@@ -173,7 +154,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         let duration = notification.userInfo! [UIKeyboardAnimationDurationUserInfoKey] as! Double
         
         UIView.animate(withDuration: duration) {
-            // self.toolBarContainer.constant = self.toolBarContainerValue
             self.view.layoutIfNeeded()
         }
     }
@@ -202,11 +182,10 @@ extension SearchProductViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if resultProducts[row].getGluten() == "True" {
-            return "Gluten free " + resultProducts[row].getName() + " " + resultProducts[row].getBarcode()
+            return resultProducts[row].getName() + " " + resultProducts[row].getBarcode() + " Gluten gfree"
         }
         else {
-            return "Gluten " + resultProducts[row].getName() + " " + resultProducts[row].getBarcode()
+            return resultProducts[row].getName() + " " + resultProducts[row].getBarcode() + " Gluten"
         }
-        return " "
     }
 }

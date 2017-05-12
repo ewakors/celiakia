@@ -31,6 +31,7 @@
 		C3B16BA91EBC848A004DCE29 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BA81EBC848A004DCE29 /* Category.swift */; };
 		C3B16BAB1EBC877E004DCE29 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BAA1EBC877E004DCE29 /* User.swift */; };
 		C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BAC1EBCB3CB004DCE29 /* Product.swift */; };
+		C3BFCE0E1EC30B96009A84BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */; };
 		C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */; };
 		C3F354171EB08E6000EAB032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F354151EB08E6000EAB032 /* Main.storyboard */; };
 		C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; };
@@ -101,6 +102,7 @@
 		C3B16BA81EBC848A004DCE29 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = ../Category.swift; sourceTree = "<group>"; };
 		C3B16BAA1EBC877E004DCE29 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C3B16BAC1EBCB3CB004DCE29 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
 		C3F354161EB08E6000EAB032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3F354181EB09E0400EAB032 /* JSQMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessages.framework; path = Carthage/Build/iOS/JSQMessages.framework; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
 				C3B16BA81EBC848A004DCE29 /* Category.swift */,
+				C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */,
 				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
 				C3B16BAC1EBCB3CB004DCE29 /* Product.swift */,
 			);
@@ -386,6 +389,7 @@
 				C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */,
 				C3B16BA91EBC848A004DCE29 /* Category.swift in Sources */,
 				C3B16BAB1EBC877E004DCE29 /* User.swift in Sources */,
+				C3BFCE0E1EC30B96009A84BB /* SearchViewController.swift in Sources */,
 				C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */,
 				C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */,
 				C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */,

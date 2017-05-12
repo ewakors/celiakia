@@ -109,6 +109,50 @@
             </objects>
             <point key="canvasLocation" x="852" y="135.38230884557723"/>
         </scene>
+        <!--Product-->
+        <scene sceneID="sLi-HM-DLf">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchProduct" title="Product" id="Ogh-HF-Dge" customClass="SearchViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDr-2Z-NuV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hVl-tC-nXE" style="IBUITableViewCellStyleDefault" id="L3L-Oq-dkh">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L3L-Oq-dkh" id="n3y-AU-G9t">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hVl-tC-nXE">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ogh-HF-Dge" id="GiA-IQ-Tqp"/>
+                            <outlet property="delegate" destination="Ogh-HF-Dge" id="if7-1N-8WL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Product" id="gDW-ZL-8x1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zhW-5C-iqn">
+                            <connections>
+                                <segue destination="cgY-is-ExB" kind="show" id="4G7-45-tDd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKI-6J-T8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782" y="1594"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UoA-Xy-zJB">
             <objects>
@@ -285,6 +329,7 @@
                     <connections>
                         <segue destination="zGd-FU-Ara" kind="relationship" relationship="viewControllers" id="IiG-j6-8r1"/>
                         <segue destination="SM5-ON-a1K" kind="relationship" relationship="viewControllers" id="Odp-SL-vhX"/>
+                        <segue destination="c6b-9b-H4I" kind="relationship" relationship="viewControllers" id="JQ9-eu-lBB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dc-zY-n7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -367,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cn-w2-eEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="1619"/>
+            <point key="canvasLocation" x="1782" y="2290"/>
         </scene>
         <!--Edit profile-->
         <scene sceneID="uAT-mu-PaA">
@@ -420,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abb-zA-TjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2809" y="1630"/>
+            <point key="canvasLocation" x="2599" y="2290"/>
         </scene>
         <!--Change pssaword-->
         <scene sceneID="93t-o0-I6D">
@@ -480,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qy-WO-4Yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2809" y="2312"/>
+            <point key="canvasLocation" x="3518" y="2290"/>
         </scene>
         <!--Search product-->
         <scene sceneID="Gdp-53-1wm">
@@ -497,13 +542,6 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-fW-Zql">
                                 <rect key="frame" x="16" y="160" width="343" height="160"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICW-Hy-aOh">
-                                <rect key="frame" x="145" y="372" width="86" height="30"/>
-                                <state key="normal" title="Add product"/>
-                                <connections>
-                                    <segue destination="cgY-is-ExB" kind="show" identifier="addProductButtonSegue" id="Q8X-ou-Rsb"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" placeholder="Search product" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-nh-58c">
                                 <rect key="frame" x="16" y="72" width="343" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -540,26 +578,26 @@
                                     <constraint firstItem="bRe-0Z-JDR" firstAttribute="leading" secondItem="f0O-BD-Z0q" secondAttribute="leading" id="uYi-Gg-T21"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7v-8V-ok4">
-                                <rect key="frame" x="135" y="308" width="107" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICW-Hy-aOh">
+                                <rect key="frame" x="144" y="296" width="86" height="30"/>
+                                <state key="normal" title="Add product"/>
+                                <connections>
+                                    <segue destination="cgY-is-ExB" kind="show" identifier="addProductButtonSegue" id="Q8X-ou-Rsb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90411072969999995" green="0.97391456369999996" blue="0.91190296410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZX5-fW-Zql" firstAttribute="leading" secondItem="v1G-28-dH6" secondAttribute="leadingMargin" id="1RS-wp-1LR"/>
+                            <constraint firstItem="hzd-KC-yVO" firstAttribute="top" secondItem="ICW-Hy-aOh" secondAttribute="bottom" constant="297" id="3qu-wz-tLk"/>
+                            <constraint firstItem="ZX5-fW-Zql" firstAttribute="top" secondItem="uyf-AK-zd9" secondAttribute="bottom" constant="96" id="7SK-Vu-lqD"/>
                             <constraint firstItem="pfc-nh-58c" firstAttribute="leading" secondItem="v1G-28-dH6" secondAttribute="leading" constant="16" id="AaM-Cn-fuT"/>
-                            <constraint firstItem="hzd-KC-yVO" firstAttribute="top" secondItem="ICW-Hy-aOh" secondAttribute="bottom" constant="221" id="IOs-hQ-WZc"/>
                             <constraint firstItem="ZX5-fW-Zql" firstAttribute="trailing" secondItem="v1G-28-dH6" secondAttribute="trailingMargin" id="Pih-x4-V8S"/>
-                            <constraint firstItem="ICW-Hy-aOh" firstAttribute="top" secondItem="ZX5-fW-Zql" secondAttribute="bottom" constant="52" id="XQe-Xn-4Vo"/>
+                            <constraint firstItem="ICW-Hy-aOh" firstAttribute="top" secondItem="ZX5-fW-Zql" secondAttribute="bottom" constant="-24" id="XQe-Xn-4Vo"/>
                             <constraint firstItem="ZX5-fW-Zql" firstAttribute="leading" secondItem="f0O-BD-Z0q" secondAttribute="leading" id="aXV-z7-8qD"/>
                             <constraint firstAttribute="trailing" secondItem="pfc-nh-58c" secondAttribute="trailing" constant="16" id="dxB-Ad-hW1"/>
                             <constraint firstItem="f0O-BD-Z0q" firstAttribute="top" secondItem="pfc-nh-58c" secondAttribute="bottom" constant="12" id="eSE-8Z-IRJ"/>
                             <constraint firstItem="ZX5-fW-Zql" firstAttribute="top" secondItem="pfc-nh-58c" secondAttribute="bottom" constant="44" id="lWu-cK-dmh"/>
-                            <constraint firstItem="ZX5-fW-Zql" firstAttribute="top" secondItem="uyf-AK-zd9" secondAttribute="bottom" constant="96" id="p61-Sn-QZ0"/>
                             <constraint firstItem="pfc-nh-58c" firstAttribute="centerX" secondItem="ICW-Hy-aOh" secondAttribute="centerX" id="qXW-6g-wQW"/>
                             <constraint firstItem="ZX5-fW-Zql" firstAttribute="trailing" secondItem="f0O-BD-Z0q" secondAttribute="trailing" id="zKz-fL-gUa"/>
                         </constraints>
@@ -570,26 +608,19 @@
                     <navigationItem key="navigationItem" id="awK-5s-F94"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="name" destination="e7v-8V-ok4" id="yqi-PR-K8I"/>
                         <outlet property="productTextView" destination="9cH-8S-1xc" id="Pgv-bs-vOx"/>
                         <outlet property="scanncerView" destination="bRe-0Z-JDR" id="6fM-cn-d45"/>
                         <outlet property="searchBar" destination="pfc-nh-58c" id="I9P-z5-D72"/>
-                        <outlet property="searchDisplayController" destination="Kvd-h3-Ui8" id="8sR-sW-e6g"/>
+                        <outlet property="searchDisplayController" destination="sJc-4k-xko" id="7o3-93-Bjf"/>
                         <outlet property="stackView" destination="ZX5-fW-Zql" id="LAd-Jv-RT7"/>
                         <segue destination="cgY-is-ExB" kind="show" identifier="addProductSegue" id="PUX-Zt-Bnm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc1-4Y-ylK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Kvd-h3-Ui8">
-                    <connections>
-                        <outlet property="delegate" destination="PFm-Xu-4kO" id="oRh-RT-gVM"/>
-                        <outlet property="searchContentsController" destination="PFm-Xu-4kO" id="CZ3-iA-BL9"/>
-                        <outlet property="searchResultsDataSource" destination="PFm-Xu-4kO" id="oVu-Vo-XLl"/>
-                        <outlet property="searchResultsDelegate" destination="PFm-Xu-4kO" id="Ja2-Eb-0Wn"/>
-                    </connections>
-                </searchDisplayController>
+                <searchDisplayController id="Kvd-h3-Ui8"/>
+                <searchDisplayController id="sJc-4k-xko"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="891.90404797601207"/>
+            <point key="canvasLocation" x="1782" y="871"/>
         </scene>
         <!--Add product-->
         <scene sceneID="ftG-eI-Gf5">
@@ -673,13 +704,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KJ-Ac-ynv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.8000000000002" y="891.90404797601207"/>
+            <point key="canvasLocation" x="3007" y="1364"/>
         </scene>
-        <!--Search-->
+        <!--Navigation Controller-->
         <scene sceneID="uyB-4x-HYZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zGd-FU-Ara" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="aVe-NI-XoA"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="aVe-NI-XoA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uo4-MG-fxC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -687,12 +718,29 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PFm-Xu-4kO" kind="relationship" relationship="rootViewController" id="kAZ-UT-sEt"/>
+                        <segue destination="Ogh-HF-Dge" kind="relationship" relationship="rootViewController" id="hTC-uF-ueR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAN-8z-Rue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="891.90404797601207"/>
+            <point key="canvasLocation" x="852" y="1594"/>
+        </scene>
+        <!--Scan-->
+        <scene sceneID="Rrg-I8-vbE">
+            <objects>
+                <navigationController title="Scan" id="c6b-9b-H4I" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scan" id="oHi-aJ-cqc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uVu-bO-q2t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PFm-Xu-4kO" kind="relationship" relationship="rootViewController" id="76D-Zg-wzo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DPQ-OU-vkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="892"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Oi7-BX-vcy">
@@ -711,7 +759,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsA-RA-Xeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024.8" y="1629.5352323838083"/>
+            <point key="canvasLocation" x="852" y="2290"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
