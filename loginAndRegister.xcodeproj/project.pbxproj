@@ -23,6 +23,8 @@
 		C3250B4C1EA653490095CD8E /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B471EA653360095CD8E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3250B4D1EA653490095CD8E /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B481EA653360095CD8E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */; };
+		C355D3171EC5C6F200EC850C /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */; };
+		C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */; };
 		C37C8D3E1EA752E300D8380B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3D1EA752E300D8380B /* API.swift */; };
 		C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */; };
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -33,11 +35,13 @@
 		C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BAC1EBCB3CB004DCE29 /* Product.swift */; };
 		C3BFCE0E1EC30B96009A84BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */; };
 		C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */; };
-		C3F354171EB08E6000EAB032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F354151EB08E6000EAB032 /* Main.storyboard */; };
 		C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; };
 		C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */; };
 		C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C3F82AC51EC5FE8A00F3E4E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F82AC31EC5FE8A00F3E4E3 /* Main.storyboard */; };
+		C3F82AC71EC5FF2300F3E4E3 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */; };
+		C3F82AC91EC5FFB100F3E4E3 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,8 @@
 		C3250B471EA653360095CD8E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C3250B481EA653360095CD8E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductViewController.swift; path = ../AddProductViewController.swift; sourceTree = "<group>"; };
+		C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsViewController.swift; path = ../ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDetailsTableViewController.swift; path = ../CategoryDetailsTableViewController.swift; sourceTree = "<group>"; };
 		C37C8D3D1EA752E300D8380B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../API.swift; sourceTree = "<group>"; };
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
@@ -104,9 +110,11 @@
 		C3B16BAC1EBCB3CB004DCE29 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
-		C3F354161EB08E6000EAB032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3F354181EB09E0400EAB032 /* JSQMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessages.framework; path = Carthage/Build/iOS/JSQMessages.framework; sourceTree = "<group>"; };
 		C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
+		C3F82AC41EC5FE8A00F3E4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = ../CategoryCell.swift; sourceTree = "<group>"; };
+		C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = ../CategoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +173,11 @@
 			children = (
 				C3250B411EA64B3E0095CD8E /* support */,
 				C3B16BA51EBC5D0D004DCE29 /* product */,
-				C37C8D3D1EA752E300D8380B /* API.swift */,
+				C3F82AC01EC5ECDD00F3E4E3 /* category */,
 				C3B16BA41EBC5CF8004DCE29 /* user */,
-				C3250B441EA64CD50095CD8E /* Router.swift */,
+				C37C8D3D1EA752E300D8380B /* API.swift */,
 				C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */,
+				C3250B441EA64CD50095CD8E /* Router.swift */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -196,8 +205,8 @@
 			children = (
 				C3250B131EA64B220095CD8E /* AppDelegate.swift */,
 				C3250B1A1EA64B220095CD8E /* Assets.xcassets */,
+				C3F82AC31EC5FE8A00F3E4E3 /* Main.storyboard */,
 				C3250B1C1EA64B220095CD8E /* LaunchScreen.storyboard */,
-				C3F354151EB08E6000EAB032 /* Main.storyboard */,
 				C3250B1F1EA64B220095CD8E /* Info.plist */,
 			);
 			name = support;
@@ -233,12 +242,23 @@
 			isa = PBXGroup;
 			children = (
 				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
-				C3B16BA81EBC848A004DCE29 /* Category.swift */,
 				C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */,
 				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
+				C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */,
 				C3B16BAC1EBCB3CB004DCE29 /* Product.swift */,
 			);
 			name = product;
+			sourceTree = "<group>";
+		};
+		C3F82AC01EC5ECDD00F3E4E3 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				C3B16BA81EBC848A004DCE29 /* Category.swift */,
+				C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */,
+				C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */,
+				C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */,
+			);
+			name = category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3F354171EB08E6000EAB032 /* Main.storyboard in Resources */,
+				C3F82AC51EC5FE8A00F3E4E3 /* Main.storyboard in Resources */,
 				C3250B1E1EA64B220095CD8E /* LaunchScreen.storyboard in Resources */,
 				C3250B1B1EA64B220095CD8E /* Assets.xcassets in Resources */,
 			);
@@ -379,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F82AC71EC5FF2300F3E4E3 /* CategoryCell.swift in Sources */,
 				C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */,
 				C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */,
 				C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */,
@@ -388,12 +409,15 @@
 				C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */,
 				C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */,
 				C3B16BA91EBC848A004DCE29 /* Category.swift in Sources */,
+				C355D3171EC5C6F200EC850C /* ProductDetailsViewController.swift in Sources */,
 				C3B16BAB1EBC877E004DCE29 /* User.swift in Sources */,
 				C3BFCE0E1EC30B96009A84BB /* SearchViewController.swift in Sources */,
+				C3F82AC91EC5FFB100F3E4E3 /* CategoriesViewController.swift in Sources */,
 				C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */,
 				C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */,
 				C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
+				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */,
 				C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,10 +462,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		C3F354151EB08E6000EAB032 /* Main.storyboard */ = {
+		C3F82AC31EC5FE8A00F3E4E3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C3F354161EB08E6000EAB032 /* Base */,
+				C3F82AC41EC5FE8A00F3E4E3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

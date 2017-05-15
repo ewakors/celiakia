@@ -13,6 +13,7 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTXT: UITextField!
     @IBOutlet weak var newPasswordTXT: UITextField!
     @IBOutlet weak var oldPasswordTXT: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,7 +24,7 @@ class ChangePasswordViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-                print(json)
+//                print(json)
                 let alertController = UIAlertController(title: "Success", message: "Password changed", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -41,7 +42,5 @@ class ChangePasswordViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-
     }
-    
 }

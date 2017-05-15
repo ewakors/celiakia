@@ -40,7 +40,7 @@ class AddProductViewController: UIViewController {
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 
                 if error == false {
-                    print(json)
+//                    print(json)
                     let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

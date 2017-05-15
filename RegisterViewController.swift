@@ -19,8 +19,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -29,7 +27,7 @@ class RegisterViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-                print(json)
+//                print(json)
                 let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

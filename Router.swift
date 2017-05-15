@@ -24,6 +24,7 @@ enum Router: URLRequestConvertible {
     case passwordReset(email: String)
     case passwordChange(old_password: String, new_password1: String, new_password2: String)
     case findProduct(key: String)
+    case categoryProducts(categoryId: Int)
     case getCategory ()
     case addNewProduct(name: String, barcode: String, gluten: Bool, category: Int)
     
@@ -44,6 +45,8 @@ enum Router: URLRequestConvertible {
         case .passwordChange:
             return .post
         case .findProduct:
+            return .get
+        case .categoryProducts:
             return .get
         case .getCategory:
             return .get
@@ -72,14 +75,14 @@ enum Router: URLRequestConvertible {
             return "auth/password/change/"
         case .findProduct:
             return "products/"
+        case .categoryProducts:
+            return "products/"
         case .getCategory():
             return "categories/"
         case .addNewProduct:
             return "products/add/"
         }
     }
-    
-    // MARK: URLRequestConvertible
     
     func asURLRequest() throws -> URLRequest {
      
@@ -117,6 +120,9 @@ enum Router: URLRequestConvertible {
             
         case .findProduct(let key):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
+            
+        case .categoryProducts(let category):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["category":category])
             
         case .getCategory():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)

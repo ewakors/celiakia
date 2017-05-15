@@ -17,24 +17,35 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var scanncerView: UIView!
     @IBOutlet weak var productTextView: UITextView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var tableView: UITableViewCell!
     
-    @IBOutlet weak var name: UILabel!
     var scanner: MTBBarcodeScanner?
+    var products = [Product]()
     
-    var resultProducts = [Product]()
     let picker: UIPickerView = UIPickerView(frame:
         CGRect(x: 0, y: 50, width: 260, height: 100));
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scanner = MTBBarcodeScanner(previewView: scanncerView)
-        searchBar.delegate = self
         
+        searchBar.delegate = self
         picker.delegate = self;
         picker.dataSource = self;
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SearchProductViewController.dismissKeyboard)))
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailsProductSegue" {
+            let detailViewController = ((segue.destination) as! ProductDetailsViewController)
+            detailViewController.productNameString = searchBar.text
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        enableKeyboardHideOnTop()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -48,7 +59,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print(self.searchBar.text)
+//        print(self.searchBar.text)
     }
     
     func displayProductInfo(request: URLRequestConvertible)
@@ -59,24 +70,18 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             if error == false {
                 
                 if let resultJSON = json {
-                    self.resultProducts = Product.arrayFromJSON(json: resultJSON)
-                    if self.resultProducts.count > 0 {
-                        print("resultProducts.count > 1 \(self.resultProducts.count)")
-                    }
-                    let product: Product = Product(json: json!)
+                    self.products = Product.arrayFromJSON(json: resultJSON)
                     print(resultJSON.arrayValue)
-                    print(resultJSON.count)
+                    
                     if resultJSON.arrayValue.isEmpty {
                         let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                         
                         let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                             self.performSegue(withIdentifier: "addProductSegue", sender: nil)
-                            print("yes button tapped")
                         })
                         alertController.addAction(yesAction)
                         
                         let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
-                            print("cancle button tapped")
                         })
                         alertController.addAction(cancleAction)
                         
@@ -84,15 +89,18 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         print("brak produktow w bazie")
                     }
                     else {
-                        let alert = UIAlertController(title: "Product", message: "\n\n\n\n\n\n", preferredStyle: .alert);
-                        self.picker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-                        alert.view.addSubview(self.picker);
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alert.addAction(defaultAction)
+
+//                        self.performSegue(withIdentifier: "showDetailsProductSegue", sender: nil)
                         
-                        self.present(alert, animated: true, completion: {
-                            self.picker.frame.size.width = alert.view.frame.size.width
-                        })
+//                        let alert = UIAlertController(title: "Product", message: "\n\n\n\n\n\n", preferredStyle: .alert);
+//                        self.picker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+//                        alert.view.addSubview(self.picker);
+//                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                        alert.addAction(defaultAction)
+//                        
+//                        self.present(alert, animated: true, completion: {
+//                            self.picker.frame.size.width = alert.view.frame.size.width
+//                        })
                     }
                 }
                 else {
@@ -109,14 +117,9 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         productName = searchBar.text!.lowercased()
    
         if productName != "" {
-            
             let request = Router.findProduct(key: productName)
             displayProductInfo(request: request)
         }
-
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        enableKeyboardHideOnTop()
     }
 
     func dismissKeyboard() {
@@ -170,22 +173,41 @@ extension SearchProductViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return resultProducts.count
+        return products.count
     }
 }
 
 extension SearchProductViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(resultProducts[row].getName())
+        print(products[row].getName())
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if resultProducts[row].getGluten() == "True" {
-            return resultProducts[row].getName() + " " + resultProducts[row].getBarcode() + " Gluten gfree"
+        if products[row].getGluten() == "True" {
+            return products[row].getName() + " " + products[row].getBarcode() + " Gluten gfree"
         }
         else {
-            return resultProducts[row].getName() + " " + resultProducts[row].getBarcode() + " Gluten"
+            return products[row].getName() + " " + products[row].getBarcode() + " Gluten"
         }
+    }
+}
+
+extension SearchProductViewController: UITableViewDataSource {
+    
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = products[indexPath.row].getName()
+        print(products[indexPath.row].getName())
+        cell.detailTextLabel?.text = products[indexPath.row].getBarcode()
+        return cell
     }
 }

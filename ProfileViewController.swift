@@ -20,24 +20,22 @@ class ProfileViewController: UIViewController {
         emailLabel.text = ""
         userDetails()
     }
-   
-   
+    
     func userDetails()
     {
         let request = Router.userDetails()
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
-            var user: User = User(json: json!)
+            let user: User = User(json: json!)
             if error == false {
-                print(json)
                 self.usernameLabel.text = user.getName()
                 self.emailLabel.text = user.getEmail()
             } else {
                 print("error user details")
- 
             }
         }
     }
+    
     @IBAction func logoutButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Do you want logout?", message: nil, preferredStyle: .alert)
         
@@ -48,8 +46,8 @@ class ProfileViewController: UIViewController {
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 
                 if error == false {
-                    print("logout toke: \(Router.token)")
-                    print(json?["detail"].stringValue)
+//                    print("logout toke: \(Router.token)")
+//                    print(json?["detail"].stringValue)
 
                     let alertController = UIAlertController(title: "Success", message: "Logout success", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert :UIAlertAction!) in
@@ -60,8 +58,7 @@ class ProfileViewController: UIViewController {
                    
                 } else {
                     print("error")
-                    print("logout toke: \(Router.token)")
-                    print(json?["detail"].stringValue)
+//                    print(json?["detail"].stringValue)
                     let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

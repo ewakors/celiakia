@@ -23,9 +23,7 @@ class ResetPasswordViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-                print(json)
-                
-
+//                print(json)
             } else {
                 print("error reset password")
                 
