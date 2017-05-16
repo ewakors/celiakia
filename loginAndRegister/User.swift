@@ -35,43 +35,5 @@ class User: MyJSONProtocol {
         self.name = json["username"].stringValue
         self.email = json["email"].stringValue
     }
-
 }
 
-//class Product: MyJSONProtocol {
-//    typealias T = Product
-//    
-//    private var name: String
-//    private var barcode: String
-//    private var category: Category?
-//    
-//    init() {
-//        name = ""
-//        barcode = ""
-//    }
-//    
-//    init(json: JSON) {
-//        fromJSON(json: json)
-//    }
-//    
-//    func fromJSON(json: JSON)  {
-//        
-//    }
-//    
-//    func getName() -> String {
-//        return name
-//    }
-//    
-//    func getBarcode() -> String {
-//        return barcode
-//    }
-//    
-//    func getCategoryName() -> String {
-//        
-//        if let cat = category {
-//            return cat.name
-//        }
-//        
-//        return ""
-//    }
-//}

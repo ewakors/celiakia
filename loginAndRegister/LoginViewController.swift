@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import IQKeyboardManager
 
 class LoginViewController: UIViewController {
 
@@ -25,8 +26,6 @@ class LoginViewController: UIViewController {
 //        else {
 //            print("you must login")
 //        }
-        
-
     }
     
     override func viewDidLoad() {

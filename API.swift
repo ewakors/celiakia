@@ -44,6 +44,7 @@ class API: NSObject {
         }
     }
 }
+
 extension Request {
     public func debugLog() -> Self {
         print(self)

@@ -206,7 +206,6 @@ extension SearchProductViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = products[indexPath.row].getName()
-        print(products[indexPath.row].getName())
         cell.detailTextLabel?.text = products[indexPath.row].getBarcode()
         return cell
     }

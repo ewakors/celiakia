@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import IQKeyboardManager
 
 class RegisterViewController: UIViewController {
 

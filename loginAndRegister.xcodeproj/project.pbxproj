@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */; };
-		C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */; };
 		C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */; };
 		C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B131EA64B220095CD8E /* AppDelegate.swift */; };
 		C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B151EA64B220095CD8E /* LoginViewController.swift */; };
@@ -80,7 +79,6 @@
 
 /* Begin PBXFileReference section */
 		C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = ../EditProfileViewController.swift; sourceTree = "<group>"; };
-		C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C3250B101EA64B220095CD8E /* loginAndRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginAndRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3250B131EA64B220095CD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 			children = (
 				C3250B151EA64B220095CD8E /* LoginViewController.swift */,
 				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
-				C31CE67C1EB0C0EF0061CBBD /* ResetPasswordViewController.swift */,
 				C3B16BAA1EBC877E004DCE29 /* User.swift */,
 				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
 				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
@@ -415,7 +412,6 @@
 				C3F82AC91EC5FFB100F3E4E3 /* CategoriesViewController.swift in Sources */,
 				C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */,
 				C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */,
-				C31CE67D1EB0C0EF0061CBBD /* ResetPasswordViewController.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
 				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */,
 				C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */,

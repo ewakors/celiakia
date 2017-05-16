@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
-
+    
     var products = [Product]()
     var searchController = UISearchController()
     
@@ -41,11 +41,20 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = products[indexPath.row].getName()
-        cell.detailTextLabel?.text = products[indexPath.row].getBarcode()
+        
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
+        
+        (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName()
+        (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
+
+        if products[indexPath.row].getGluten() == "True" {
+            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "przekreslony-klos-logo.png")
+        }
+        else {
+            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "gluten.png")
+        }
         cell.selectionStyle = .none
         return cell
     }
@@ -55,8 +64,13 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
             let indexPath = self.tableView.indexPathForSelectedRow!
             let productName = products[indexPath.row].getName()
+            let productGluten = products[indexPath.row].getGluten()
+            let productBarcode = products[indexPath.row].getBarcode()
+            print(productBarcode)
             detailViewController.productNameString = productName
-            detailViewController.title = "Back"
+            detailViewController.productBarcodeString = productBarcode
+            detailViewController.productGlutenString = productGluten
+            detailViewController.title = productName.uppercased()
         }
     }
     

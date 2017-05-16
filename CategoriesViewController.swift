@@ -80,6 +80,12 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    func loadImages() {
+        
+        var pageURL = "http://127.0.0.1:8000/media/summer.jpg"
+    }
+    
 }
 
 extension CategoriesViewController: UICollectionViewDelegate {
