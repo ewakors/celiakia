@@ -8,20 +8,30 @@
 
 import UIKit
 import Alamofire
+import MTBBarcodeScanner
 
 class AddProductViewController: UIViewController {
 
     @IBOutlet weak var categoryPickerView: UIPickerView!
-    @IBOutlet weak var categoryTxt: UITextField!
-    @IBOutlet weak var glutenTxt: UITextField!
     @IBOutlet weak var productCodeTxt: UITextField!
     @IBOutlet weak var productNameTxt: UITextField!
+    @IBOutlet weak var scanncerView: UIView!
+    @IBOutlet weak var checkButton: UIButton!
+    
+    var scanner: MTBBarcodeScanner?
+    var checkbox = UIImage(named: "check")
+    var unCheckbox = UIImage(named: "uncheck")
+    var isBoxClicked: Bool!
+    var glutenFree: Bool!
 
     var resultCategories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scanner = MTBBarcodeScanner(previewView: scanncerView)
+        isBoxClicked = false
+        glutenFree = false
         self.categoryPickerView.delegate = self
         self.categoryPickerView.dataSource = self
     
@@ -31,16 +41,16 @@ class AddProductViewController: UIViewController {
     @IBAction func addNewProductButton(_ sender: Any) {
 
         let r = categoryPickerView.selectedRow(inComponent: 0)
-
+        
         if r != -1 {
-            print(resultCategories[r].getId())
-            print(resultCategories[r].getName())
-            let request = Router.addNewProduct(name: "makaron", barcode: "1234", gluten: true, category: resultCategories[r].getId())
-                        
+            print(glutenFree)
+            let request = Router.addNewProduct(name: "kielbasa", barcode: "9876", gluten: glutenFree, category: resultCategories[r].getId())
+            
+            
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 
                 if error == false {
-//                    print(json)
+                   //print(json)
                     let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -60,6 +70,23 @@ class AddProductViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func clickedCheckbox(_ sender: UIButton) {
+        if isBoxClicked == true {
+            isBoxClicked = false
+        } else {
+            isBoxClicked = true
+        }
+        
+        if isBoxClicked == true {
+            sender.setImage(checkbox, for: UIControlState.normal)
+            return glutenFree = true
+        } else {
+            sender.setImage(unCheckbox, for: UIControlState.normal)
+            return glutenFree = false
+        }
+    }
+    
     
     func showCategory()
     {

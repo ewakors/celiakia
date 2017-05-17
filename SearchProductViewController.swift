@@ -16,8 +16,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var scanncerView: UIView!
     @IBOutlet weak var productTextView: UITextView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var tableView: UITableViewCell!
+
     
     var scanner: MTBBarcodeScanner?
     var products = [Product]()

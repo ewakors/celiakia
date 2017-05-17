@@ -77,15 +77,21 @@ extension CategoriesViewController: UICollectionViewDataSource {
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
+        print(categories[indexPath.row].getImage())
         
+        let url = NSURL(string: categories[indexPath.row].getImage())
+        let data = NSData(contentsOf: url as! URL)
+        cell.categoryImageView.image = UIImage(data: data as! Data)
+        
+        //let decodedData = NSData(base64Encoded: categories[indexPath.row].getImage(), options: .allZeros)
+        // cell.categoryImageView.image = categories[indexPath.row].getImage()
+        //print(decodedData?.bytes)
+       // let iconValue = UIImage(data: decodedData! as Data)!
+       // var icoView:UIImageView = UIImageView(image: iconValue as UIImage)
+        //cell.categoryImageView.image = iconValue
         return cell
     }
-    
-    func loadImages() {
-        
-        var pageURL = "http://127.0.0.1:8000/media/summer.jpg"
-    }
-    
+
 }
 
 extension CategoriesViewController: UICollectionViewDelegate {

@@ -15,10 +15,12 @@ class Category: MyJSONProtocol {
     
     private var id: Int
     private var name: String
+    private var image: String
     
     init(json: JSON) {
         id = 0
         name = ""
+        image = ""
         fromJSON(json: json)
     }
 
@@ -30,9 +32,14 @@ class Category: MyJSONProtocol {
         return name
     }
     
+    func getImage() -> String {
+        return image
+    }
+    
     func fromJSON(json: JSON) {
         self.id = json["id"].intValue
         self.name = json["name"].stringValue
+        self.image = json["image"].stringValue
     }
     
     static func arrayFromJSON(json: JSON) -> [Category] {

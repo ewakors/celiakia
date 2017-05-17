@@ -80,7 +80,7 @@ enum Router: URLRequestConvertible {
         case .getCategory():
             return "categories/"
         case .addNewProduct:
-            return "products/add/"
+            return "products/new/"
         }
     }
     
