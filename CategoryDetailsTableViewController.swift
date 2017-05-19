@@ -52,7 +52,6 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
                     print("error category info")
                 }
             }
-
         }
     }
 
@@ -74,11 +73,19 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "przekreslony-klos-logo.png")
+            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "glutenFree.png")
         }
         else {
             (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "gluten.png")
         }
+        
+        let productImageURL = products[indexPath.row].getImage()
+        let url = NSURL(string: productImageURL)
+        let data = NSData(contentsOf: url as! URL)
+        if productImageURL != "" {
+            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
+        }
+        
         cell.selectionStyle = .none
         
         return cell
@@ -88,14 +95,18 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         
         if segue.identifier == "detailsProduct" {
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
+            
             let indexPath = self.tableView.indexPathForSelectedRow!
             let productName = products[indexPath.row].getName()
             let productGluten = products[indexPath.row].getGluten()
             let productBarcode = products[indexPath.row].getBarcode()
+            let productImageURL = products[indexPath.row].getImage()
+            
             detailViewController.productNameString = productName
             detailViewController.productBarcodeString = productBarcode
             detailViewController.productGlutenString = productGluten
-            detailViewController.productNameString = productName
+            detailViewController.productImageURL = productImageURL
+            
             detailViewController.title = productName
         }        
     }

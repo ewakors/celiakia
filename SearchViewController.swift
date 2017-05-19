@@ -50,11 +50,19 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
 
         if products[indexPath.row].getGluten() == "True" {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "przekreslony-klos-logo.png")
+            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "glutenFree.png")
         }
         else {
             (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "gluten.png")
         }
+        
+        let productImageURL = products[indexPath.row].getImage()
+        let url = NSURL(string: products[indexPath.row].getImage())
+        let data = NSData(contentsOf: url as! URL)
+        if productImageURL != "" {
+            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
+        }
+        
         cell.selectionStyle = .none
         return cell
     }
@@ -66,10 +74,12 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
             let productName = products[indexPath.row].getName()
             let productGluten = products[indexPath.row].getGluten()
             let productBarcode = products[indexPath.row].getBarcode()
-            print(productBarcode)
+            let productImageURL = products[indexPath.row].getImage()
+            
             detailViewController.productNameString = productName
             detailViewController.productBarcodeString = productBarcode
             detailViewController.productGlutenString = productGluten
+            detailViewController.productImageURL = productImageURL
             detailViewController.title = productName.uppercased()
         }
     }

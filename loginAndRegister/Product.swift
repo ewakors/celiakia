@@ -18,6 +18,7 @@ class Product: MyJSONProtocol {
     private var barcode: String
     private var gluten: String
     private var category: String
+    private var image: String
     
     
     init(json: JSON) {
@@ -25,6 +26,7 @@ class Product: MyJSONProtocol {
         barcode = ""
         gluten = ""
         category = ""
+        image = ""
         fromJSON(json: json)
     }
     
@@ -44,11 +46,16 @@ class Product: MyJSONProtocol {
         return category
     }
     
+    func getImage() -> String {
+        return image
+    }
+    
     func fromJSON(json: JSON) {
         name = json["name"].stringValue
         barcode = json["bar_code"].stringValue
         gluten = json["gluten_free"].stringValue
         category = json["category"].stringValue
+        image = json["image"].stringValue
     }
     
     static func arrayFromJSON(json: JSON) -> [Product] {

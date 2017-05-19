@@ -34,6 +34,7 @@
 		C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BAC1EBCB3CB004DCE29 /* Product.swift */; };
 		C3BFCE0E1EC30B96009A84BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */; };
 		C3E2442D1EAE16FF0009D5CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */; };
+		C3E2D82E1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2D82D1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift */; };
 		C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; };
 		C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F354181EB09E0400EAB032 /* JSQMessages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */; };
@@ -108,6 +109,7 @@
 		C3B16BAC1EBCB3CB004DCE29 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
+		C3E2D82D1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsTableViewController.swift; path = ../ProductDetailsTableViewController.swift; sourceTree = "<group>"; };
 		C3F354181EB09E0400EAB032 /* JSQMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessages.framework; path = Carthage/Build/iOS/JSQMessages.framework; sourceTree = "<group>"; };
 		C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
 		C3F82AC41EC5FE8A00F3E4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */,
 				C3BFCE0D1EC30B96009A84BB /* SearchViewController.swift */,
 				C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */,
+				C3E2D82D1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift */,
 				C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */,
 				C3B16BAC1EBCB3CB004DCE29 /* Product.swift */,
 			);
@@ -400,6 +403,7 @@
 				C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */,
 				C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */,
 				C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */,
+				C3E2D82E1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift in Sources */,
 				C3250B451EA64CD50095CD8E /* Router.swift in Sources */,
 				C3250B431EA64C610095CD8E /* RegisterViewController.swift in Sources */,
 				C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */,

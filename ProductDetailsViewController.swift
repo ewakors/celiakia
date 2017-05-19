@@ -10,14 +10,13 @@ import UIKit
 
 class ProductDetailsViewController: UIViewController {
 
-    @IBOutlet weak var productGlutenLabel: UILabel!
-    @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var productBarcodeLabel: UILabel!
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productGlutenView: UIImageView!
     
     var productNameString: String!
     var productBarcodeString: String!
     var productGlutenString: String!
-    
+    var productImageURL: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,27 +24,48 @@ class ProductDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let name = productNameString {
-            productNameLabel.text = name
-        }
-        
-        if let barcode = productBarcodeString {
-            productBarcodeLabel.text = barcode
-            print(barcode)
+
+        let url = NSURL(string: productImageURL)
+        let data = NSData(contentsOf: url as! URL)
+        if productImageURL != "" {
+            productImageView.image = UIImage(data: data as! Data)
         }
         
         if let gluten = productGlutenString {
             if gluten == "True" {
-                productGlutenLabel.text = "Gluten FREE"
-
+                productGlutenView.image = UIImage(named: "glutenFree.png")
+                
             } else {
-                productGlutenLabel.text = "Gluten"
+                productGlutenView.image = UIImage(named: "gluten.png")
             }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "productDetailSague" {
+            let detailViewController = ((segue.destination) as! ProductDetailsTableViewController)
+            
+            if let name = productNameString {
+                detailViewController.productNameString = name
+                print(name)
+            }
+            
+            if let barcode = productBarcodeString {
+                detailViewController.productBarcodeString = barcode
+            }
+            
+            if let gluten = productGlutenString {
+               
+                detailViewController.productGlutenString = gluten
+            }
+           
+           
+        }
     }
 }

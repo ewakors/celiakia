@@ -77,9 +77,9 @@ extension CategoriesViewController: UICollectionViewDataSource {
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
-        print(categories[indexPath.row].getImage())
         
-        let url = NSURL(string: categories[indexPath.row].getImage())
+        let categoryImageURL = categories[indexPath.row].getImage()
+        let url = NSURL(string: categoryImageURL)
         let data = NSData(contentsOf: url as! URL)
         cell.categoryImageView.image = UIImage(data: data as! Data)
         
