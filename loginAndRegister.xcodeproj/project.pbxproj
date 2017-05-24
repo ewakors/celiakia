@@ -23,6 +23,7 @@
 		C3250B4D1EA653490095CD8E /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B481EA653360095CD8E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */; };
 		C355D3171EC5C6F200EC850C /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */; };
+		C3795B841ED307C000CEE16B /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3795B831ED307C000CEE16B /* Warning.swift */; };
 		C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */; };
 		C37C8D3E1EA752E300D8380B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3D1EA752E300D8380B /* API.swift */; };
 		C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */; };
@@ -99,6 +100,7 @@
 		C3250B481EA653360095CD8E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductViewController.swift; path = ../AddProductViewController.swift; sourceTree = "<group>"; };
 		C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsViewController.swift; path = ../ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		C3795B831ED307C000CEE16B /* Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
 		C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDetailsTableViewController.swift; path = ../CategoryDetailsTableViewController.swift; sourceTree = "<group>"; };
 		C37C8D3D1EA752E300D8380B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../API.swift; sourceTree = "<group>"; };
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
 				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
 				C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */,
+				C3795B831ED307C000CEE16B /* Warning.swift */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
 				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */,
+				C3795B841ED307C000CEE16B /* Warning.swift in Sources */,
 				C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

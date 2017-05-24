@@ -34,26 +34,6 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         
         showProductsForCategory()
     }
-    
-    func showProductsForCategory() {
-        if let category = self.category {
-            API.sharedInstance.sendRequest(request: Router.categoryProducts(categoryId: category.getId())) { (json, erorr) in
-                
-                if erorr == false {
-                    if let json = json {
-                        self.products = Product.arrayFromJSON(json: json)
-                        
-                         DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-                else {
-                    print("error category info")
-                }
-            }
-        }
-    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -109,6 +89,26 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
             
             detailViewController.title = productName
         }        
+    }
+    
+    func showProductsForCategory() {
+        if let category = self.category {
+            API.sharedInstance.sendRequest(request: Router.categoryProducts(categoryId: category.getId())) { (json, erorr) in
+                
+                if erorr == false {
+                    if let json = json {
+                        self.products = Product.arrayFromJSON(json: json)
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                else {
+                    print("error category info")
+                }
+            }
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {

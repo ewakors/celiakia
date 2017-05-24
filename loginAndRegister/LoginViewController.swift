@@ -37,9 +37,8 @@ class LoginViewController: UIViewController {
         let request = Router.loginUser(username: "admin", password: "adminadmin1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
-            
+           // let error1: Warning = Warning(json: json!)
             if error == false {
-                
                 if let json = json {
                     
                     let token = json["key"].stringValue
@@ -54,13 +53,12 @@ class LoginViewController: UIViewController {
                 }
                 
             } else {
-//                print(json?["msg"].stringValue)
-//                let alertController = UIAlertController(title: "Error", message: "Login or password failed", preferredStyle: .alert)
-//                
-//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                alertController.addAction(defaultAction)
-//                
-//                self.present(alertController, animated: true, completion: nil)
+                /*var temp1 : String! // This is not optional.
+                temp1 = error1.getError()
+                print(temp1)
+                */    
+                API.Warning(delegate: self, message: "\(json?["non_field_errors"]))")
+                print("login error \(json?["non_field_errors"])")
             }
         }
     }

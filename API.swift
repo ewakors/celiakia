@@ -18,6 +18,12 @@ class API: NSObject {
     
     static let sharedInstance: API = API()
     
+    class func Warning(delegate: UIViewController, message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        delegate.present(alert, animated: true, completion: nil)
+    }
+    
     func sendRequest(request: URLRequestConvertible, completion: @escaping (_ json: JSON?, _ error: Bool) -> Void) {
         
         Alamofire.request(request).debugLog().responseJSON { (result) in
@@ -36,7 +42,13 @@ class API: NSObject {
                             completion(nil, true)
                         }
                     } else {
-                        print("json API: \(result)")
+                        if let value = result.result.value {
+                            let json = JSON(value)
+                            print("json API: \(json)")
+                            completion(json, true)
+                        } else {
+                            completion(nil, true)
+                        }
                         completion(nil, true)
                     }
                 }
@@ -51,3 +63,5 @@ extension Request {
         return self
     }
 }
+
+

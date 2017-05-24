@@ -11,9 +11,9 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var userImageView: UIImageView!
+
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

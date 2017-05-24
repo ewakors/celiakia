@@ -22,8 +22,12 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    class func getResult(result: String) -> String {
+        return result
+    }
+    
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.registerUser(username: "root", email: "ewakorszaczuk@vp.pl", password1: "rootroot",password2: "rootroot")
+        let request = Router.registerUser(username: "root1", email: "root@wp.pl", password1: "rootroot1",password2: "rootroot")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
@@ -37,13 +41,9 @@ class RegisterViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                print("register error \(json?["email"].stringValue)")
-                let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                API.Warning(delegate: self, message: "\(json?["non_field_errors"])")
+                print("register error \(json?["detail"].stringValue)")
             }
         }
 

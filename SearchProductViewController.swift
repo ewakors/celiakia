@@ -29,24 +29,31 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         scanner = MTBBarcodeScanner(previewView: scanncerView)
         
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
         picker.delegate = self;
         picker.dataSource = self;
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SearchProductViewController.dismissKeyboard)))
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailsProductSegue" {
+        if segue.identifier == "showProductDetails2Segue" {
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            detailViewController.productNameString = searchBar.text
+            /*detailViewController.productNameString = searchBar.text
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let productName = products[indexPath.row].getName()
+            let productGluten = products[indexPath.row].getGluten()
+            let productBarcode = products[indexPath.row].getBarcode()
+            let productImageURL = products[indexPath.row].getImage()
+            
+            detailViewController.productNameString = productName
+            detailViewController.productBarcodeString = productBarcode
+            detailViewController.productGlutenString = productGluten
+            detailViewController.productImageURL = productImageURL
+            detailViewController.title = productName.uppercased()*/
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        enableKeyboardHideOnTop()
-    }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         print("searchText ::: \(searchBar)")
@@ -59,8 +66,18 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 //        print(self.searchBar.text)
+        searchBar.showsCancelButton = true
     }
     
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        // Stop doing the search stuff
+        // and clear the text in the search bar
+        searchBar.text = nil
+        // Hide the cancel button
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+        // You could also change the position, frame etc of the searchBar
+    }
     func displayProductInfo(request: URLRequestConvertible)
     {
         
@@ -89,17 +106,9 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     }
                     else {
 
-//                        self.performSegue(withIdentifier: "showDetailsProductSegue", sender: nil)
+                        //self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
                         
-//                        let alert = UIAlertController(title: "Product", message: "\n\n\n\n\n\n", preferredStyle: .alert);
-//                        self.picker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-//                        alert.view.addSubview(self.picker);
-//                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                        alert.addAction(defaultAction)
-//                        
-//                        self.present(alert, animated: true, completion: {
-//                            self.picker.frame.size.width = alert.view.frame.size.width
-//                        })
+
                     }
                 }
                 else {
@@ -119,49 +128,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             let request = Router.findProduct(key: productName)
             displayProductInfo(request: request)
         }
-    }
-
-    func dismissKeyboard() {
-        searchBar.resignFirstResponder()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchBar.resignFirstResponder()
-        return true
-    }
-
-    private func enableKeyboardHideOnTop() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(SearchProductViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(SearchProductViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchProductViewController.hideKeyboard))
-        
-        self.view.addGestureRecognizer(tap)
-    }
-        
-    func keyboardWillShow (notification: NSNotification) {
-        let info = notification.userInfo!
-        //let keyboardFrame: CGRect = (info [UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let duration = notification.userInfo! [UIKeyboardAnimationDurationUserInfoKey] as! Double
-        
-        UIView.animate(withDuration: duration) {
-
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    func keyboardWillHide(notification: NSNotification) {
-        let duration = notification.userInfo! [UIKeyboardAnimationDurationUserInfoKey] as! Double
-        
-        UIView.animate(withDuration: duration) {
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    func hideKeyboard() {
-        self.view.endEditing(true)
     }
 }
 
