@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class Warning: MyJSONProtocol {
     typealias T = Warning
-
+    
     private var error: String
     
     init(json: JSON) {
@@ -25,7 +25,32 @@ class Warning: MyJSONProtocol {
     }
     
     func fromJSON(json: JSON)  {
-        self.error = json["non_field_errors"].stringValue
-        print(json["non_field_errors"])
+        
+        print(json)
+        
+        let warning = json["non_field_errors"]
+        let password = json["password"]
+        let username = json["username"]
+        let email = json["email"]
+        
+        var result = "\n"
+        
+        for e in warning {
+            result += "Login or password failed. \(e.1.stringValue)"
+        }
+        
+        for e in password {
+            result += "Login or password failed. \(e.1.stringValue)"
+        }
+        
+        for e in username {
+            result += "\(e.1.stringValue)\n"
+        }
+        
+        for e in email {
+            result += "\(e.1.stringValue)\n"
+        }
+        self.error = result
     }
 }
+
