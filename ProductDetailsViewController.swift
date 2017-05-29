@@ -24,10 +24,10 @@ class ProductDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        let url = NSURL(string: productImageURL)
-        let data = NSData(contentsOf: url as! URL)
+        
         if productImageURL != "" {
+            let url = NSURL(string: productImageURL)
+            let data = NSData(contentsOf: url as! URL)
             productImageView.image = UIImage(data: data as! Data)
         }
         
@@ -39,7 +39,6 @@ class ProductDetailsViewController: UIViewController {
                 productGlutenView.image = UIImage(named: "gluten.png")
             }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,9 +62,7 @@ class ProductDetailsViewController: UIViewController {
             if let gluten = productGlutenString {
                
                 detailViewController.productGlutenString = gluten
-            }
-           
-           
+            }       
         }
     }
 }

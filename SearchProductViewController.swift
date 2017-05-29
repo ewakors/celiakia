@@ -37,20 +37,20 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProductDetails2Segue" {
+            
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            /*detailViewController.productNameString = searchBar.text
+            detailViewController.productImageURL = products.first?.getImage()
+            detailViewController.productNameString = products.first?.getName()
+            detailViewController.productBarcodeString = products.first?.getBarcode()
+            detailViewController.productGlutenString = products.first?.getGluten()
+            detailViewController.title = products.first?.getName().uppercased()
+        }
+        
+        if segue.identifier == "addProductSegue" {
             
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            let productName = products[indexPath.row].getName()
-            let productGluten = products[indexPath.row].getGluten()
-            let productBarcode = products[indexPath.row].getBarcode()
-            let productImageURL = products[indexPath.row].getImage()
+            let addProductVC = ((segue.destination) as! AddProductViewController)
             
-            detailViewController.productNameString = productName
-            detailViewController.productBarcodeString = productBarcode
-            detailViewController.productGlutenString = productGluten
-            detailViewController.productImageURL = productImageURL
-            detailViewController.title = productName.uppercased()*/
+            addProductVC.barcodeString = searchBar.text! as String
         }
     }
 
@@ -65,7 +65,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        print(self.searchBar.text)
         searchBar.showsCancelButton = true
     }
     
@@ -76,15 +75,13 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         // Hide the cancel button
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
-        // You could also change the position, frame etc of the searchBar
     }
+    
     func displayProductInfo(request: URLRequestConvertible)
     {
-        
         API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
-
+            
             if error == false {
-                
                 if let resultJSON = json {
                     self.products = Product.arrayFromJSON(json: resultJSON)
                     print(resultJSON.arrayValue)
@@ -106,8 +103,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     }
                     else {
 
-                        //self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
-                        
+                        self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
 
                     }
                 }

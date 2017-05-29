@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UIKit
 import Alamofire
 import SwiftyJSON
 import IQKeyboardManager
@@ -28,7 +27,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.registerUser(username: "user", email: "user@wp.pl", password1: "useruser1",password2: "useruser1")
+        let request = Router.registerUser(username: "user1", email: "user1@wp.pl", password1: "useruser1",password2: "useruser1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
@@ -40,17 +39,21 @@ class RegisterViewController: UIViewController {
                 //alertController.addAction(defaultAction)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                    self.performSegue(withIdentifier: "registerSuccessSegue", sender: nil)
+//                    self.performSegue(withIdentifier: "registerSuccessSegue", sender: nil)
                 })
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
                 
-            } else {                
-                //API.Warning(delegate: self, message: warning.getError())
+            } else {
+                if let json = json {
+                    let warning = Warning(json: json).getError()
+                    API.Warning(delegate: self, message: warning)
+                }
             }
         }
     }
 }
+
 
 
 

@@ -23,6 +23,7 @@ class AddProductViewController: UIViewController {
     var unCheckbox = UIImage(named: "uncheck")
     var isBoxClicked: Bool!
     var glutenFree: Bool!
+    var barcodeString: String!
 
     var resultCategories = [Category]()
     
@@ -34,6 +35,7 @@ class AddProductViewController: UIViewController {
         glutenFree = false
         self.categoryPickerView.delegate = self
         self.categoryPickerView.dataSource = self
+        productCodeTxt.text = barcodeString
     
         showCategory()
     }
