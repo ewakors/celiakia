@@ -12,20 +12,20 @@ import SwiftyJSON
 import IQKeyboardManager
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var usernameTxt: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        
-//        if Router.token != "" {
-//            print("token \(Router.token)")
-//            self.performSegue(withIdentifier: "showApp", sender: nil)
-//        }
-//        else {
-//            print("you must login")
-//        }
+        //
+        //        if Router.token != "" {
+        //            print("token \(Router.token)")
+        //            self.performSegue(withIdentifier: "showApp", sender: nil)
+        //        }
+        //        else {
+        //            print("you must login")
+        //        }
     }
     
     override func viewDidLoad() {
@@ -37,9 +37,8 @@ class LoginViewController: UIViewController {
         let request = Router.loginUser(username: "admin", password: "adminadmin1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
-           // let error1: Warning = Warning(json: json!)
-            if error == false {
-                if let json = json {
+            if let json = json {
+                if error == false {
                     
                     let token = json["key"].stringValue
                     
@@ -50,15 +49,11 @@ class LoginViewController: UIViewController {
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token
                     self.performSegue(withIdentifier: "showApp", sender: nil)
+                    
+                } else {                    
+                    let warning = Warning(json: json).getError()
+                    API.Warning(delegate: self, message: warning)
                 }
-                
-            } else {
-                /*var temp1 : String! // This is not optional.
-                temp1 = error1.getError()
-                print(temp1)
-                */    
-                API.Warning(delegate: self, message: "\(json?["non_field_errors"]))")
-                print("login error \(json?["non_field_errors"])")
             }
         }
     }

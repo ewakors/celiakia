@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import UIKit
 import Alamofire
 import SwiftyJSON
 import IQKeyboardManager
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var password2Txt: UITextField!
     @IBOutlet weak var password1Txt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -27,30 +28,29 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.registerUser(username: "root1", email: "root@wp.pl", password1: "rootroot1",password2: "rootroot")
+        let request = Router.registerUser(username: "user", email: "user@wp.pl", password1: "useruser1",password2: "useruser1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
             if error == false {
-//                print(json)
+                //                print(json)
                 let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
+                // let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                //alertController.addAction(defaultAction)
                 
+                let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                    self.performSegue(withIdentifier: "registerSuccessSegue", sender: nil)
+                })
+                alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
                 
-            } else {
-                
-                API.Warning(delegate: self, message: "\(json?["non_field_errors"])")
-                print("register error \(json?["detail"].stringValue)")
+            } else {                
+                //API.Warning(delegate: self, message: warning.getError())
             }
         }
-
     }
-
 }
-
 
 
 
