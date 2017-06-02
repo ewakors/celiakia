@@ -25,6 +25,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         searchController?.searchResultsUpdater = self
         searchController?.dimsBackgroundDuringPresentation = false
         searchController?.searchBar.sizeToFit()
+        searchController.searchBar.enablesReturnKeyAutomatically = true
         self.tableView.tableHeaderView = searchController?.searchBar
         
         self.tableView.reloadData()

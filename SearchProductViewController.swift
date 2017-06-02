@@ -16,8 +16,8 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var scanncerView: UIView!
     @IBOutlet weak var productTextView: UITextView!
-
     
+    @IBOutlet weak var search: UISearchBar!
     var scanner: MTBBarcodeScanner?
     var products = [Product]()
     
@@ -29,12 +29,12 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         scanner = MTBBarcodeScanner(previewView: scanncerView)
         
         searchBar.delegate = self
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
+        searchBar.sizeToFit()
         picker.delegate = self;
         picker.dataSource = self;
-        
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProductDetails2Segue" {
             
@@ -49,16 +49,10 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         if segue.identifier == "addProductSegue" {
             
             let addProductVC = ((segue.destination) as! AddProductViewController)
-            
             addProductVC.barcodeString = searchBar.text! as String
         }
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        print("searchText ::: \(searchBar)")
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
         findProduct()
@@ -68,13 +62,11 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.showsCancelButton = true
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        // Stop doing the search stuff
-        // and clear the text in the search bar
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
-        // Hide the cancel button
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
+        searchBar.resignFirstResponder()
     }
     
     func displayProductInfo(request: URLRequestConvertible)
@@ -102,9 +94,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         print("brak produktow w bazie")
                     }
                     else {
-
                         self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
-
                     }
                 }
                 else {
@@ -154,7 +144,7 @@ extension SearchProductViewController: UIPickerViewDelegate {
     }
 }
 
-extension SearchProductViewController: UITableViewDataSource {
+/*extension SearchProductViewController: UITableViewDataSource {
     
      func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -170,4 +160,4 @@ extension SearchProductViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = products[indexPath.row].getBarcode()
         return cell
     }
-}
+}*/

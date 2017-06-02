@@ -28,14 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
             self.window?.rootViewController = yourVC
             self.window?.makeKeyAndVisible()
-
         }
         
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = true
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-                            
-        
+
         return true
     }
 

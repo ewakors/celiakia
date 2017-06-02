@@ -42,14 +42,16 @@ class API: NSObject {
                             completion(nil, true)
                         }
                     } else {
-                        if let value = result.result.value {
-                            let json = JSON(value)
-                            print("json API: \(json)")
-                            completion(json, true)
+                      if let value = result.result.value {
+//                            let json = JSON(value)
+//                            print("json API: \(json)")
+//                            completion(json, true)
                         } else {
                             completion(nil, true)
                         }
                         completion(nil, true)
+                        
+                        
                     }
                 }
             } else {

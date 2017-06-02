@@ -50,6 +50,15 @@ class RegisterViewController: UIViewController {
 //                    API.Warning(delegate: self, message: warning)
 //                }
 //            }
+            else {
+                print("register error \(json?["email"].stringValue)")
+                let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
 }
