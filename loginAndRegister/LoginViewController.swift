@@ -18,14 +18,6 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //
-        //        if Router.token != "" {
-        //            print("token \(Router.token)")
-        //            self.performSegue(withIdentifier: "showApp", sender: nil)
-        //        }
-        //        else {
-        //            print("you must login")
-        //        }
     }
     
     override func viewDidLoad() {
@@ -48,7 +40,13 @@ class LoginViewController: UIViewController {
                     
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token
-                    self.performSegue(withIdentifier: "showApp", sender: nil)
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                    appDelegate.window?.rootViewController = yourVC
+                    appDelegate.window?.makeKeyAndVisible()
                     
                 } else {                    
                     let warning = Warning(json: json).getError()

@@ -32,6 +32,7 @@ class Warning: MyJSONProtocol {
         let password = json["password"]
         let username = json["username"]
         let email = json["email"]
+        let detail = json["detail"]
         
         var result = "\n"
         
@@ -48,6 +49,10 @@ class Warning: MyJSONProtocol {
         }
         
         for e in email {
+            result += "\(e.1.stringValue)\n"
+        }
+        
+        for e in detail {
             result += "\(e.1.stringValue)\n"
         }
         self.error = result

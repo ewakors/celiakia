@@ -20,15 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if let token = UserDefaults.standard.string(forKey: "udTokenKey") {
+        if let token = UserDefaults.standard.string(forKey: AppDelegate.udTokenKey) {
             Router.token = token
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+            self.window?.rootViewController = yourVC
+            self.window?.makeKeyAndVisible()
+
         }
         
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = true
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-        
-//        IQKeyboardManager.shared().shouldHidePreviousNext = false
+                            
         
         return true
     }

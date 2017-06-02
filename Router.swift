@@ -20,7 +20,6 @@ enum Router: URLRequestConvertible {
     case loginUser(username: String, password: String)
     case logout()
     case registerUser(username: String, email: String, password1: String, password2: String)
-    case getRegisterError()
     case userDetails()
     case passwordReset(email: String)
     case passwordChange(old_password: String, new_password1: String, new_password2: String)
@@ -39,8 +38,6 @@ enum Router: URLRequestConvertible {
             return .post
         case .registerUser:
             return .post
-        case .getRegisterError():
-            return .get
         case .userDetails:
             return .get
         case .passwordReset:
@@ -54,8 +51,7 @@ enum Router: URLRequestConvertible {
         case .getCategory:
             return .get
         case .addNewProduct:
-            return .post
-            
+            return .post            
         }
     }
     
@@ -69,8 +65,6 @@ enum Router: URLRequestConvertible {
         case .logout:
             return "auth/logout/"
         case .registerUser:
-            return "registration/"
-        case .getRegisterError:
             return "registration/"
         case .userDetails:
             return "auth/user/"
@@ -113,9 +107,6 @@ enum Router: URLRequestConvertible {
             
         case .registerUser(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username,"email":parameters.email, "password1":(parameters.password1), "password2":parameters.password2])
-            
-        case .getRegisterError():
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
          
         case .userDetails():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)

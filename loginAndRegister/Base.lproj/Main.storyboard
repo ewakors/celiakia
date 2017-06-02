@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2g-EQ-foL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="135.38230884557723"/>
+            <point key="canvasLocation" x="-607" y="88"/>
         </scene>
         <!--Product-->
         <scene sceneID="sLi-HM-DLf">
@@ -349,7 +349,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="for-1T-pn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1746" y="135"/>
+            <point key="canvasLocation" x="-2775" y="87"/>
         </scene>
         <!--Login-->
         <scene sceneID="STV-gV-IG4">
@@ -364,7 +364,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-PT-oZN">
-                                <rect key="frame" x="15" y="320" width="343" height="75"/>
+                                <rect key="frame" x="15" y="369" width="343" height="75"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqn-oU-i51">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -387,7 +387,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Fcq-dX-Lxd">
-                                <rect key="frame" x="16" y="432" width="343" height="74"/>
+                                <rect key="frame" x="16" y="481" width="343" height="74"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a54-Eo-w9J">
                                         <rect key="frame" x="10" y="0.0" width="323" height="30"/>
@@ -428,17 +428,16 @@
                     <connections>
                         <outlet property="passwordTxt" destination="rLB-Fv-CKK" id="hFQ-C4-feS"/>
                         <outlet property="usernameTxt" destination="Sqn-oU-i51" id="7DJ-e1-seG"/>
-                        <segue destination="4tU-8v-v4u" kind="presentation" identifier="showApp" id="362-X3-XRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDG-cM-g7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="135"/>
+            <point key="canvasLocation" x="-1628" y="88"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="S4k-L8-wgS">
             <objects>
-                <tabBarController id="4tU-8v-v4u" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4tU-8v-v4u" customClass="TabBarViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="e1z-XV-diR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -482,7 +481,6 @@
                                         <state key="normal" title="Logout"/>
                                         <connections>
                                             <action selector="logoutButton:" destination="so5-yT-H2x" eventType="touchUpInside" id="sfC-jd-SXz"/>
-                                            <segue destination="EdI-au-r8B" kind="show" identifier="logoutSegue" id="CmJ-pD-NjL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1082,10 +1080,9 @@
         <image name="user" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CmJ-pD-NjL"/>
         <segue reference="pnI-u0-Cfh"/>
-        <segue reference="4G7-45-tDd"/>
         <segue reference="df1-hp-IYa"/>
+        <segue reference="PUX-Zt-Bnm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

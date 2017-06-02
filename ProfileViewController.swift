@@ -27,10 +27,11 @@ class ProfileViewController: UIViewController {
         let request = Router.userDetails()
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
-            let user: User = User(json: json!)
-            if error == false {
-                self.usernameLabel.text = user.getName()
-                self.emailLabel.text = user.getEmail()
+            if let json = json {
+                let user: User = User(json: json)
+               
+                    self.usernameLabel.text = user.getName()
+                    self.emailLabel.text = user.getEmail()
             } else {
                 print("error user details")
             }
@@ -47,13 +48,25 @@ class ProfileViewController: UIViewController {
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 
                 if error == false {
-//                    print("logout toke: \(Router.token)")
-//                    print(json?["detail"].stringValue)
+                    
+                    UserDefaults.standard.removeObject(forKey: AppDelegate.udTokenKey)
+                    
+                    UserDefaults.standard.synchronize()
+                    
+                    Router.token = ""
 
                     let alertController = UIAlertController(title: "Success", message: "Logout success", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert :UIAlertAction!) in
-                     self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+                        
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                        appDelegate.window?.rootViewController = yourVC
+                        appDelegate.window?.makeKeyAndVisible()
+                        
                     })
+                    
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
                    
@@ -68,8 +81,8 @@ class ProfileViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
-            print("yes button tapped")
         })
+        
         alertController.addAction(yesAction)
         
         let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
