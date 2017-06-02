@@ -13,23 +13,19 @@ import SwiftyJSON
 class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     var products = [Product]()
-    var searchController = UISearchController()
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
-        self.searchController = ( {
-            
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-
-            self.tableView.tableHeaderView = controller.searchBar
-            return controller
-        })()
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchResultsUpdater = self
+        searchController?.dimsBackgroundDuringPresentation = false
+        searchController?.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = searchController?.searchBar
         
         self.tableView.reloadData()
     }
