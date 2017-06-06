@@ -26,6 +26,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         searchController?.dimsBackgroundDuringPresentation = false
         searchController?.searchBar.sizeToFit()
         searchController.searchBar.enablesReturnKeyAutomatically = true
+        searchController.searchBar.tintColor = UIColor.white
         self.tableView.tableHeaderView = searchController?.searchBar
         
         self.tableView.reloadData()
