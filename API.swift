@@ -43,9 +43,9 @@ class API: NSObject {
                         }
                     } else {
                       if let value = result.result.value {
-//                            let json = JSON(value)
-//                            print("json API: \(json)")
-//                            completion(json, true)
+                            let json = JSON(value)
+                            print("json API: \(json)")
+                            completion(json, true)
                         } else {
                             completion(nil, true)
                         }
