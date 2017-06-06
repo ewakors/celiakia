@@ -20,6 +20,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        password1Txt.isSecureTextEntry = true
+        password2Txt.isSecureTextEntry = true
     }
     
     class func getResult(result: String) -> String {

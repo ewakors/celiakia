@@ -82,16 +82,9 @@ extension CategoriesViewController: UICollectionViewDataSource {
         let url = NSURL(string: categoryImageURL)
         let data = NSData(contentsOf: url as! URL)
         cell.categoryImageView.image = UIImage(data: data as! Data)
-        
-        //let decodedData = NSData(base64Encoded: categories[indexPath.row].getImage(), options: .allZeros)
-        // cell.categoryImageView.image = categories[indexPath.row].getImage()
-        //print(decodedData?.bytes)
-       // let iconValue = UIImage(data: decodedData! as Data)!
-       // var icoView:UIImageView = UIImageView(image: iconValue as UIImage)
-        //cell.categoryImageView.image = iconValue
+
         return cell
     }
-
 }
 
 extension CategoriesViewController: UICollectionViewDelegate {

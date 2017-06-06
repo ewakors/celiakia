@@ -31,6 +31,8 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.delegate = self
         searchBar.showsCancelButton = false
         searchBar.sizeToFit()
+        searchBar.tintColor = UIColor.white
+        
         picker.delegate = self;
         picker.dataSource = self;
     }
@@ -43,7 +45,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             detailViewController.productNameString = products.first?.getName()
             detailViewController.productBarcodeString = products.first?.getBarcode()
             detailViewController.productGlutenString = products.first?.getGluten()
-            detailViewController.title = products.first?.getName().uppercased()
+            detailViewController.title = products.first?.getName().capitalized
         }
         
         if segue.identifier == "addProductSegue" {

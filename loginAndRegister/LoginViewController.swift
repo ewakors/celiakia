@@ -13,6 +13,8 @@ import IQKeyboardManager
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var usernameTxt: UITextField!
     
@@ -22,6 +24,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTxt.isSecureTextEntry = true
+        registerBtn.layer.cornerRadius = 10
+        loginBtn.layer.cornerRadius = 10
     }
     
     @IBAction func loginButton(_ sender: Any) {

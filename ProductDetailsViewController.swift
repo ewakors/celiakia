@@ -51,7 +51,7 @@ class ProductDetailsViewController: UIViewController {
             let detailViewController = ((segue.destination) as! ProductDetailsTableViewController)
             
             if let name = productNameString {
-                detailViewController.productNameString = name
+                detailViewController.productNameString = name.capitalized
                 print(name)
             }
             
@@ -60,7 +60,6 @@ class ProductDetailsViewController: UIViewController {
             }
             
             if let gluten = productGlutenString {
-               
                 detailViewController.productGlutenString = gluten
             }       
         }

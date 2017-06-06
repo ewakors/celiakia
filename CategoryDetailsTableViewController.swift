@@ -27,8 +27,11 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
+            controller.searchBar.tintColor = UIColor.white
             
             self.tableView.tableHeaderView = controller.searchBar
+            self.tableView.tableFooterView = UIView()
+
             return controller
         })()
         
@@ -49,7 +52,7 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName()
+        (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
@@ -85,9 +88,8 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
             detailViewController.productNameString = productName
             detailViewController.productBarcodeString = productBarcode
             detailViewController.productGlutenString = productGluten
-            detailViewController.productImageURL = productImageURL
-            
-            detailViewController.title = productName
+            detailViewController.productImageURL = productImageURL            
+            detailViewController.title = productName.capitalized
         }        
     }
     

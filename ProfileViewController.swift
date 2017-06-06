@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var changePasswordBtn: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
 
     @IBOutlet weak var usernameLabel: UILabel!
@@ -19,6 +21,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         usernameLabel.text = ""
         emailLabel.text = ""
+        
+        changePasswordBtn.layer.cornerRadius = 10
+        logoutBtn.layer.cornerRadius = 10
+        
         userDetails()
     }
     
@@ -49,8 +55,7 @@ class ProfileViewController: UIViewController {
                 
                 if error == false {
                     
-                    UserDefaults.standard.removeObject(forKey: AppDelegate.udTokenKey)
-                    
+                    UserDefaults.standard.removeObject(forKey: AppDelegate.udTokenKey)                    
                     UserDefaults.standard.synchronize()
                     
                     Router.token = ""
