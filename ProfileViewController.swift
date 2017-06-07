@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var changePasswordBtn: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
-
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
 
@@ -98,9 +97,7 @@ class ProfileViewController: UIViewController {
         
         alertController.addAction(yesAction)
         
-        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
-            print("cancle button tapped")
-        })
+        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in })
         alertController.addAction(cancleAction)
         
         self.present(alertController, animated: true, completion: nil)

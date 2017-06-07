@@ -27,15 +27,13 @@ class CategoriesViewController: UIViewController {
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         
-        /*let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth / 3, height: screenWidth / 3)
-       // categoriesCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0*/
-        //categoriesCollectionView!.collectionViewLayout = layout
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 5, right: 20)
+        layout.itemSize = CGSize(width: screenWidth / 4, height: screenWidth / 4)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 5
+        categoriesCollectionView!.collectionViewLayout = layout
 
-        
         displayCategories()
     }
     
@@ -84,8 +82,8 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 0.5
+        //cell.layer.borderColor = UIColor.black.cgColor
+        //cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
         
@@ -95,25 +93,6 @@ extension CategoriesViewController: UICollectionViewDataSource {
         cell.categoryImageView.image = UIImage(data: data as! Data)
 
         return cell
-    }
-    
-    /*func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if indexPath.row == 0
-        {
-            return CGSize(width: screenWidth, height: screenWidth/3)
-        }
-        return CGSize(width: screenWidth/3, height: screenWidth/3);
-        
-    }*/
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        
-        return 1
     }
 }
 
