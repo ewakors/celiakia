@@ -24,9 +24,19 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         passwordTxt.isSecureTextEntry = true
-        registerBtn.layer.cornerRadius = 10
-        loginBtn.layer.cornerRadius = 10
+        
+        registerBtn.layer.cornerRadius = 5
+        registerBtn.backgroundColor = UIColor.clear
+        registerBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
+        registerBtn.layer.borderWidth = 1.5
+        
+        loginBtn.layer.cornerRadius = 5
+        loginBtn.backgroundColor = UIColor.clear
+        loginBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
+        loginBtn.layer.borderWidth = 1.5
+        
     }
     
     @IBAction func loginButton(_ sender: Any) {

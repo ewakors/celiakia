@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */; };
 		C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */; };
 		C3250B141EA64B220095CD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B131EA64B220095CD8E /* AppDelegate.swift */; };
 		C3250B161EA64B220095CD8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3250B151EA64B220095CD8E /* LoginViewController.swift */; };
@@ -81,7 +80,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = ../EditProfileViewController.swift; sourceTree = "<group>"; };
 		C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C3250B101EA64B220095CD8E /* loginAndRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginAndRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3250B131EA64B220095CD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				C3250B421EA64C610095CD8E /* RegisterViewController.swift */,
 				C3B16BAA1EBC877E004DCE29 /* User.swift */,
 				C3E2442C1EAE16FF0009D5CC /* ProfileViewController.swift */,
-				C31CE67A1EB0C0030061CBBD /* EditProfileViewController.swift */,
 				C31CE67F1EB0CCBE0061CBBD /* ChangePasswordViewController.swift */,
 				C3795B831ED307C000CEE16B /* Warning.swift */,
 			);
@@ -426,7 +423,6 @@
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
 				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */,
 				C3795B841ED307C000CEE16B /* Warning.swift in Sources */,
-				C31CE67B1EB0C0030061CBBD /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

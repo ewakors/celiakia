@@ -19,11 +19,19 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usernameLabel.text = ""
         emailLabel.text = ""
         
-        changePasswordBtn.layer.cornerRadius = 10
-        logoutBtn.layer.cornerRadius = 10
+        logoutBtn.layer.cornerRadius = 5
+        logoutBtn.backgroundColor = UIColor.clear
+        logoutBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
+        logoutBtn.layer.borderWidth = 1.5
+        
+        changePasswordBtn.layer.cornerRadius = 5
+        changePasswordBtn.backgroundColor = UIColor.clear
+        changePasswordBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
+        changePasswordBtn.layer.borderWidth = 1.5
         
         userDetails()
     }
