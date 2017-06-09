@@ -65,6 +65,7 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         let productImageURL = products[indexPath.row].getImage()
         let url = NSURL(string: productImageURL)
         let data = NSData(contentsOf: url as! URL)
+        
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
         }
@@ -107,7 +108,12 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
                     }
                 }
                 else {
-                    print("error category info")
+                    let alertController = UIAlertController(title: "Error", message: "Not found categories", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
@@ -129,5 +135,4 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
             }
         }
     }
-
 }

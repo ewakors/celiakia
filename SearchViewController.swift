@@ -85,7 +85,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        let text = searchController.searchBar.text
+        let text = searchController.searchBar.text        
         let request = Router.findProduct(key: searchController.searchBar.text!.lowercased())
         
         API.sharedInstance.sendRequest(request: request) { (json, erorr) in
@@ -95,8 +95,18 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+                } else {
+                                            print("brak produktow w bazie")
                 }
             }
+//            else {
+//                let alertController = UIAlertController(title: "Error", message: "You must login. Invalid token", preferredStyle: .alert)
+//                
+//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                alertController.addAction(defaultAction)
+//                
+//                self.present(alertController, animated: true, completion: nil)
+//            }
         }
     }
 }

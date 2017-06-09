@@ -45,29 +45,23 @@ class AddProductViewController: UIViewController {
         let r = categoryPickerView.selectedRow(inComponent: 0)
         
         if r != -1 {
-            print(glutenFree)
-            let request = Router.addNewProduct(name: "kielbasa", barcode: "9876", gluten: glutenFree, category: resultCategories[r].getId())
-            
+            let request = Router.addNewProduct(name: "", barcode: "3333", gluten: glutenFree, category: resultCategories[r].getId())
             
             API.sharedInstance.sendRequest(request: request) { (json, error) in
-                
-                if error == false {
-                   //print(json)
-                    let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                } else {
-                    print("error")
-                    let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                if let json = json {
+                    if error == false {
+                        //print(json)
+                        let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                        
+                    } else {
+                        let warning = Warning(json: json).getError()
+                        API.Warning(delegate: self, message: warning)
+                    }
                 }
             }
         }
@@ -104,8 +98,12 @@ class AddProductViewController: UIViewController {
                 }
                 
             } else {
-                print("error show category")
+                let alertController = UIAlertController(title: "Error", message: "Not found category", preferredStyle: .alert)
                 
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

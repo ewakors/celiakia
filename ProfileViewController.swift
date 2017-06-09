@@ -41,12 +41,19 @@ class ProfileViewController: UIViewController {
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             if let json = json {
-                let user: User = User(json: json)
-               
+                if error == false {
+                    let user: User = User(json: json)
                     self.usernameLabel.text = user.getName()
                     self.emailLabel.text = user.getEmail()
-            } else {
-                print("error user details")
+                } else {
+                    print("user details: \(json)")
+                    let alertController = UIAlertController(title: "Error", message: "Invalid token", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -59,7 +66,7 @@ class ProfileViewController: UIViewController {
             let request = Router.logout()
             
             API.sharedInstance.sendRequest(request: request) { (json, error) in
-                
+
                 if error == false {
                     
                     UserDefaults.standard.removeObject(forKey: AppDelegate.udTokenKey)                    
@@ -83,15 +90,13 @@ class ProfileViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                    
                 } else {
-                    print("error")
-//                    print(json?["detail"].stringValue)
-                    let alertController = UIAlertController(title: "Error", message: "error", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Error", message: "Logout error. Invalid token", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-                }
+                }                
             }
         })
         

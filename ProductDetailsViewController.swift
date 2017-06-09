@@ -29,7 +29,13 @@ class ProductDetailsViewController: UIViewController {
             let url = NSURL(string: productImageURL)
             let data = NSData(contentsOf: url as! URL)
             productImageView.image = UIImage(data: data as! Data)
+            print(productImageURL)
         }
+//        else {
+//            let url = NSURL(string: "http://127.0.0.1:8000/media/product_images/settings.png")
+//            let data = NSData(contentsOf: url as! URL)
+//            productImageView.image = UIImage(data: data as! Data)
+//        }
         
         if let gluten = productGlutenString {
             if gluten == "True" {

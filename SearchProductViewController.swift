@@ -32,9 +32,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.showsCancelButton = false
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor.white
-        
-        picker.delegate = self;
-        picker.dataSource = self;
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,7 +98,12 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     }
                 }
                 else {
-                    print("ERROR.brak produktow")
+                    let alertController = UIAlertController(title: "Error", message: "Not found products", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         })
@@ -130,36 +133,5 @@ extension SearchProductViewController: UIPickerViewDataSource {
     }
 }
 
-extension SearchProductViewController: UIPickerViewDelegate {
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(products[row].getName())
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if products[row].getGluten() == "True" {
-            return products[row].getName() + " " + products[row].getBarcode() + " Gluten gfree"
-        }
-        else {
-            return products[row].getName() + " " + products[row].getBarcode() + " Gluten"
-        }
-    }
-}
 
-/*extension SearchProductViewController: UITableViewDataSource {
-    
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = products[indexPath.row].getName()
-        cell.detailTextLabel?.text = products[indexPath.row].getBarcode()
-        return cell
-    }
-}*/
+

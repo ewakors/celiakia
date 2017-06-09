@@ -50,16 +50,12 @@ class API: NSObject {
                             completion(nil, true)
                         }
                         completion(nil, true)
-                        
-                        
                     }
                 }
             } else {
                 print(result)
             }
-        }
-            
-        
+        }                    
     }
 }
 

@@ -33,6 +33,10 @@ class Warning: MyJSONProtocol {
         let username = json["username"]
         let email = json["email"]
         let detail = json["detail"]
+        let name = json["name"]
+        let category = json["category"]
+        let barcode = json["bar_code"]
+        let password2 = json["new_password2"]
         
         var result = "\n"
         
@@ -53,8 +57,25 @@ class Warning: MyJSONProtocol {
         }
         
         for e in detail {
+            result += "details \(e.1.stringValue)\n"
+        }
+        
+        for e in name {
+            result += "Product name failed. \(e.1.stringValue)"
+        }
+        
+        for e in category {
+            result += "Product category failed. \(e.1.stringValue)"
+        }
+        
+        for e in barcode {
+            result += "Product barcode failed. \(e.1.stringValue)\n"
+        }
+        
+        for e in password2 {
             result += "\(e.1.stringValue)\n"
         }
+        
         self.error = result
     }
 }
