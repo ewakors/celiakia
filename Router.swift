@@ -65,6 +65,7 @@ enum Router: URLRequestConvertible {
         case .logout:
             return "auth/logout/"
         case .registerUser:
+            Router.addToken = false
             return "registration/"
         case .userDetails:
             return "auth/user/"

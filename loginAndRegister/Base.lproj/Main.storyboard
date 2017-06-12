@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="muv-Ge-kgZ">
-                                <rect key="frame" x="16" y="220" width="288" height="168"/>
+                                <rect key="frame" x="16" y="282" width="288" height="168"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Paq-F0-KyI">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U6m-QR-4NU" firstAttribute="top" secondItem="muv-Ge-kgZ" secondAttribute="bottom" constant="136" id="P4b-dr-NU5"/>
+                            <constraint firstItem="U6m-QR-4NU" firstAttribute="top" secondItem="muv-Ge-kgZ" secondAttribute="bottom" constant="74" id="P4b-dr-NU5"/>
                             <constraint firstItem="muv-Ge-kgZ" firstAttribute="leading" secondItem="WMs-Z3-DWf" secondAttribute="leadingMargin" id="s1F-IZ-dMF"/>
                             <constraint firstItem="muv-Ge-kgZ" firstAttribute="trailing" secondItem="WMs-Z3-DWf" secondAttribute="trailingMargin" id="saq-Dt-lEH"/>
                         </constraints>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2g-EQ-foL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-607" y="88"/>
+            <point key="canvasLocation" x="-607.5" y="87.676056338028175"/>
         </scene>
         <!--Product-->
         <scene sceneID="sLi-HM-DLf">
@@ -416,7 +416,7 @@
                                         <color key="tintColor" red="0.37206677449999997" green="0.64330440759999996" blue="0.072359468080000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Register"/>
                                         <connections>
-                                            <segue destination="hCa-z4-tdC" kind="show" id="ZnX-ze-FOd"/>
+                                            <segue destination="hCa-z4-tdC" kind="show" identifier="registerSegue" id="ZnX-ze-FOd"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -36,7 +36,9 @@ class Warning: MyJSONProtocol {
         let name = json["name"]
         let category = json["category"]
         let barcode = json["bar_code"]
-        let password2 = json["new_password2"]
+        let new_password2 = json["new_password2"]
+        let password2 = json["password2"]
+        let password1 = json["password1"]
         
         var result = "\n"
         
@@ -49,7 +51,7 @@ class Warning: MyJSONProtocol {
         }
         
         for e in username {
-            result += "\(e.1.stringValue)\n"
+            result += "Username failed. \(e.1.stringValue)\n"
         }
         
         for e in email {
@@ -72,8 +74,16 @@ class Warning: MyJSONProtocol {
             result += "Product barcode failed. \(e.1.stringValue)\n"
         }
         
-        for e in password2 {
+        for e in new_password2 {
             result += "\(e.1.stringValue)\n"
+        }
+        
+        for e in password1 {
+            result += "Password field. \(e.1.stringValue)\n"
+        }
+        
+        for e in password2 {
+            result += "Confirm password field. \(e.1.stringValue)\n"
         }
         
         self.error = result

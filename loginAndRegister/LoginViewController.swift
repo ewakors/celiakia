@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         
-        let request = Router.loginUser(username: "admin", password: "adminadmin1")
+        let request = Router.loginUser(username: "user1", password: "useruser1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             if let json = json {
