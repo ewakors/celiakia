@@ -32,6 +32,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -85,8 +90,14 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        let text = searchController.searchBar.text        
-        let request = Router.findProduct(key: searchController.searchBar.text!.lowercased())
+        
+        let text = searchController.searchBar.text ?? ""
+        
+        if text == "" {
+            return
+        }
+        
+        let request = Router.findProduct(key: text.lowercased())
         
         API.sharedInstance.sendRequest(request: request) { (json, erorr) in
             if erorr == false {

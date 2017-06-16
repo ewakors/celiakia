@@ -69,7 +69,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.resignFirstResponder()
     }
     
-    func displayProductInfo(request: URLRequestConvertible)
+    /*func displayProductInfo(request: URLRequestConvertible)
     {
         API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
             
@@ -107,7 +107,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                 }
             }
         })
-    }
+    }*/
     
     func findProduct() {
         productTextView.text = searchBar.text
@@ -117,7 +117,42 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
    
         if productName != "" {
             let request = Router.findProduct(key: productName)
-            displayProductInfo(request: request)
+            API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
+                
+                if error == false {
+                    if let resultJSON = json {
+                        self.products = Product.arrayFromJSON(json: resultJSON)
+                        print(resultJSON.arrayValue)
+                        
+                        if resultJSON.arrayValue.isEmpty {
+                            let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+                            
+                            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                                self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+                            })
+                            alertController.addAction(yesAction)
+                            
+                            let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                            })
+                            alertController.addAction(cancleAction)
+                            
+                            self.present(alertController, animated: true, completion: nil)
+                            print("brak produktow w bazie")
+                        }
+                        else {
+                            self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
+                        }
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "Error", message: "Not found products", preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            })
         }
     }
 }

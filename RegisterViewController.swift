@@ -13,6 +13,7 @@ import IQKeyboardManager
 
 class RegisterViewController: UIViewController {
     
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var password2Txt: UITextField!
     @IBOutlet weak var password1Txt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -22,9 +23,14 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         password1Txt.isSecureTextEntry = true
         password2Txt.isSecureTextEntry = true
+        
+        registerButton.layer.cornerRadius = 5
+        registerButton.backgroundColor = UIColor.clear
+        registerButton.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
+        registerButton.layer.borderWidth = 1.5
     }
     
-    @IBAction func saveButton(_ sender: Any) {
+    @IBAction func registerButton(_ sender: Any) {
         let request = Router.registerUser(username: "user2", email: "", password1: "useruser2",password2: "useruser2")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
@@ -32,7 +38,7 @@ class RegisterViewController: UIViewController {
             if let json = json {
                 if error == false {
                     let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
-
+                    
                     
                     let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                         let token = json["key"].stringValue
@@ -63,6 +69,7 @@ class RegisterViewController: UIViewController {
                 }
             }
         }
+
     }
 }
 
