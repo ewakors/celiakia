@@ -24,7 +24,7 @@ class ChangePasswordViewController: UIViewController {
         saveBtn.layer.borderWidth = 1.5
     }
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.passwordChange(old_password: "", new_password1: "adminadmin2", new_password2: "adminadmin2")
+        let request = Router.passwordChange(old_password: "", new_password1: "adminadmin1", new_password2: "adminadmin1")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             if let json = json {

@@ -59,7 +59,7 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
             (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "glutenFree.png")
         }
         else {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "gluten.png")
+            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "http://127.0.0.1:8000/static/images/gluten.jpg")
         }
         
         let productImageURL = products[indexPath.row].getImage()
@@ -68,6 +68,8 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
+        } else {
+            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(named: "http://127.0.0.1:8000/static/images/znakZap.jpg")
         }
         
         cell.selectionStyle = .none

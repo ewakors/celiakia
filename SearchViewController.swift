@@ -10,8 +10,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SearchViewController: UITableViewController, UISearchResultsUpdating {
+class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
+
+    @IBOutlet weak var searchBar: UISearchBar!
     var products = [Product]()
     var searchController: UISearchController!
     
@@ -24,11 +26,18 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: nil)
         searchController?.searchResultsUpdater = self
         searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.searchBar.sizeToFit()
-        searchController.searchBar.enablesReturnKeyAutomatically = true
-        searchController.searchBar.tintColor = UIColor.white
+       // searchController?.searchBar.sizeToFit()
+        //searchController.searchBar.enablesReturnKeyAutomatically = true
+       // searchController.searchBar.tintColor = UIColor.white
         
-        self.tableView.tableHeaderView = searchController?.searchBar
+        //self.tableView.tableHeaderView = searchController?.searchBar
+        
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.sizeToFit()
+        searchBar.enablesReturnKeyAutomatically = true
+        searchBar.tintColor = UIColor.white
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
     }
@@ -48,7 +57,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
@@ -89,6 +98,68 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchText \(searchBar.text)")
+        findProduct()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+        searchBar.resignFirstResponder()
+    }
+    
+    func findProduct() {
+        let productName : String
+        productName = searchBar.text!.lowercased()
+        
+        if productName != "" {
+            let request = Router.findProduct(key: productName)
+            API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
+                
+                if error == false {
+                    if let resultJSON = json {
+                        self.products = Product.arrayFromJSON(json: resultJSON)
+                        print(resultJSON.arrayValue)
+                        
+                        if resultJSON.arrayValue.isEmpty {
+                            let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+                            
+                            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                                self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+                            })
+                            alertController.addAction(yesAction)
+                            
+                            let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                            })
+                            alertController.addAction(cancleAction)
+                            
+                            self.present(alertController, animated: true, completion: nil)
+                            print("brak produktow w bazie")
+                        }
+                        else {
+                            //self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
+                            print(json)
+                        }
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "Error", message: "Not found products", preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            })
+        }
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         
         let text = searchController.searchBar.text ?? ""
@@ -107,7 +178,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
                         self.tableView.reloadData()
                     }
                 } else {
-                                            print("brak produktow w bazie")
+                    print("brak produktow w bazie")
                 }
             }
 //            else {
