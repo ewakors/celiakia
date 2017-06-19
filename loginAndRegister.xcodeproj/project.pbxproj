@@ -23,7 +23,7 @@
 		C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */; };
 		C355D3171EC5C6F200EC850C /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */; };
 		C3795B841ED307C000CEE16B /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3795B831ED307C000CEE16B /* Warning.swift */; };
-		C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */; };
+		C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController2.swift */; };
 		C37C8D3E1EA752E300D8380B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3D1EA752E300D8380B /* API.swift */; };
 		C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */; };
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -31,6 +31,7 @@
 		C382088B1EE14FE60061726E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382088A1EE14FE60061726E /* TabBarViewController.swift */; };
 		C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; };
+		C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */; };
 		C3AE3CC31EF3C2A90021C081 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */; };
 		C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */; };
 		C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */; };
@@ -105,12 +106,13 @@
 		C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductViewController.swift; path = ../AddProductViewController.swift; sourceTree = "<group>"; };
 		C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsViewController.swift; path = ../ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		C3795B831ED307C000CEE16B /* Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
-		C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDetailsTableViewController.swift; path = ../CategoryDetailsTableViewController.swift; sourceTree = "<group>"; };
+		C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDetailsTableViewController2.swift; path = ../CategoryDetailsTableViewController2.swift; sourceTree = "<group>"; };
 		C37C8D3D1EA752E300D8380B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../API.swift; sourceTree = "<group>"; };
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
 		C382088A1EE14FE60061726E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
 		C392D2801EF7B9870083AA3A /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
+		C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../LoginNavigationController.swift; sourceTree = "<group>"; };
 		C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProduct2ViewController.swift; sourceTree = "<group>"; };
 		C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJSONProtocol.swift; sourceTree = "<group>"; };
@@ -269,9 +271,10 @@
 			isa = PBXGroup;
 			children = (
 				C3B16BA81EBC848A004DCE29 /* Category.swift */,
-				C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController.swift */,
+				C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController2.swift */,
 				C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */,
 				C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */,
+				C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -287,7 +290,6 @@
 				C3250B0D1EA64B220095CD8E /* Frameworks */,
 				C3250B0E1EA64B220095CD8E /* Resources */,
 				C3250B4B1EA653400095CD8E /* CopyFiles */,
-				C392D27F1EF7ACF20083AA3A /* test */,
 			);
 			buildRules = (
 			);
@@ -410,23 +412,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C392D27F1EF7ACF20083AA3A /* test */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = test;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\nEXTRACTED_ARCHS=()\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\ndone";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		C3250B0C1EA64B220095CD8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -453,7 +438,8 @@
 				C3B16BAD1EBCB3CB004DCE29 /* Product.swift in Sources */,
 				C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */,
 				C37C8D3E1EA752E300D8380B /* API.swift in Sources */,
-				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController.swift in Sources */,
+				C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController2.swift in Sources */,
+				C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */,
 				C3795B841ED307C000CEE16B /* Warning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

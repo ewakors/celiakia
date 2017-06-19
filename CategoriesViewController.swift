@@ -73,6 +73,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
                 if let ip = categoriesCollectionView.indexPath(for: cell) {
                     if let vc = segue.destination as? CategoryDetailsTableViewController {
                         vc.category = categories[ip.row]
+                        vc.title = vc.category?.getName().capitalized
                     }
                 }
             }

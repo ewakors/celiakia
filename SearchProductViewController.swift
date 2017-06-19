@@ -25,6 +25,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scanner = MTBBarcodeScanner(previewView: scanncerView)
         
         searchBar.delegate = self

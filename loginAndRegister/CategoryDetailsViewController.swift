@@ -1,26 +1,26 @@
 //
-//  SearchProduct2ViewController.swift
+//  CategoryDetailsViewController.swift
 //  loginAndRegister
 //
-//  Created by Ewa Korszaczuk on 16.06.2017.
+//  Created by Ewa Korszaczuk on 19.06.2017.
 //  Copyright © 2017 Ewa Korszaczuk. All rights reserved.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import Haneke
 
-class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
-    
+class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate {
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var products = [Product]()
+    var category:Category?
+
+    var searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = true
         searchBar.showsCancelButton = false
@@ -32,37 +32,54 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
         
+        showProductsForCategory()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
+    }   
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showProductDetails2Segue" {
-            
+        
+        if segue.identifier == "detailsProduct" {
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            detailViewController.productImageURL = products.first?.getImage()
-            detailViewController.productNameString = products.first?.getName()
-            detailViewController.productBarcodeString = products.first?.getBarcode()
-            detailViewController.productGlutenString = products.first?.getGluten()
-            detailViewController.title = products.first?.getName().capitalized
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let productName = products[indexPath.row].getName()
+            let productGluten = products[indexPath.row].getGluten()
+            let productBarcode = products[indexPath.row].getBarcode()
+            let productImageURL = products[indexPath.row].getImage()
+            
+            detailViewController.productNameString = productName
+            detailViewController.productBarcodeString = productBarcode
+            detailViewController.productGlutenString = productGluten
+            detailViewController.productImageURL = productImageURL
+            detailViewController.title = productName.capitalized
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
+        let productName : String
+        productName = searchBar.text!.lowercased()
+
+            showProductsForCategory()
         findProduct()
+        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+
+        if searchBar.text == "" {
+            tableView.reloadData()
+            showProductsForCategory()
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        showProductsForCategory()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -109,11 +126,38 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
             })
         }
     }
+    
+    func showProductsForCategory() {
+
+        if let category = self.category {
+            API.sharedInstance.sendRequest(request: Router.categoryProducts(categoryId: category.getId())) { (json, erorr) in
+                
+                if erorr == false {
+                    if let json = json {
+                        self.products = Product.arrayFromJSON(json: json)
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                else {
+                    let alertController = UIAlertController(title: "Error", message: "Not found categories", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
 }
 
-extension SearchProduct2ViewController: UITableViewDelegate {
+extension CategoryDetailsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
@@ -122,12 +166,10 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         if products[indexPath.row].getGluten() == "True" {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-            //image = UIImage(named: "glutenFree.png")
         }
         else {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-            //.image = UIImage(named: "gluten.png")
         }
         
         let productImageURL = products[indexPath.row].getImage()
@@ -147,12 +189,8 @@ extension SearchProduct2ViewController: UITableViewDelegate {
     }
 }
 
-extension SearchProduct2ViewController: UITableViewDataSource {
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
-    
+extension CategoryDetailsTableViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }

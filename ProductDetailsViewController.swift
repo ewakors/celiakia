@@ -58,7 +58,6 @@ class ProductDetailsViewController: UIViewController {
             
             if let name = productNameString {
                 detailViewController.productNameString = name.capitalized
-                print(name)
             }
             
             if let barcode = productBarcodeString {
