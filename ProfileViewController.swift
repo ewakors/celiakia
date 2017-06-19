@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class ProfileViewController: UIViewController {
 
@@ -32,6 +33,10 @@ class ProfileViewController: UIViewController {
         changePasswordBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
         changePasswordBtn.layer.borderWidth = 1.5
         
+       // let url = NSURL(string: "http://127.0.0.1:8000/media/product_images/pomidor.jpg")
+        //profilePhotoImage.contentMode = .ScaleAspectFill
+       // userImageView.hnk_setImageFromURL(url! as URL)
+    
         userDetails()
     }
     

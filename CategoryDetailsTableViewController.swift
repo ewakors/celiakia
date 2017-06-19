@@ -56,20 +56,23 @@ class CategoryDetailsTableViewController: UITableViewController, UISearchResults
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "glutenFree.png")
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         else {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "http://127.0.0.1:8000/static/images/gluten.jpg")
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         
         let productImageURL = products[indexPath.row].getImage()
         let url = NSURL(string: productImageURL)
         let data = NSData(contentsOf: url as! URL)
-        
+
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
         } else {
-            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(named: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         
         cell.selectionStyle = .none

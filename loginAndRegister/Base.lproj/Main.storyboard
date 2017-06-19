@@ -390,7 +390,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toa-UW-tva">
                                 <rect key="frame" x="0.0" y="64" width="320" height="252"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-4J-3Ag">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-4J-3Ag">
                                         <rect key="frame" x="90" y="56" width="140" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="6IS-KV-owX"/>
@@ -475,6 +475,7 @@
                     <navigationItem key="navigationItem" title="Login" id="7me-0z-Iqq"/>
                     <connections>
                         <outlet property="loginBtn" destination="a54-Eo-w9J" id="skm-l9-vW9"/>
+                        <outlet property="logoImageView" destination="J7o-4J-3Ag" id="vak-7M-lx1"/>
                         <outlet property="passwordTxt" destination="rLB-Fv-CKK" id="hFQ-C4-feS"/>
                         <outlet property="registerBtn" destination="bB4-0s-3la" id="nfH-Pg-J1t"/>
                         <outlet property="usernameTxt" destination="Sqn-oU-i51" id="7DJ-e1-seG"/>
@@ -1235,7 +1236,6 @@
     <resources>
         <image name="category" width="30" height="30"/>
         <image name="image" width="90" height="45"/>
-        <image name="logo" width="1024" height="1024"/>
         <image name="profile" width="30" height="30"/>
         <image name="scan" width="30" height="30"/>
         <image name="sea" width="16" height="16"/>

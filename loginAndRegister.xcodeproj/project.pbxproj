@@ -29,6 +29,8 @@
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; };
 		C382088B1EE14FE60061726E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382088A1EE14FE60061726E /* TabBarViewController.swift */; };
+		C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; };
 		C3AE3CC31EF3C2A90021C081 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */; };
 		C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */; };
 		C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */; };
@@ -71,6 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */,
 				C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */,
 				C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */,
 				C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */,
@@ -107,6 +110,7 @@
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
 		C382088A1EE14FE60061726E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
+		C392D2801EF7B9870083AA3A /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../LoginNavigationController.swift; sourceTree = "<group>"; };
 		C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProduct2ViewController.swift; sourceTree = "<group>"; };
 		C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJSONProtocol.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */,
 				C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */,
 				C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */,
 				C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */,
@@ -223,6 +228,7 @@
 		C3250B461EA653360095CD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C392D2801EF7B9870083AA3A /* Haneke.framework */,
 				C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */,
 				C3F354181EB09E0400EAB032 /* JSQMessages.framework */,
 				C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */,
@@ -281,6 +287,7 @@
 				C3250B0D1EA64B220095CD8E /* Frameworks */,
 				C3250B0E1EA64B220095CD8E /* Resources */,
 				C3250B4B1EA653400095CD8E /* CopyFiles */,
+				C392D27F1EF7ACF20083AA3A /* test */,
 			);
 			buildRules = (
 			);
@@ -402,6 +409,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C392D27F1EF7ACF20083AA3A /* test */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = test;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\nEXTRACTED_ARCHS=()\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\ndone";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3250B0C1EA64B220095CD8E /* Sources */ = {

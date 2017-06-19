@@ -15,5 +15,6 @@ class TabBarViewController: UITabBarController {
 
         self.tabBar.tintColor = UIColor.white
         self.tabBar.unselectedItemTintColor = UIColor.white
+        self.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "logo"), selectedImage: UIImage(named: "logo"))
     }
 }

@@ -231,7 +231,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable sessionDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+@property (nonatomic, copy) void (^ _Nullable sessionDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
 /**
   Overrides default behavior for URLSessionDelegate method \code
   urlSessionDidFinishEvents(forBackgroundURLSession:)
@@ -252,7 +252,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable taskWillPerformHTTPRedirectionWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSHTTPURLResponse * _Nonnull, NSURLRequest * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSURLRequest * _Nullable));
+@property (nonatomic, copy) void (^ _Nullable taskWillPerformHTTPRedirectionWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSHTTPURLResponse * _Nonnull, NSURLRequest * _Nonnull, void (^ _Nonnull)(NSURLRequest * _Nullable));
 /**
   Overrides all behavior for URLSessionTaskDelegate method \code
   urlSession(_:task:didReceive:completionHandler:)
@@ -261,7 +261,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable taskDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+@property (nonatomic, copy) void (^ _Nullable taskDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
 /**
   Overrides default behavior for URLSessionTaskDelegate method \code
   urlSession(_:task:needNewBodyStream:)
@@ -276,7 +276,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable taskNeedNewBodyStreamWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSInputStream * _Nullable));
+@property (nonatomic, copy) void (^ _Nullable taskNeedNewBodyStreamWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, void (^ _Nonnull)(NSInputStream * _Nullable));
 /**
   Overrides default behavior for URLSessionTaskDelegate method \code
   urlSession(_:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)
@@ -303,7 +303,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable dataTaskDidReceiveResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSURLResponse * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSURLSessionResponseDisposition));
+@property (nonatomic, copy) void (^ _Nullable dataTaskDidReceiveResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSURLResponse * _Nonnull, void (^ _Nonnull)(NSURLSessionResponseDisposition));
 /**
   Overrides default behavior for URLSessionDataDelegate method \code
   urlSession(_:dataTask:didBecome:)
@@ -330,7 +330,7 @@ SWIFT_CLASS("_TtC9Alamofire15SessionDelegate")
   completionHandler
   \endcode.
 */
-@property (nonatomic, copy) void (^ _Nullable dataTaskWillCacheResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSCachedURLResponse * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(NSCachedURLResponse * _Nullable));
+@property (nonatomic, copy) void (^ _Nullable dataTaskWillCacheResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSCachedURLResponse * _Nonnull, void (^ _Nonnull)(NSCachedURLResponse * _Nullable));
 /**
   Overrides default behavior for URLSessionDownloadDelegate method \code
   urlSession(_:downloadTask:didFinishDownloadingTo:)

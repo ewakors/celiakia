@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Haneke
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     

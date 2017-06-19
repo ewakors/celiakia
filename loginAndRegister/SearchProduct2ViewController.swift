@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Haneke
 
 class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     
@@ -120,10 +121,14 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "glutenFree.png")
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
+            //image = UIImage(named: "glutenFree.png")
         }
         else {
-            (cell.contentView.viewWithTag(100) as! UIImageView).image = UIImage(named: "gluten.png")
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
+            //.image = UIImage(named: "gluten.png")
         }
         
         let productImageURL = products[indexPath.row].getImage()
@@ -132,6 +137,9 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
+        } else {
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         
         cell.selectionStyle = .none
@@ -143,7 +151,7 @@ extension SearchProduct2ViewController: UITableViewDelegate {
 extension SearchProduct2ViewController: UITableViewDataSource {
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

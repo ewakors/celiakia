@@ -31,18 +31,18 @@ class ProductDetailsViewController: UIViewController {
             productImageView.image = UIImage(data: data as! Data)
             print(productImageURL)
         }
-//        else {
-//            let url = NSURL(string: "http://127.0.0.1:8000/media/product_images/settings.png")
-//            let data = NSData(contentsOf: url as! URL)
-//            productImageView.image = UIImage(data: data as! Data)
-//        }
+        else {
+            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            productImageView.hnk_setImageFromURL(url! as URL)
+        }
         
         if let gluten = productGlutenString {
             if gluten == "True" {
-                productGlutenView.image = UIImage(named: "glutenFree.png")
-                
+                let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+                productGlutenView.hnk_setImageFromURL(url! as URL)
             } else {
-                productGlutenView.image = UIImage(named: "gluten.png")
+                let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+                productGlutenView.hnk_setImageFromURL(url! as URL)
             }
         }
     }
