@@ -101,7 +101,7 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
     
     func showProductsForCategory() {
         if let category = self.category {
-            API.sharedInstance.sendRequest(request: Router.categoryProducts(categoryId: category.getId())) { (json, erorr) in
+            API.sharedInstance.sendRequest(request: Router.categoryProducts(category: category.getId())) { (json, erorr) in
                 
                 if erorr == false {
                     if let json = json {

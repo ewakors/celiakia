@@ -20,9 +20,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     var scanner: MTBBarcodeScanner?
     var products = [Product]()
     
-    let picker: UIPickerView = UIPickerView(frame:
-        CGRect(x: 0, y: 50, width: 260, height: 100));
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -14,10 +14,10 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     @IBOutlet weak var searchBar: UISearchBar!
     
     var products = [Product]()
+    var product: Product?
     var category:Category?
+    var searchActive: Bool = false
 
-    var searchController = UISearchController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +31,9 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
-        
+
         showProductsForCategory()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,25 +62,18 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
-        let productName : String
-        productName = searchBar.text!.lowercased()
-
-            showProductsForCategory()
-        findProduct()
-        
+        findProductWithAlert()
+        searchActive = false
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-
-        if searchBar.text == "" {
-            tableView.reloadData()
-            showProductsForCategory()
-        }
+        searchActive = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         showProductsForCategory()
+        searchActive = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -87,9 +81,39 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        findProduct()
+        self.tableView.reloadData()
     }
     
     func findProduct() {
+        
+        let productName : String
+        productName = searchBar.text!.lowercased()
+        
+        if productName != "" {
+            //let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
+            let request = Router.findProduct(key: productName)
+            API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
+                
+                if error == false {
+                    if let json = json {
+                        self.products = Product.arrayFromJSON(json: json)
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    func findProductWithAlert() {
         
         let productName : String
         productName = searchBar.text!.lowercased()
@@ -99,10 +123,9 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == false {
-                    
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
-                        print(json)
+                        
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -130,18 +153,15 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     func showProductsForCategory() {
 
         if let category = self.category {
-            API.sharedInstance.sendRequest(request: Router.categoryProducts(categoryId: category.getId())) { (json, erorr) in
-                
+            API.sharedInstance.sendRequest(request: Router.categoryProducts(category: category.getId())) { (json, erorr) in
                 if erorr == false {
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
-                        
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
                     }
-                }
-                else {
+                } else {
                     let alertController = UIAlertController(title: "Error", message: "Not found categories", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -157,12 +177,14 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
 extension CategoryDetailsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+       //if products[indexPath.row].getCategory() == category?.getName() {
+            
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
-        
+
         if products[indexPath.row].getGluten() == "True" {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
@@ -182,7 +204,24 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
             (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
-        
+    //}
+    //else {
+
+            //self.tableView.reloadData()
+           /* let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+            
+            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+            })
+            alertController.addAction(yesAction)
+            
+            let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+            })
+            alertController.addAction(cancleAction)
+            
+            self.present(alertController, animated: true, completion: nil)*/
+
+       // }
         cell.selectionStyle = .none
         
         return cell

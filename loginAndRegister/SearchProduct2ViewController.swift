@@ -17,7 +17,8 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var products = [Product]()
-    
+    var searchActive: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,11 +59,13 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
-        findProduct()
+        findProductWithAlert()
+        searchActive = false
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        searchActive = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -70,9 +73,39 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        findProduct()
+        self.tableView.reloadData()
     }
     
     func findProduct() {
+        
+        let productName : String
+        productName = searchBar.text!.lowercased()
+        
+        if productName != "" {
+
+            let request = Router.findProduct(key: productName)
+            API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
+                
+                if error == false {
+                    if let json = json {
+                        self.products = Product.arrayFromJSON(json: json)
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    func findProductWithAlert() {
         
         let productName : String
         productName = searchBar.text!.lowercased()
