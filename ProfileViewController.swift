@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController {
        // let url = NSURL(string: "http://127.0.0.1:8000/media/product_images/pomidor.jpg")
         //profilePhotoImage.contentMode = .ScaleAspectFill
        // userImageView.hnk_setImageFromURL(url! as URL)
+        let url = NSURL(string: "http://127.0.0.1:8000/static/images/user.png")
+        userImageView.hnk_setImageFromURL(url! as URL)
     
         userDetails()
     }
@@ -48,6 +50,7 @@ class ProfileViewController: UIViewController {
             if let json = json {
                 if error == false {
                     let user: User = User(json: json)
+                    
                     self.usernameLabel.text = user.getName()
                     self.emailLabel.text = user.getEmail()
                 } else {

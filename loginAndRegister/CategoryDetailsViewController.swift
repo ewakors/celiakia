@@ -72,7 +72,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        showProductsForCategory()
+        findProduct()
         searchActive = false
     }
     
@@ -85,7 +85,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
         findProduct()
         self.tableView.reloadData()
     }
@@ -96,14 +95,13 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
-            //let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
+           // let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
             let request = Router.findProduct(key: productName)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == false {
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
-                        
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -125,7 +123,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                 if error == false {
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
-                        
+                        print(Product.getCategory((self.product)!))
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -178,10 +176,10 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-       //if products[indexPath.row].getCategory() == category?.getName() {
-            
+        print(products[indexPath.row].getCategory())
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
 
@@ -204,11 +202,9 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
             (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
-    //}
-    //else {
-
-            //self.tableView.reloadData()
-           /* let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+        
+    /*else {
+            let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
             
             let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                 self.performSegue(withIdentifier: "addProductSegue", sender: nil)
@@ -219,9 +215,9 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
             })
             alertController.addAction(cancleAction)
             
-            self.present(alertController, animated: true, completion: nil)*/
+            self.present(alertController, animated: true, completion: nil)
 
-       // }
+        }*/
         cell.selectionStyle = .none
         
         return cell

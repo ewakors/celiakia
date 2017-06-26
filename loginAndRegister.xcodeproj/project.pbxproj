@@ -21,6 +21,8 @@
 		C3250B4C1EA653490095CD8E /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B471EA653360095CD8E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3250B4D1EA653490095CD8E /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3250B481EA653360095CD8E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */; };
+		C33988CD1F0116CD00D357C9 /* PasswordTextField.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C33988CC1F0116CD00D357C9 /* PasswordTextField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C33988CE1F0116F800D357C9 /* PasswordTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33988CC1F0116CD00D357C9 /* PasswordTextField.framework */; };
 		C355D3171EC5C6F200EC850C /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */; };
 		C3795B841ED307C000CEE16B /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3795B831ED307C000CEE16B /* Warning.swift */; };
 		C37B42211EC9A4B40001540B /* CategoryDetailsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController2.swift */; };
@@ -74,6 +76,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C33988CD1F0116CD00D357C9 /* PasswordTextField.framework in CopyFiles */,
 				C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */,
 				C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */,
 				C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */,
@@ -104,6 +107,7 @@
 		C3250B471EA653360095CD8E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C3250B481EA653360095CD8E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C3397D661EA9E4C8009003F1 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddProductViewController.swift; path = ../AddProductViewController.swift; sourceTree = "<group>"; };
+		C33988CC1F0116CD00D357C9 /* PasswordTextField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PasswordTextField.framework; path = Carthage/Build/iOS/PasswordTextField.framework; sourceTree = "<group>"; };
 		C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsViewController.swift; path = ../ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		C3795B831ED307C000CEE16B /* Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
 		C37B42201EC9A4B40001540B /* CategoryDetailsTableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDetailsTableViewController2.swift; path = ../CategoryDetailsTableViewController2.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33988CE1F0116F800D357C9 /* PasswordTextField.framework in Frameworks */,
 				C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */,
 				C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */,
 				C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */,
@@ -230,6 +235,7 @@
 		C3250B461EA653360095CD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C33988CC1F0116CD00D357C9 /* PasswordTextField.framework */,
 				C392D2801EF7B9870083AA3A /* Haneke.framework */,
 				C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */,
 				C3F354181EB09E0400EAB032 /* JSQMessages.framework */,

@@ -1,5 +1,6 @@
 github "Alamofire/Alamofire" "4.5.0"
 github "Haneke/HanekeSwift" "694d6df380a2a7450754f2910996fdd650964df2"
+github "PiXeL16/PasswordTextField" "17f0d4811351968606c92c1484760a80533b3ecf"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
 github "hackiftekhar/IQKeyboardManager" "v4.0.10"
 github "hemantasapkota/JSQMessagesViewController" "1.2.0"
