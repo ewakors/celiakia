@@ -61,8 +61,7 @@ class RegisterViewController: UIViewController {
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
-                else {
-                    
+                else {                    
                     let warning = Warning(json: json).getError()
                     API.Warning(delegate: self, message: warning)
                     

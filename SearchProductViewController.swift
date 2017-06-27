@@ -29,7 +29,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.showsCancelButton = false
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor.white
-
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,7 +51,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
-        findProduct()
+        findProduct()        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -76,7 +75,14 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             let request = Router.findProduct(key: productName)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
-                if error == false {
+                if error == true {
+                    let alertController = UIAlertController(title: "Error", message: "Invalid token. You must login.", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
                     if let resultJSON = json {
                         self.products = Product.arrayFromJSON(json: resultJSON)
                         print(resultJSON.arrayValue)
@@ -99,14 +105,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         else {
                             self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
                         }
-                    }
-                    else {
-                        let alertController = UIAlertController(title: "Error", message: "Not found products", preferredStyle: .alert)
-                        
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(defaultAction)
-                        
-                        self.present(alertController, animated: true, completion: nil)
                     }
                 }
             })

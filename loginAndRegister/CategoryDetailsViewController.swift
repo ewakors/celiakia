@@ -17,6 +17,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     var product: Product?
     var category:Category?
     var searchActive: Bool = false
+    var productFilter = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,13 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         searchBar.showsCancelButton = false
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor.white
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
 
         showProductsForCategory()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +85,18 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+       /* self.productFilter = products.filter({$0.getCategory() == category?.getName()})
+        
+        if productFilter.count == 0 {
+            searchActive = false
+            //findProduct()
+        } else {
+            searchActive = true
+        }*/
+        
         findProduct()
+        
         self.tableView.reloadData()
     }
     
@@ -123,7 +134,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                 if error == false {
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
-                        print(Product.getCategory((self.product)!))
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -175,11 +185,13 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
 extension CategoryDetailsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-       
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        print(products[indexPath.row].getCategory())
+       // products = products.filter({$0.getCategory() == category?.getName()})
+        
+        products.sort(by: {$0.getName() < $1.getName()})
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
 
@@ -218,6 +230,7 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
             self.present(alertController, animated: true, completion: nil)
 
         }*/
+        
         cell.selectionStyle = .none
         
         return cell

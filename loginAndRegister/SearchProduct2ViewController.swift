@@ -88,7 +88,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
-
+            
             let request = Router.findProduct(key: productName)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
@@ -100,6 +100,13 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                             self.tableView.reloadData()
                         }
                     }
+                } else {
+                    let alertController = UIAlertController(title: "Error", message: "Invalid token", preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
             })
         }
@@ -147,6 +154,8 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
 extension SearchProduct2ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        products.sort(by: {$0.getName() < $1.getName()})
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized

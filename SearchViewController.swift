@@ -145,7 +145,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
                         }
                         else {
                             //self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
-                            print(json)
+                           // print(json)
                         }
                     }
                     else {

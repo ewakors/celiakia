@@ -51,8 +51,7 @@ class CategoriesViewController: UIViewController {
                         self.categoriesCollectionView?.reloadData()
                     }
                 }
-            }
-            else {
+            } else {
                 let alertController = UIAlertController(title: "Error", message: "Error category info", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
