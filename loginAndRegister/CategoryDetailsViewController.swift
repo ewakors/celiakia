@@ -17,7 +17,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     var product: Product?
     var category:Category?
     var searchActive: Bool = false
-    var productFilter = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,18 +84,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-       /* self.productFilter = products.filter({$0.getCategory() == category?.getName()})
-        
-        if productFilter.count == 0 {
-            searchActive = false
-            //findProduct()
-        } else {
-            searchActive = true
-        }*/
-        
         findProduct()
-        
         self.tableView.reloadData()
     }
     
@@ -106,8 +94,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
-           // let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
-            let request = Router.findProduct(key: productName)
+            let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == false {
@@ -119,6 +106,8 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                     }
                 }
             })
+        } else {
+            showProductsForCategory()
         }
     }
     
@@ -128,7 +117,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
-            let request = Router.findProduct(key: productName)
+            let request = Router.findProductInCategory(key: productName, category: (category?.getId())!)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == false {
@@ -155,6 +144,8 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                     }
                 }
             })
+        } else {
+            showProductsForCategory()
         }
     }
     
@@ -186,8 +177,6 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       // products = products.filter({$0.getCategory() == category?.getName()})
-        
         products.sort(by: {$0.getName() < $1.getName()})
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -214,22 +203,6 @@ extension CategoryDetailsTableViewController: UITableViewDelegate {
             let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
             (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
-        
-    /*else {
-            let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
-            
-            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                self.performSegue(withIdentifier: "addProductSegue", sender: nil)
-            })
-            alertController.addAction(yesAction)
-            
-            let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
-            })
-            alertController.addAction(cancleAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-
-        }*/
         
         cell.selectionStyle = .none
         

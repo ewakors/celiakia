@@ -108,6 +108,8 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     }
                 }
             })
+        } else {
+            print("null")
         }
     }
 }

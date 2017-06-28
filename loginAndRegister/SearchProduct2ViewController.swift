@@ -74,10 +74,15 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
         searchActive = false
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        products = []
+
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         findProduct()
         self.tableView.reloadData()
     }
@@ -109,6 +114,11 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                     self.present(alertController, animated: true, completion: nil)
                 }
             })
+        } else {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            products = []
         }
     }
     
