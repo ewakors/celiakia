@@ -72,6 +72,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         productName = searchBar.text!.lowercased()
    
         if productName != "" {
+            
             let request = Router.findProduct(key: productName)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
@@ -86,7 +87,8 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     if let resultJSON = json {
                         self.products = Product.arrayFromJSON(json: resultJSON)
                         print(resultJSON.arrayValue)
-                        
+
+                        print(self.products.count)
                         if resultJSON.arrayValue.isEmpty {
                             let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                             
@@ -103,13 +105,13 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             print("brak produktow w bazie")
                         }
                         else {
-                            self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
+                            if self.products.count == 1 {
+                                self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
+                            }
                         }
                     }
                 }
             })
-        } else {
-            print("null")
         }
     }
 }

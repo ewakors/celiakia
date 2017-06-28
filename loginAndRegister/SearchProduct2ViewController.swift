@@ -79,7 +79,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
             self.tableView.reloadData()
         }
         products = []
-
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -115,9 +114,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 }
             })
         } else {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
             products = []
         }
     }
