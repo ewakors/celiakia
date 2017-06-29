@@ -31,7 +31,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        let request = Router.registerUser(username: "user2", email: "", password1: "useruser2",password2: "useruser2")
+        let request = Router.registerUser(username: "user2", email: "user2@wp.pl", password1: "useruser2",password2: "useruser2")
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             
