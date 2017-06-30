@@ -31,9 +31,9 @@
 		C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */; };
 		C382088B1EE14FE60061726E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382088A1EE14FE60061726E /* TabBarViewController.swift */; };
-		C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C392D2801EF7B9870083AA3A /* Haneke.framework */; };
 		C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */; };
+		C39912A41F067FC000A75696 /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; };
+		C39912A51F067FC700A75696 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3AE3CC31EF3C2A90021C081 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */; };
 		C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */; };
 		C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */; };
@@ -76,8 +76,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C39912A51F067FC700A75696 /* Haneke.framework in CopyFiles */,
 				C33988CD1F0116CD00D357C9 /* PasswordTextField.framework in CopyFiles */,
-				C392D2811EF7B9870083AA3A /* Haneke.framework in CopyFiles */,
 				C3F3541D1EB0A1D200EAB032 /* IQKeyboardManager.framework in CopyFiles */,
 				C3F3541A1EB09E0C00EAB032 /* JSQMessages.framework in CopyFiles */,
 				C37C8D421EA773A700D8380B /* MTBBarcodeScanner.framework in CopyFiles */,
@@ -115,8 +115,8 @@
 		C37C8D3F1EA7621800D8380B /* SearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchProductViewController.swift; path = ../SearchProductViewController.swift; sourceTree = "<group>"; };
 		C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MTBBarcodeScanner.framework; path = Carthage/Build/iOS/MTBBarcodeScanner.framework; sourceTree = "<group>"; };
 		C382088A1EE14FE60061726E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
-		C392D2801EF7B9870083AA3A /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
+		C39912A31F067FC000A75696 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../LoginNavigationController.swift; sourceTree = "<group>"; };
 		C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProduct2ViewController.swift; sourceTree = "<group>"; };
 		C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJSONProtocol.swift; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39912A41F067FC000A75696 /* Haneke.framework in Frameworks */,
 				C33988CE1F0116F800D357C9 /* PasswordTextField.framework in Frameworks */,
-				C392D2821EF7C17D0083AA3A /* Haneke.framework in Frameworks */,
 				C3F3541C1EB0A1CC00EAB032 /* IQKeyboardManager.framework in Frameworks */,
 				C3F354191EB09E0400EAB032 /* JSQMessages.framework in Frameworks */,
 				C37C8D431EA773B500D8380B /* MTBBarcodeScanner.framework in Frameworks */,
@@ -235,8 +235,8 @@
 		C3250B461EA653360095CD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C39912A31F067FC000A75696 /* Haneke.framework */,
 				C33988CC1F0116CD00D357C9 /* PasswordTextField.framework */,
-				C392D2801EF7B9870083AA3A /* Haneke.framework */,
 				C3F3541B1EB0A1CC00EAB032 /* IQKeyboardManager.framework */,
 				C3F354181EB09E0400EAB032 /* JSQMessages.framework */,
 				C37C8D411EA773A700D8380B /* MTBBarcodeScanner.framework */,
