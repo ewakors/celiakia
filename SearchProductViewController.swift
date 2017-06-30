@@ -31,6 +31,39 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.tintColor = UIColor.white
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        MTBBarcodeScanner.requestCameraPermission(success: { success in
+            if success {
+                do {
+                    try self.scanner?.startScanning(resultBlock: { codes in
+                        if let codes = codes {
+                            self.scanner?.stopScanning()
+                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
+                            for code in codes {
+                                let stringValue = code.stringValue!
+                                print("Found code: \(stringValue)")
+                                self.findProduct(productName: stringValue)
+                                self.productTextView.text = stringValue
+                            }
+                        }
+                    })
+                } catch {
+                    NSLog("Unable to start scanning")
+                }
+            } else {
+                UIAlertView(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Ok").show()
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.scanner?.stopScanning()
+        
+        super.viewWillDisappear(animated)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProductDetails2Segue" {
             
@@ -45,13 +78,13 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         if segue.identifier == "addProductSegue" {
             
             let addProductVC = ((segue.destination) as! AddProductViewController)
-            addProductVC.barcodeString = searchBar.text! as String
+            addProductVC.barcodeString = productTextView.text
         }
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(searchBar.text)")
-        findProduct()        
+        //findProduct()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -65,11 +98,11 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         searchBar.resignFirstResponder()
     }
     
-    func findProduct() {
-        productTextView.text = searchBar.text
+    func findProduct(productName: String) {
+       // productTextView.text = searchBar.text
         
-        let productName : String
-        productName = searchBar.text!.lowercased()
+        //let productName : String
+        //productName = searchBar.text!.lowercased()
    
         if productName != "" {
             

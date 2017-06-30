@@ -39,13 +39,44 @@ class AddProductViewController: UIViewController {
     
         showCategory()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        MTBBarcodeScanner.requestCameraPermission(success: { success in
+            if success {
+                do {
+                    try self.scanner?.startScanning(resultBlock: { codes in
+                        if let codes = codes {
+                            self.scanner?.stopScanning()
+                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
+                            for code in codes {
+                                let stringValue = code.stringValue!
+                                print("Found code: \(stringValue)")
+                                self.productCodeTxt.text = stringValue
+                            }
+                        }
+                    })
+                } catch {
+                    NSLog("Unable to start scanning")
+                }
+            } else {
+                UIAlertView(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Ok").show()
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.scanner?.stopScanning()
+        
+        super.viewWillDisappear(animated)
+    }
     @IBAction func addNewProductButton(_ sender: Any) {
 
         let r = categoryPickerView.selectedRow(inComponent: 0)
         
         if r != -1 {
-            let request = Router.addNewProduct(name: "bulka", barcode: "3333", gluten: glutenFree, category: resultCategories[r].getId())
+            let request = Router.addNewProduct(name: productNameTxt.text!, barcode: productCodeTxt.text!, gluten: glutenFree, category: resultCategories[r].getId())
             
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 if let json = json {
