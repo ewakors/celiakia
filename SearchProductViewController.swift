@@ -13,7 +13,6 @@ import MTBBarcodeScanner
 
 class SearchProductViewController: UIViewController, UITextFieldDelegate, UISearchBarDelegate  {
 
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var scanncerView: UIView!
     @IBOutlet weak var productTextView: UITextView!
     
@@ -24,11 +23,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         super.viewDidLoad()
         
         scanner = MTBBarcodeScanner(previewView: scanncerView)
-        
-        searchBar.delegate = self
-        searchBar.showsCancelButton = false
-        searchBar.sizeToFit()
-        searchBar.tintColor = UIColor.white
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -53,7 +47,12 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     NSLog("Unable to start scanning")
                 }
             } else {
-                UIAlertView(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Ok").show()
+                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
             }
         })
     }
