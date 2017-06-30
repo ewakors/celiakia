@@ -45,7 +45,7 @@ class AddProductViewController: UIViewController {
         let r = categoryPickerView.selectedRow(inComponent: 0)
         
         if r != -1 {
-            let request = Router.addNewProduct(name: "", barcode: "3333", gluten: glutenFree, category: resultCategories[r].getId())
+            let request = Router.addNewProduct(name: "bulka", barcode: "3333", gluten: glutenFree, category: resultCategories[r].getId())
             
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 if let json = json {

@@ -18,6 +18,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     
     var products = [Product]()
     var searchActive: Bool = false
+    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +50,13 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         if segue.identifier == "showProductDetails2Segue" {
             
             let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            detailViewController.productImageURL = products.first?.getImage()
-            detailViewController.productNameString = products.first?.getName()
-            detailViewController.productBarcodeString = products.first?.getBarcode()
-            detailViewController.productGlutenString = products.first?.getGluten()
-            detailViewController.title = products.first?.getName().capitalized
+            
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            detailViewController.productImageURL = products[indexPath!].getImage()
+            detailViewController.productNameString = products[indexPath!].getName()
+            detailViewController.productBarcodeString = products[indexPath!].getBarcode()
+            detailViewController.productGlutenString = products[indexPath!].getGluten()
+            detailViewController.title = products[indexPath!].getName().capitalized
         }
     }
     
@@ -170,12 +173,13 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+            let url = NSURL(string: imageUrl + "glutenFree.png")
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
             //image = UIImage(named: "glutenFree.png")
         }
         else {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+            let url = NSURL(string: imageUrl + "gluten.jpg")
+
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
             //.image = UIImage(named: "gluten.png")
         }
@@ -187,7 +191,8 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
         } else {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            let url = NSURL(string: imageUrl + "znakZap.jpg")
+
             (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         

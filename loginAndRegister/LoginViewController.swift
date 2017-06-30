@@ -41,7 +41,8 @@ class LoginViewController: UIViewController {
         loginBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
         loginBtn.layer.borderWidth = 1.5        
         
-        let url = NSURL(string: "http://127.0.0.1:8000/static/images/logo.png")
+        let url = NSURL(string: "https://celiakia.zer0def.me/static/images/logo.png")
+
         logoImageView.hnk_setImageFromURL(url! as URL)
 
     }

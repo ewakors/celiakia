@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ewa Korszaczuk. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 import Alamofire
 import SwiftyJSON
 import Haneke
@@ -193,4 +193,4 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         }
     }
 }
-
+*/

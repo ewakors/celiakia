@@ -12,9 +12,10 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
 
     var products = [Product]()
     var searchController = UISearchController()
-    
     var category:Category?
     
+    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,11 +57,13 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == "True" {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+            let url = NSURL(string: imageUrl + "glutenFree.png")
+
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         else {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+            let url = NSURL(string: imageUrl + "gluten.jpg")
+
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         
@@ -71,7 +74,8 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
         if productImageURL != "" {
             (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
         } else {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            let url = NSURL(string: imageUrl + "znakZap.jpg")
+
             (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         }
         

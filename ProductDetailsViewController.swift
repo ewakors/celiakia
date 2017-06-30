@@ -17,6 +17,7 @@ class ProductDetailsViewController: UIViewController {
     var productBarcodeString: String!
     var productGlutenString: String!
     var productImageURL: String!
+    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +33,18 @@ class ProductDetailsViewController: UIViewController {
             print(productImageURL)
         }
         else {
-            let url = NSURL(string: "http://127.0.0.1:8000/static/images/znakZap.jpg")
+            let url = NSURL(string: imageUrl + "znakZap.jpg")
             productImageView.hnk_setImageFromURL(url! as URL)
         }
         
         if let gluten = productGlutenString {
             if gluten == "True" {
-                let url = NSURL(string: "http://127.0.0.1:8000/static/images/glutenFree.png")
+                let url = NSURL(string: imageUrl + "glutenFree.png")
+
                 productGlutenView.hnk_setImageFromURL(url! as URL)
             } else {
-                let url = NSURL(string: "http://127.0.0.1:8000/static/images/gluten.jpg")
+                let url = NSURL(string: imageUrl + "gluten.jpg")
+
                 productGlutenView.hnk_setImageFromURL(url! as URL)
             }
         }
