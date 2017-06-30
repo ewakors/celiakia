@@ -98,6 +98,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 
                 if error == false {
                     if let json = json {
+                        print(json)
                         self.products = Product.arrayFromJSON(json: json)
                         
                         DispatchQueue.main.async {

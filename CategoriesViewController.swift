@@ -92,7 +92,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
         
-        let categoryImageURL = categories[indexPath.row].getImage()
+        let categoryImageURL = "https://" + categories[indexPath.row].getImage()
         let url = NSURL(string: categoryImageURL)
         let data = NSData(contentsOf: url as! URL)
         cell.categoryImageView.image = UIImage(data: data as! Data)
