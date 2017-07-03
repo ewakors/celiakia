@@ -34,7 +34,6 @@ class ProfileViewController: UIViewController {
         changePasswordBtn.layer.borderWidth = 1.5
 
         let url = NSURL(string: "https://celiakia.zer0def.me/static/images/user.png")
-
         userImageView.hnk_setImageFromURL(url! as URL)
     
         userDetails()

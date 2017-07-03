@@ -17,6 +17,8 @@ class CategoriesViewController: UIViewController {
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
+    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,7 @@ class CategoriesViewController: UIViewController {
             if erorr == false {
                 if let json = json {
                     self.categories = Category.arrayFromJSON(json: json)
-                    print(json.arrayValue)
+                    print(json)
                     
                     DispatchQueue.main.async {
                         self.categoriesCollectionView?.reloadData()
@@ -92,10 +94,17 @@ extension CategoriesViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
         
-        let categoryImageURL = "https://" + categories[indexPath.row].getImage()
+        //let categoryImageURL = "https://" + categories[indexPath.row].getImage()
+        let categoryImageURL = categories[indexPath.row].getImage()
         let url = NSURL(string: categoryImageURL)
-        let data = NSData(contentsOf: url as! URL)
-        cell.categoryImageView.image = UIImage(data: data as! Data)
+        
+        if categoryImageURL != "" {
+            print(categoryImageURL)
+            cell.categoryImageView.hnk_setImageFromURL(url! as URL)
+        } else {
+            let url = NSURL(string: imageUrl + "znakZap.jpg")
+            cell.categoryImageView.hnk_setImageFromURL(url! as URL)
+        }
 
         return cell
     }

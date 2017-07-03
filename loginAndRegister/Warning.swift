@@ -36,6 +36,7 @@ class Warning: MyJSONProtocol {
         let name = json["name"]
         let category = json["category"]
         let barcode = json["bar_code"]
+        let new_password1 = json["new_password1"]
         let new_password2 = json["new_password2"]
         let password2 = json["password2"]
         let password1 = json["password1"]
@@ -74,8 +75,12 @@ class Warning: MyJSONProtocol {
             result += "Product barcode failed. \(e.1.stringValue)\n"
         }
         
+        for e in new_password1 {
+            result += "New password error. \(e.1.stringValue)\n"
+        }
+        
         for e in new_password2 {
-            result += "\(e.1.stringValue)\n"
+            result += "Confirm password error. \(e.1.stringValue)\n"
         }
         
         for e in password1 {

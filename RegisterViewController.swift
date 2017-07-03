@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var password2Txt: UITextField!
     @IBOutlet weak var password1Txt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
-    @IBOutlet weak var usernameTxt: UITextField!
+    @IBOutlet var usernameTxt: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        let request = Router.registerUser(username: "user2", email: "user2@wp.pl", password1: "useruser2",password2: "useruser2")
+        let request = Router.registerUser(username: usernameTxt.text!, email: emailTxt.text!, password1: password1Txt.text! ,password2: password2Txt.text!)
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             

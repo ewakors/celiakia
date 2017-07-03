@@ -25,7 +25,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let request = Router.passwordChange(old_password: "adminadmin2", new_password1: "adminadmin1", new_password2: "adminadmin1")
+        let request = Router.passwordChange(old_password: oldPasswordTXT.text!, new_password1: newPasswordTXT.text!, new_password2: confirmPasswordTXT.text!)
         
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             if let json = json {

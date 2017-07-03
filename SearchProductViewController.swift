@@ -136,7 +136,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                                 print("Found code: \(stringValue)")
                                 self.findProduct(productName: stringValue)
                                 self.productTextView.text = stringValue
-                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
                         }
                     })

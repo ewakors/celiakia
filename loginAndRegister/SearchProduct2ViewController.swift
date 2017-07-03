@@ -175,21 +175,18 @@ extension SearchProduct2ViewController: UITableViewDelegate {
         if products[indexPath.row].getGluten() == "True" {
             let url = NSURL(string: imageUrl + "glutenFree.png")
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-            //image = UIImage(named: "glutenFree.png")
         }
         else {
             let url = NSURL(string: imageUrl + "gluten.jpg")
 
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-            //.image = UIImage(named: "gluten.png")
         }
         
         let productImageURL = products[indexPath.row].getImage()
         let url = NSURL(string: productImageURL)
-        let data = NSData(contentsOf: url as! URL)
         
         if productImageURL != "" {
-            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
+            (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
         } else {
             let url = NSURL(string: imageUrl + "znakZap.jpg")
 

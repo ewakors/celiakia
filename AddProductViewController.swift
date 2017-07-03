@@ -160,7 +160,7 @@ class AddProductViewController: UIViewController {
                                 let stringValue = code.stringValue!
                                 print("Found code: \(stringValue)")
                                 self.productCodeTxt.text = stringValue
-                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
                         }
                     })
