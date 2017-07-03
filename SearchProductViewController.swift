@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import MTBBarcodeScanner
+import AudioToolbox
 
 class SearchProductViewController: UIViewController, UITextFieldDelegate, UISearchBarDelegate  {
 
@@ -27,40 +28,12 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        MTBBarcodeScanner.requestCameraPermission(success: { success in
-            if success {
-                do {
-                    try self.scanner?.startScanning(resultBlock: { codes in
-                        if let codes = codes {
-                            self.scanner?.stopScanning()
-                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
-                            for code in codes {
-                                let stringValue = code.stringValue!
-                                print("Found code: \(stringValue)")
-                                self.findProduct(productName: stringValue)
-                                self.productTextView.text = stringValue
-                            }
-                        }
-                    })
-                } catch {
-                    NSLog("Unable to start scanning")
-                }
-            } else {
-                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
+        barcodeScanner()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.scanner?.stopScanning()
-        
         super.viewWillDisappear(animated)
+        self.scanner?.stopScanning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,6 +107,9 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             alertController.addAction(cancleAction)
                             
                             self.present(alertController, animated: true, completion: nil)
+                            
+                         self.barcodeScanner()
+                            
                             print("brak produktow w bazie")
                         }
                         else {
@@ -145,6 +121,37 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                 }
             })
         }
+    }
+    
+    func barcodeScanner() {
+        MTBBarcodeScanner.requestCameraPermission(success: { success in
+            if success {
+                do {
+                    try self.scanner?.startScanning(resultBlock: { codes in
+                        if let codes = codes {
+                            self.scanner?.stopScanning()
+                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
+                            for code in codes {
+                                let stringValue = code.stringValue!
+                                print("Found code: \(stringValue)")
+                                self.findProduct(productName: stringValue)
+                                self.productTextView.text = stringValue
+                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                            }
+                        }
+                    })
+                } catch {
+                    NSLog("Unable to start scanning")
+                }
+            } else {
+                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
 }
 

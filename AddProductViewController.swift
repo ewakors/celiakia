@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import MTBBarcodeScanner
+import AudioToolbox
 
 class AddProductViewController: UIViewController {
 
@@ -31,6 +32,7 @@ class AddProductViewController: UIViewController {
         super.viewDidLoad()
         
         scanner = MTBBarcodeScanner(previewView: scanncerView)
+        scanncerView.frame = view.layer.bounds
         isBoxClicked = false
         glutenFree = false
         self.categoryPickerView.delegate = self
@@ -54,6 +56,7 @@ class AddProductViewController: UIViewController {
                                 let stringValue = code.stringValue!
                                 print("Found code: \(stringValue)")
                                 self.productCodeTxt.text = stringValue
+                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
                         }
                     })
@@ -72,10 +75,11 @@ class AddProductViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.scanner?.stopScanning()
-        
         super.viewWillDisappear(animated)
+        
+        self.scanner?.stopScanning()
     }
+    
     @IBAction func addNewProductButton(_ sender: Any) {
 
         let r = categoryPickerView.selectedRow(inComponent: 0)
@@ -93,6 +97,7 @@ class AddProductViewController: UIViewController {
                         alertController.addAction(defaultAction)
                         
                         self.present(alertController, animated: true, completion: nil)
+                        self.barcodeScanner()
                         
                     } else {
                         let warning = Warning(json: json).getError()
@@ -119,7 +124,6 @@ class AddProductViewController: UIViewController {
         }
     }
     
-    
     func showCategory()
     {
         let request = Router.getCategory()
@@ -143,7 +147,36 @@ class AddProductViewController: UIViewController {
             }
         }
     }
-
+    
+    func barcodeScanner() {
+        MTBBarcodeScanner.requestCameraPermission(success: { success in
+            if success {
+                do {
+                    try self.scanner?.startScanning(resultBlock: { codes in
+                        if let codes = codes {
+                            self.scanner?.stopScanning()
+                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
+                            for code in codes {
+                                let stringValue = code.stringValue!
+                                print("Found code: \(stringValue)")
+                                self.productCodeTxt.text = stringValue
+                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                            }
+                        }
+                    })
+                } catch {
+                    NSLog("Unable to start scanning")
+                }
+            } else {
+                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
+    }
 }
 
 extension AddProductViewController: UIPickerViewDataSource {
