@@ -91,8 +91,6 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         
-        //cell.layer.borderColor = UIColor.black.cgColor
-        //cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName().capitalized
         
@@ -100,7 +98,6 @@ extension CategoriesViewController: UICollectionViewDataSource {
         let url = NSURL(string: categoryImageURL)
         
         if categoryImageURL != "" {
-            print(categoryImageURL)
             cell.categoryImageView.hnk_setImageFromURL(url! as URL)
         } else {
             let url = NSURL(string: imageUrl + "znakZap.jpg")

@@ -37,23 +37,20 @@ class ProductDetailsViewController: UIViewController {
             let url = NSURL(string: productImageURL)
             let data = NSData(contentsOf: url as! URL)
             productImageView.image = UIImage(data: data as! Data)
-            print(productImageURL)
         }
         else {
             let url = NSURL(string: imageUrl + "znakZap.jpg")
             productImageView.hnk_setImageFromURL(url! as URL)
         }
-        
-        if let gluten = productGlutenBool {
-            
-            if productGlutenBool == true {
-                let url = NSURL(string: imageUrl + "glutenFree.png")
-                productGlutenView.hnk_setImageFromURL(url! as URL)
-            } else {
-                let url = NSURL(string: imageUrl + "gluten.jpg")
-                productGlutenView.hnk_setImageFromURL(url! as URL)
-            }
+ 
+        if productGlutenBool == true {
+            let url = NSURL(string: imageUrl + "glutenFree.png")
+            productGlutenView.hnk_setImageFromURL(url! as URL)
+        } else {
+            let url = NSURL(string: imageUrl + "gluten.jpg")
+            productGlutenView.hnk_setImageFromURL(url! as URL)
         }
+        
     }
     
     override func didReceiveMemoryWarning() {

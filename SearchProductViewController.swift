@@ -85,7 +85,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         self.products = Product.arrayFromJSON(json: resultJSON)
                         print(resultJSON.arrayValue)
 
-                        print(self.products.count)
                         if resultJSON.arrayValue.isEmpty {
                             let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                             
@@ -101,8 +100,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             self.present(alertController, animated: true, completion: nil)
                             
                             self.barcodeScanner()
-                            
-                            print("brak produktow w bazie")
                         }
                         else {
                             if self.products.count == 1 {

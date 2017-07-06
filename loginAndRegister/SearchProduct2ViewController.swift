@@ -20,7 +20,8 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     var products = [Product]()
     var searchActive: Bool = false
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
-    
+    var noDataLabel: UILabel = UILabel()
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,14 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor.white
         
+        noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.textColor = UIColor.gray
+        noDataLabel.textAlignment = .center
+        
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.backgroundView = noDataLabel
+        self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
         
@@ -51,7 +58,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                     productDetailsVc = segue.destination as? ProductDetailsViewController
                     productDetailsVc?.currentProduct = products[ip.row]
                     productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
-                    
                 }
             }
         }
@@ -97,9 +103,11 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                     if let json = json {
                         print(json)
                         self.products = Product.arrayFromJSON(json: json)
-                        
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                        }
+                        if (json.isEmpty) {
+                            self.noDataLabel.text = "Nothing found"
                         }
                     }
                 } else {
@@ -116,6 +124,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 self.tableView.reloadData()
             }
             products = []
+            self.noDataLabel.text = ""
         }
     }
     

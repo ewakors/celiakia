@@ -101,7 +101,6 @@ enum Router: URLRequestConvertible {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         if Router.addToken == true {
-            print(Router.token)
             urlRequest.setValue("token \(Router.token)", forHTTPHeaderField: "Authorization")
         }
         
@@ -137,7 +136,6 @@ enum Router: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
         case .addNewProduct(let parameters):
-            print(parameters)
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
         }
         

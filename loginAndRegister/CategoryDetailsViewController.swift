@@ -19,6 +19,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     var category:Category?
     var searchActive: Bool = false
     var productDetailsVc: ProductDetailsViewController?
+    var noDataLabel: UILabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,14 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor.white
 
+        noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.textColor = UIColor.gray
+        noDataLabel.textAlignment = .center
+        
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.backgroundView = noDataLabel
+        self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
 
@@ -83,6 +90,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     func findProduct() {
         
         let productName : String
+        
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
@@ -95,11 +103,15 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
+                    }                    
+                    if (json?.isEmpty)! {
+                        self.noDataLabel.text = "Nothing found"
                     }
                 }
             })
         } else {
             showProductsForCategory()
+            noDataLabel.text = ""
         }
     }
     
