@@ -17,7 +17,6 @@ class ProductDetailsViewController: UIViewController {
     var productBarcodeString: String!
     var productGlutenBool: Bool!
     var productImageURL: String!
-    
     var currentProduct: Product?
     
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"

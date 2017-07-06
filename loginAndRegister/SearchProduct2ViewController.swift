@@ -46,7 +46,14 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProductDetails2Segue" {   
-            productDetailsVc = segue.destination as? ProductDetailsViewController
+            if let cell = sender as? UITableViewCell{
+                if let ip = tableView.indexPath(for: cell) {
+                    productDetailsVc = segue.destination as? ProductDetailsViewController
+                    productDetailsVc?.currentProduct = products[ip.row]
+                    productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
+                    
+                }
+            }
         }
     }
     
@@ -74,7 +81,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         findProduct()
-       // self.tableView.reloadData()
     }
     
     func findProduct() {
@@ -167,7 +173,6 @@ extension SearchProduct2ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(products.count)
         return products.count
     }
     

@@ -94,9 +94,8 @@ extension CategoriesViewController: UICollectionViewDataSource {
         //cell.layer.borderColor = UIColor.black.cgColor
         //cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
-        cell.categoryNameLabel.text = categories[indexPath.row].getName()
+        cell.categoryNameLabel.text = categories[indexPath.row].getName().capitalized
         
-        //let categoryImageURL = "https://" + categories[indexPath.row].getImage()
         let categoryImageURL = categories[indexPath.row].getImage()
         let url = NSURL(string: categoryImageURL)
         

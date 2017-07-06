@@ -19,7 +19,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     var category:Category?
     var searchActive: Bool = false
     var productDetailsVc: ProductDetailsViewController?
-    //var currentProduct: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +41,14 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "detailsProduct" {
-            productDetailsVc = segue.destination as? ProductDetailsViewController
+            if let cell = sender as? UITableViewCell{
+                if let ip = tableView.indexPath(for: cell) {
+                    productDetailsVc = segue.destination as? ProductDetailsViewController
+                    productDetailsVc?.currentProduct = products[ip.row]
+                    productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
+                    
+                }
+            }
         }
     }
     
@@ -193,7 +199,6 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
         
         if productImageURL != "" {
             cell.productimageView.hnk_setImageFromURL(url! as URL)
-            (cell.contentView.viewWithTag(101) as! UIImageView).image = UIImage(data: data as! Data)
         } else {
             let url = NSURL(string: imageUrl + "znakZap.jpg")
             cell.productimageView.hnk_setImageFromURL(url! as URL)
