@@ -37,6 +37,8 @@ class CategoriesViewController: UIViewController {
         categoriesCollectionView!.collectionViewLayout = layout
 
         displayCategories()
+        
+        categories.sort(by: {$0.getName() < $1.getName()})
     }
     
     func displayCategories()
@@ -46,9 +48,9 @@ class CategoriesViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, erorr) in
             if erorr == false {
                 if let json = json {
-                    self.categories = Category.arrayFromJSON(json: json)
-                    print(json)
                     
+                    self.categories = Category.arrayFromJSON(json: json)
+    
                     DispatchQueue.main.async {
                         self.categoriesCollectionView?.reloadData()
                     }
@@ -86,7 +88,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        categories.sort(by: {$0.getName() < $1.getName()})
+        
         let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         
         //cell.layer.borderColor = UIColor.black.cgColor

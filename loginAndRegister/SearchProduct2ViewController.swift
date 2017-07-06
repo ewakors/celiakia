@@ -16,9 +16,11 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var productDetailsVc: ProductDetailsViewController?
     var products = [Product]()
     var searchActive: Bool = false
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +36,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
+        products.sort(by: {$0.getName() < $1.getName()})
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,16 +45,8 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showProductDetails2Segue" {
-            
-            let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            
-            let indexPath = self.tableView.indexPathForSelectedRow?.row
-            detailViewController.productImageURL = products[indexPath!].getImage()
-            detailViewController.productNameString = products[indexPath!].getName()
-            detailViewController.productBarcodeString = products[indexPath!].getBarcode()
-            detailViewController.productGlutenString = products[indexPath!].getGluten()
-            detailViewController.title = products[indexPath!].getName().capitalized
+        if segue.identifier == "showProductDetails2Segue" {   
+            productDetailsVc = segue.destination as? ProductDetailsViewController
         }
     }
     
@@ -78,15 +68,13 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchActive = false
 
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         products = []
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         findProduct()
-        self.tableView.reloadData()
+       // self.tableView.reloadData()
     }
     
     func findProduct() {
@@ -118,7 +106,9 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 }
             })
         } else {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             products = []
         }
     }
@@ -163,39 +153,10 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
 }
 
 extension SearchProduct2ViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        products.sort(by: {$0.getName() < $1.getName()})
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
-        (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
-        
-        if products[indexPath.row].getGluten() == "True" {
-            let url = NSURL(string: imageUrl + "glutenFree.png")
-            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-        }
-        else {
-            let url = NSURL(string: imageUrl + "gluten.jpg")
 
-            (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-        }
-        
-        let productImageURL = products[indexPath.row].getImage()
-        let url = NSURL(string: productImageURL)
-        
-        if productImageURL != "" {
-            (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "znakZap.jpg")
-
-            (cell.contentView.viewWithTag(101) as! UIImageView).hnk_setImageFromURL(url! as URL)
-        }
-        
-        cell.selectionStyle = .none
-        
-        return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        productDetailsVc?.currentProduct = products[indexPath.row]
     }
 }
 
@@ -206,6 +167,36 @@ extension SearchProduct2ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(products.count)
         return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
+
+        cell.productNameLabel2.text = products[indexPath.row].getName().capitalized
+        cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
+      
+        if products[indexPath.row].getGluten() == true {
+            let url = NSURL(string: imageUrl + "glutenFree.png")
+            cell.productGlutenImageView2.hnk_setImageFromURL(url! as URL)
+        } else {
+            let url = NSURL(string: imageUrl + "gluten.jpg")
+            cell.productGlutenImageView2.hnk_setImageFromURL(url! as URL)        }
+        
+        let productImageURL = products[indexPath.row].getImage()
+        let url = NSURL(string: productImageURL)
+        
+        if productImageURL != "" {
+            cell.productImageView2.hnk_setImageFromURL(url! as URL)
+        } else {
+            let url = NSURL(string: imageUrl + "znakZap.jpg")
+            cell.productImageView2.hnk_setImageFromURL(url! as URL)
+        }
+        
+        cell.selectionStyle = .none
+        
+        return cell
     }
 }

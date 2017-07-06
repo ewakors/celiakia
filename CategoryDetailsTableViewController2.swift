@@ -13,6 +13,7 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
     var products = [Product]()
     var searchController = UISearchController()
     var category:Category?
+    var productDetailsVc: ProductDetailsViewController?
     
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
 
@@ -56,7 +57,7 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
         (cell.contentView.viewWithTag(10) as! UILabel).text = products[indexPath.row].getName().capitalized
         (cell.contentView.viewWithTag(11) as! UILabel).text = products[indexPath.row].getBarcode()
         
-        if products[indexPath.row].getGluten() == "True" {
+        /*if products[indexPath.row].getGluten() == "True" {
             let url = NSURL(string: imageUrl + "glutenFree.png")
 
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
@@ -65,7 +66,7 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
             let url = NSURL(string: imageUrl + "gluten.jpg")
 
             (cell.contentView.viewWithTag(100) as! UIImageView).hnk_setImageFromURL(url! as URL)
-        }
+        }*/
         
         let productImageURL = products[indexPath.row].getImage()
         let url = NSURL(string: productImageURL)
@@ -87,20 +88,8 @@ class CategoryDetailsTableViewController2: UITableViewController, UISearchResult
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "detailsProduct" {
-            let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            let productName = products[indexPath.row].getName()
-            let productGluten = products[indexPath.row].getGluten()
-            let productBarcode = products[indexPath.row].getBarcode()
-            let productImageURL = products[indexPath.row].getImage()
-            
-            detailViewController.productNameString = productName
-            detailViewController.productBarcodeString = productBarcode
-            detailViewController.productGlutenString = productGluten
-            detailViewController.productImageURL = productImageURL            
-            detailViewController.title = productName.capitalized
-        }        
+            productDetailsVc = segue.destination as? ProductDetailsViewController
+        }
     }
     
     func showProductsForCategory() {

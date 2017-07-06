@@ -17,14 +17,13 @@ class ProductDetailsTableViewController: UITableViewController {
     
     var productNameString: String!
     var productBarcodeString: String!
-    var productGlutenString: String!
+    var productGlutenBool: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         productTableView.dataSource = self
         productTableView.delegate = self
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,8 +40,8 @@ class ProductDetailsTableViewController: UITableViewController {
             productBarcodeLabel.text = barcode
         }
         
-        if let gluten = productGlutenString {
-            if gluten == "True" {
+        if let gluten = productGlutenBool {
+            if gluten == true {
                 productGlutenLabel.text = "Gluten FREE"
                 
             } else {

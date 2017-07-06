@@ -19,6 +19,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     var scanner: MTBBarcodeScanner?
     var products = [Product]()
+    var productDetailsVc: ProductDetailsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +39,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProductDetails2Segue" {
-            
-            let detailViewController = ((segue.destination) as! ProductDetailsViewController)
-            detailViewController.productImageURL = products.first?.getImage()
-            detailViewController.productNameString = products.first?.getName()
-            detailViewController.productBarcodeString = products.first?.getBarcode()
-            detailViewController.productGlutenString = products.first?.getGluten()
-            detailViewController.title = products.first?.getName().capitalized
+            productDetailsVc = segue.destination as? ProductDetailsViewController
         }
         
         if segue.identifier == "addProductSegue" {
@@ -71,14 +66,10 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     }
     
     func findProduct(productName: String) {
-       // productTextView.text = searchBar.text
-        
-        //let productName : String
-        //productName = searchBar.text!.lowercased()
    
         if productName != "" {
             
-            let request = Router.findProduct(key: productName)
+            let request = Router.findProduct(key: "Aa")
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == true {
@@ -108,7 +99,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             
                             self.present(alertController, animated: true, completion: nil)
                             
-                         self.barcodeScanner()
+                            self.barcodeScanner()
                             
                             print("brak produktow w bazie")
                         }
@@ -136,7 +127,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                                 print("Found code: \(stringValue)")
                                 self.findProduct(productName: stringValue)
                                 self.productTextView.text = stringValue
-                                //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
                         }
                     })

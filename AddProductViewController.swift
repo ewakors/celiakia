@@ -32,7 +32,6 @@ class AddProductViewController: UIViewController {
         super.viewDidLoad()
         
         scanner = MTBBarcodeScanner(previewView: scanncerView)
-        scanncerView.frame = view.layer.bounds
         isBoxClicked = false
         glutenFree = false
         self.categoryPickerView.delegate = self
@@ -51,7 +50,6 @@ class AddProductViewController: UIViewController {
                     try self.scanner?.startScanning(resultBlock: { codes in
                         if let codes = codes {
                             self.scanner?.stopScanning()
-                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
                             for code in codes {
                                 let stringValue = code.stringValue!
                                 print("Found code: \(stringValue)")
@@ -90,15 +88,12 @@ class AddProductViewController: UIViewController {
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 if let json = json {
                     if error == false {
-                        //print(json)
                         let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
                         
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alertController.addAction(defaultAction)
                         
                         self.present(alertController, animated: true, completion: nil)
-                        self.barcodeScanner()
-                        
                     } else {
                         let warning = Warning(json: json).getError()
                         API.Warning(delegate: self, message: warning)
@@ -147,36 +142,6 @@ class AddProductViewController: UIViewController {
             }
         }
     }
-    
-    func barcodeScanner() {
-        MTBBarcodeScanner.requestCameraPermission(success: { success in
-            if success {
-                do {
-                    try self.scanner?.startScanning(resultBlock: { codes in
-                        if let codes = codes {
-                            self.scanner?.stopScanning()
-                            self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
-                            for code in codes {
-                                let stringValue = code.stringValue!
-                                print("Found code: \(stringValue)")
-                                self.productCodeTxt.text = stringValue
-                                //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                            }
-                        }
-                    })
-                } catch {
-                    NSLog("Unable to start scanning")
-                }
-            } else {
-                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
-    }
 }
 
 extension AddProductViewController: UIPickerViewDataSource {
@@ -191,11 +156,6 @@ extension AddProductViewController: UIPickerViewDataSource {
 }
 
 extension AddProductViewController: UIPickerViewDelegate {
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(resultCategories[row].getId())
-        print(resultCategories[row].getName())
-    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return resultCategories[row].getName()

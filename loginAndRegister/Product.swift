@@ -16,7 +16,7 @@ class Product: MyJSONProtocol {
     
     private var name: String
     private var barcode: String
-    private var gluten: String
+    private var gluten: Bool
     private var category: String
     private var image: String
     
@@ -24,7 +24,7 @@ class Product: MyJSONProtocol {
     init(json: JSON) {
         name = ""
         barcode = ""
-        gluten = ""
+        gluten = true
         category = ""
         image = ""
         fromJSON(json: json)
@@ -38,7 +38,7 @@ class Product: MyJSONProtocol {
         return barcode
     }
     
-    func getGluten() -> String {
+    func getGluten() -> Bool {
         return gluten
     }
     
@@ -53,7 +53,7 @@ class Product: MyJSONProtocol {
     func fromJSON(json: JSON) {
         name = json["name"].stringValue
         barcode = json["bar_code"].stringValue
-        gluten = json["gluten_free"].stringValue
+        gluten = json["gluten_free"].boolValue
         category = json["category"].stringValue
         image = json["image"].stringValue
     }

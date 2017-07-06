@@ -15,8 +15,11 @@ class ProductDetailsViewController: UIViewController {
     
     var productNameString: String!
     var productBarcodeString: String!
-    var productGlutenString: String!
+    var productGlutenBool: Bool!
     var productImageURL: String!
+    
+    var currentProduct: Product?
+    
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
     
     override func viewDidLoad() {
@@ -25,6 +28,11 @@ class ProductDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let product = currentProduct {
+            productImageURL = product.getImage()
+            productGlutenBool = product.getGluten()
+        }
         
         if productImageURL != "" {
             let url = NSURL(string: productImageURL)
@@ -37,14 +45,13 @@ class ProductDetailsViewController: UIViewController {
             productImageView.hnk_setImageFromURL(url! as URL)
         }
         
-        if let gluten = productGlutenString {
-            if gluten == "True" {
+        if let gluten = productGlutenBool {
+            
+            if productGlutenBool == true {
                 let url = NSURL(string: imageUrl + "glutenFree.png")
-
                 productGlutenView.hnk_setImageFromURL(url! as URL)
             } else {
                 let url = NSURL(string: imageUrl + "gluten.jpg")
-
                 productGlutenView.hnk_setImageFromURL(url! as URL)
             }
         }
@@ -59,17 +66,11 @@ class ProductDetailsViewController: UIViewController {
         if segue.identifier == "productDetailSague" {
             let detailViewController = ((segue.destination) as! ProductDetailsTableViewController)
             
-            if let name = productNameString {
-                detailViewController.productNameString = name.capitalized
+            if let product = currentProduct {
+                detailViewController.productNameString = product.getName().capitalized
+                detailViewController.productBarcodeString = product.getBarcode()
+                detailViewController.productGlutenBool = product.getGluten()
             }
-            
-            if let barcode = productBarcodeString {
-                detailViewController.productBarcodeString = barcode
-            }
-            
-            if let gluten = productGlutenString {
-                detailViewController.productGlutenString = gluten
-            }       
         }
     }
 }
