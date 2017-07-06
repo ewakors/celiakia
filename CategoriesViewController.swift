@@ -27,7 +27,6 @@ class CategoriesViewController: UIViewController {
         screenHeight = screenSize.height
         
         categoriesCollectionView.dataSource = self
-        categoriesCollectionView.delegate = self
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 5, right: 20)
@@ -36,9 +35,9 @@ class CategoriesViewController: UIViewController {
         layout.minimumInteritemSpacing = 5
         categoriesCollectionView!.collectionViewLayout = layout
 
-        displayCategories()
-        
         categories.sort(by: {$0.getName() < $1.getName()})
+
+        displayCategories()
     }
     
     func displayCategories()
@@ -106,8 +105,4 @@ extension CategoriesViewController: UICollectionViewDataSource {
 
         return cell
     }
-}
-
-extension CategoriesViewController: UICollectionViewDelegate {
-    
 }

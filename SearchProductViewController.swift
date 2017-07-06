@@ -50,22 +50,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         }
     }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
-        //findProduct()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
-        searchBar.showsCancelButton = false
-        searchBar.endEditing(true)
-        searchBar.resignFirstResponder()
-    }
-    
     func findProduct(productName: String) {
    
         if productName != "" {
@@ -122,7 +106,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             self.scanner = MTBBarcodeScanner(previewView: self.scanncerView)
                             for code in codes {
                                 let stringValue = code.stringValue!
-                                print("Found code: \(stringValue)")
                                 self.findProduct(productName: stringValue)
                                 self.productTextView.text = stringValue
                                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

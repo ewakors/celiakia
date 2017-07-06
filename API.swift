@@ -18,10 +18,10 @@ class API: NSObject {
     
     static let sharedInstance: API = API()
     
-    class func Warning(delegate: UIViewController, message: String) {
+    class func Warning(viewController: UIViewController, message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        delegate.present(alert, animated: true, completion: nil)
+        viewController.present(alert, animated: true, completion: nil)
     }
     
     func sendRequest(request: URLRequestConvertible, completion: @escaping (_ json: JSON?, _ error: Bool) -> Void) {

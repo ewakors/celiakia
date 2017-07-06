@@ -22,7 +22,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
     var noDataLabel: UILabel = UILabel()
    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +37,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         self.tableView.backgroundView = noDataLabel
         self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView()
@@ -209,7 +209,7 @@ extension SearchProduct2ViewController: UITableViewDataSource {
             cell.productImageView2.hnk_setImageFromURL(url! as URL)
         }
         
-        cell.selectionStyle = .none
+        cell.selectionStyle = .gray
         
         return cell
     }

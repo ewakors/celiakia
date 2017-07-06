@@ -52,7 +52,6 @@ class AddProductViewController: UIViewController {
                             self.scanner?.stopScanning()
                             for code in codes {
                                 let stringValue = code.stringValue!
-                                print("Found code: \(stringValue)")
                                 self.productCodeTxt.text = stringValue
                                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
@@ -96,7 +95,7 @@ class AddProductViewController: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     } else {
                         let warning = Warning(json: json).getError()
-                        API.Warning(delegate: self, message: warning)
+                        API.Warning(viewController: self, message: warning)
                     }
                 }
             }

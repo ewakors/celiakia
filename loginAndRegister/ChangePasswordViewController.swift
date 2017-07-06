@@ -39,7 +39,7 @@ class ChangePasswordViewController: UIViewController {
                     
                 } else {
                     let warning = Warning(json: json).getError()
-                    API.Warning(delegate: self, message: warning)
+                    API.Warning(viewController: self, message: warning)
                 }
             }
         }

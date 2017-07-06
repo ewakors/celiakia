@@ -51,7 +51,6 @@ class ProfileViewController: UIViewController {
                     self.usernameLabel.text = user.getName()
                     self.emailLabel.text = user.getEmail()
                 } else {
-                    print("user details: \(json)")
                     let alertController = UIAlertController(title: "Error", message: "Invalid token", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

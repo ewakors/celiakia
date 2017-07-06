@@ -14,6 +14,12 @@ import SwiftyJSON
 class Product: MyJSONProtocol {
     typealias T = Product
     
+    static let productNameField = "name"
+    static let productBarcodeField = "bar_code"
+    static let productGlutenField = "gluten_free"
+    static let productCategoryField = "category"
+    static let productImageField = "image"
+    
     private var name: String
     private var barcode: String
     private var gluten: Bool
@@ -51,11 +57,11 @@ class Product: MyJSONProtocol {
     }
     
     func fromJSON(json: JSON) {
-        name = json["name"].stringValue
-        barcode = json["bar_code"].stringValue
-        gluten = json["gluten_free"].boolValue
-        category = json["category"].stringValue
-        image = json["image"].stringValue
+        name = json[Product.productNameField].stringValue
+        barcode = json[Product.productBarcodeField].stringValue
+        gluten = json[Product.productGlutenField].boolValue
+        category = json[Product.productCategoryField].stringValue
+        image = json[Product.productImageField].stringValue
     }
     
     static func arrayFromJSON(json: JSON) -> [Product] {

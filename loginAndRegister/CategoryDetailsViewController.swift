@@ -36,10 +36,10 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.backgroundView = noDataLabel
-        self.tableView.separatorStyle = .none
-        self.tableView.tableFooterView = UIView()
-        self.tableView.reloadData()
+        tableView.backgroundView = noDataLabel
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
+        tableView.reloadData()
 
         showProductsForCategory()
         products.sort(by: {$0.getName() < $1.getName()})
@@ -53,14 +53,12 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                     productDetailsVc = segue.destination as? ProductDetailsViewController
                     productDetailsVc?.currentProduct = products[ip.row]
                     productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
-                    
                 }
             }
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
         findProductWithAlert()
         searchActive = false
     }
@@ -90,7 +88,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
     func findProduct() {
         
         let productName : String
-        
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
@@ -131,7 +128,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                             self.tableView.reloadData()
                         }
                     }
-                    
                     if (json?.isEmpty)! {
                         let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                         
@@ -207,7 +203,6 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
         
         let productImageURL = products[indexPath.row].getImage()
         let url = NSURL(string: productImageURL)
-        let data = NSData(contentsOf: url as! URL)
         
         if productImageURL != "" {
             cell.productimageView.hnk_setImageFromURL(url! as URL)
@@ -216,7 +211,7 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
             cell.productimageView.hnk_setImageFromURL(url! as URL)
         }
         
-        cell.selectionStyle = .none
+        cell.selectionStyle = .gray
         
         return cell
     }

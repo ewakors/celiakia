@@ -39,13 +39,8 @@ class RegisterViewController: UIViewController {
                 if error == false {
                     let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
                     
-                    
                     let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                         let token = json["key"].stringValue
-                        
-                        print("-----")
-                        print(token)
-                        print("-----")
                         
                         UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                         Router.token = token
@@ -63,8 +58,7 @@ class RegisterViewController: UIViewController {
                 }
                 else {                    
                     let warning = Warning(json: json).getError()
-                    API.Warning(delegate: self, message: warning)
-                    
+                    API.Warning(viewController: self, message: warning)
                 }
             }
         }

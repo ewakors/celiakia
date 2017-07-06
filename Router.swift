@@ -14,8 +14,8 @@ import SwiftyJSON
 enum Router: URLRequestConvertible {
     
     static var token = ""
-    
     static var addToken = true
+    static var keyField = "key"
     
     case loginUser(username: String, password: String)
     case logout()
@@ -106,37 +106,37 @@ enum Router: URLRequestConvertible {
         
         switch self {
         case .loginUser(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username, "password":(parameters.password)])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [User.userNameField:parameters.username, User.userPasswordField:(parameters.password)])
             
         case .logout():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
         case .registerUser(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username":parameters.username,"email":parameters.email, "password1":(parameters.password1), "password2":parameters.password2])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [User.userNameField:parameters.username,User.userEmailField:parameters.email, User.userPassword1Field:(parameters.password1), User.userPassword2Field:parameters.password2])
          
         case .userDetails():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
         case .passwordReset(let email):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["email":email])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [User.userEmailField:email])
             
         case .passwordChange(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["ols_password":parameters.old_password, "new_password1":(parameters.new_password1), "new_password2":parameters.new_password2])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [User.userOldPasswordField:parameters.old_password, User.userNewPassword1Field:(parameters.new_password1), User.userNewPassword2Field:parameters.new_password2])
             
         case .findProduct(let key):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [Router.keyField:key])
             
         case .findProductInCategory(let key, let category):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["key":key, "category": category])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [Router.keyField:key, Product.productCategoryField: category])
             
         case .categoryProducts(let category):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["category":category])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [Product.productCategoryField:category])
             
         case .getCategory():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
         case .addNewProduct(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["name":parameters.name, "bar_code":(parameters.barcode), "gluten_free":parameters.gluten, "category":parameters.category])
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [Product.productNameField:parameters.name, Product.productBarcodeField:(parameters.barcode), Product.productGlutenField:parameters.gluten, Product.productCategoryField:parameters.category])
         }
         
         return urlRequest

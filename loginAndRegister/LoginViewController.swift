@@ -57,10 +57,6 @@ class LoginViewController: UIViewController {
                     
                     let token = json["key"].stringValue
                     
-                    print("-----")
-                    print(token)
-                    print("-----")
-                    
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token
                     
@@ -73,7 +69,7 @@ class LoginViewController: UIViewController {
                     
                 } else {                    
                     let warning = Warning(json: json).getError()
-                    API.Warning(delegate: self, message: warning)
+                    API.Warning(viewController: self, message: warning)
                 }
             }
         }

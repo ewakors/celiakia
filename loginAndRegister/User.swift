@@ -12,6 +12,16 @@ import Alamofire
 import SwiftyJSON
 
 class User: MyJSONProtocol {
+    
+    static let userNameField = "username"
+    static let userEmailField = "email"
+    static let userPasswordField = "password"
+    static let userPassword1Field = "password1"
+    static let userPassword2Field = "password2"
+    static let userNewPassword1Field = "new_password1"
+    static let userNewPassword2Field = "new_password2"
+    static let userOldPasswordField = "ols_password"
+    
     typealias T = User
     
     private var name: String
@@ -32,8 +42,8 @@ class User: MyJSONProtocol {
     }
     
     func fromJSON(json: JSON)  {
-        self.name = json["username"].stringValue
-        self.email = json["email"].stringValue
+        self.name = json[User.userNameField].stringValue
+        self.email = json[User.userEmailField].stringValue
     }
 }
 

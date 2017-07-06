@@ -13,6 +13,9 @@ import SwiftyJSON
 class Category: MyJSONProtocol {
     typealias T = Category
     
+    static let categoryIdField = "id"
+    static let categoryNameField = "name"
+    static let categoryImageField = "image"
     private var id: Int
     private var name: String
     private var image: String
@@ -37,9 +40,9 @@ class Category: MyJSONProtocol {
     }
     
     func fromJSON(json: JSON) {
-        self.id = json["id"].intValue
-        self.name = json["name"].stringValue
-        self.image = json["image"].stringValue
+        self.id = json[Category.categoryIdField].intValue
+        self.name = json[Category.categoryNameField].stringValue
+        self.image = json[Category.categoryImageField].stringValue
     }
     
     static func arrayFromJSON(json: JSON) -> [Category] {

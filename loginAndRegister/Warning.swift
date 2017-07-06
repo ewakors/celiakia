@@ -13,6 +13,14 @@ import SwiftyJSON
 class Warning: MyJSONProtocol {
     typealias T = Warning
     
+    static let errorWarningField = "non_field_errors"
+    static let errorPasswordField = "password"
+    static let errorPassword1Field = "password1"
+    static let errorPassword2Field = "password2"
+    static let errorDetailField = "detail"
+    static let errorNewPassword1Field = "new_password1"
+    static let errorNewPassword2Field = "new_password2"
+    
     private var error: String
     
     init(json: JSON) {
@@ -28,18 +36,18 @@ class Warning: MyJSONProtocol {
         
         print(json)
         
-        let warning = json["non_field_errors"]
-        let password = json["password"]
-        let username = json["username"]
-        let email = json["email"]
-        let detail = json["detail"]
-        let name = json["name"]
-        let category = json["category"]
-        let barcode = json["bar_code"]
-        let new_password1 = json["new_password1"]
-        let new_password2 = json["new_password2"]
-        let password2 = json["password2"]
-        let password1 = json["password1"]
+        let warning = json[Warning.errorWarningField]
+        let password = json[Warning.errorPasswordField]
+        let username = json[User.userNameField]
+        let email = json[User.userEmailField]
+        let detail = json[Warning.errorDetailField]
+        let name = json[Product.productNameField]
+        let category = json[Product.productCategoryField]
+        let barcode = json[Product.productBarcodeField]
+        let new_password1 = json[Warning.errorNewPassword1Field]
+        let new_password2 = json[Warning.errorNewPassword2Field]
+        let password2 = json[Warning.errorPassword2Field]
+        let password1 = json[Warning.errorPassword1Field]
         
         var result = "\n"
         
@@ -60,7 +68,7 @@ class Warning: MyJSONProtocol {
         }
         
         for e in detail {
-            result += "details \(e.1.stringValue)\n"
+            result += "Details \(e.1.stringValue)\n"
         }
         
         for e in name {
