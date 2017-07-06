@@ -57,7 +57,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 if let ip = tableView.indexPath(for: cell) {
                     productDetailsVc = segue.destination as? ProductDetailsViewController
                     productDetailsVc?.currentProduct = products[ip.row]
-                    productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
+                    productDetailsVc?.title = productDetailsVc?.currentProduct?.getName()
                 }
             }
         }
@@ -189,7 +189,7 @@ extension SearchProduct2ViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
 
-        cell.productNameLabel2.text = products[indexPath.row].getName().capitalized
+        cell.productNameLabel2.text = products[indexPath.row].getName()
         cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
       
         if products[indexPath.row].getGluten() == true {

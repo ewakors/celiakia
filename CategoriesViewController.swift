@@ -75,7 +75,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
                 if let ip = categoriesCollectionView.indexPath(for: cell) {
                     if let vc = segue.destination as? CategoryDetailsTableViewController {
                         vc.category = categories[ip.row]
-                        vc.title = vc.category?.getName().capitalized
+                        vc.title = vc.category?.getName()
                     }
                 }
             }
@@ -91,7 +91,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: Category.categoryCell, for: indexPath) as! CategoryCell
         
         cell.layer.cornerRadius = 3
-        cell.categoryNameLabel.text = categories[indexPath.row].getName().capitalized
+        cell.categoryNameLabel.text = categories[indexPath.row].getName()
         
         let categoryImageURL = categories[indexPath.row].getImage()
         let url = NSURL(string: categoryImageURL)

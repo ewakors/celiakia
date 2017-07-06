@@ -40,7 +40,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Product.showProductDetails2Segue {
             productDetailsVc = segue.destination as? ProductDetailsViewController
-            productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
+            productDetailsVc?.title = productDetailsVc?.currentProduct?.getName()
         }
         
         if segue.identifier == Product.addProductSegue {

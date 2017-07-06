@@ -35,7 +35,7 @@ class ProductCell: UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
         
-        cell.productNameLabel2.text = products[indexPath.row].getName().capitalized
+        cell.productNameLabel2.text = products[indexPath.row].getName()
         cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
         
         if products[indexPath.row].getGluten() == true {

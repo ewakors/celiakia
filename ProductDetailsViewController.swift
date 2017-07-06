@@ -63,7 +63,7 @@ class ProductDetailsViewController: UIViewController {
             let detailViewController = ((segue.destination) as! ProductDetailsTableViewController)
             
             if let product = currentProduct {
-                detailViewController.productNameString = product.getName().capitalized
+                detailViewController.productNameString = product.getName()
                 detailViewController.productBarcodeString = product.getBarcode()
                 detailViewController.productGlutenBool = product.getGluten()
             }

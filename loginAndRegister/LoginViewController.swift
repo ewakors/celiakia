@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                 if error == false {
                     
                     let token = json[Router.keyField].stringValue
-                    
+                    print(token)
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token
                     

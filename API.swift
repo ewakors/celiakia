@@ -30,7 +30,7 @@ class API: NSObject {
             if result.result.isSuccess {
                 
                 if let response = result.response {
-                    
+                    print(Router.token)
                     let code = response.statusCode
                     
                     if code >= 200 && code < 400 {
