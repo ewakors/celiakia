@@ -38,12 +38,12 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showProductDetails2Segue" {
+        if segue.identifier == Product.showProductDetails2Segue {
             productDetailsVc = segue.destination as? ProductDetailsViewController
             productDetailsVc?.title = productDetailsVc?.currentProduct?.getName().capitalized
         }
         
-        if segue.identifier == "addProductSegue" {
+        if segue.identifier == Product.addProductSegue {
             
             let addProductVC = ((segue.destination) as! AddProductViewController)
             addProductVC.barcodeString = productTextView.text
@@ -73,7 +73,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                             let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                             
                             let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                                self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+                                self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
                             })
                             alertController.addAction(yesAction)
                             
@@ -87,7 +87,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         }
                         else {
                             if self.products.count == 1 {
-                                self.performSegue(withIdentifier: "showProductDetails2Segue", sender: nil)
+                                self.performSegue(withIdentifier: Product.showProductDetails2Segue, sender: nil)
                             }
                         }
                     }

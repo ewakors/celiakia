@@ -16,6 +16,8 @@ class Category: MyJSONProtocol {
     static let categoryIdField = "id"
     static let categoryNameField = "name"
     static let categoryImageField = "image"
+    static let categoryDetailsSegue = "categoryDetailsSegue"
+    static let categoryCell = "categoryCell"
     private var id: Int
     private var name: String
     private var image: String

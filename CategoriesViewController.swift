@@ -69,7 +69,7 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UICollectionViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "categoryDetailsSegue" {
+        if segue.identifier == Category.categoryDetailsSegue {
             
             if let cell = sender as? UICollectionViewCell {
                 if let ip = categoriesCollectionView.indexPath(for: cell) {
@@ -88,7 +88,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+        let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: Category.categoryCell, for: indexPath) as! CategoryCell
         
         cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName().capitalized

@@ -19,6 +19,8 @@ class Product: MyJSONProtocol {
     static let productGlutenField = "gluten_free"
     static let productCategoryField = "category"
     static let productImageField = "image"
+    static let showProductDetails2Segue = "showProductDetails2Segue"
+    static let addProductSegue = "addProductSegue"
     
     private var name: String
     private var barcode: String

@@ -18,10 +18,10 @@ class ChangePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveBtn.layer.cornerRadius = 5
-        saveBtn.backgroundColor = UIColor.clear
-        saveBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        saveBtn.layer.borderWidth = 1.5
+        saveBtn.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        saveBtn.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        saveBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        saveBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
     }
     
     @IBAction func saveButton(_ sender: Any) {

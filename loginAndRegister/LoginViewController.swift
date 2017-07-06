@@ -18,8 +18,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
-    var showPassword: Bool!
     @IBOutlet weak var passwordTxt: PasswordTextField!
+    
+    var showPassword: Bool!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,15 +32,15 @@ class LoginViewController: UIViewController {
         passwordTxt.isSecureTextEntry = true
         showPassword = false
         
-        registerBtn.layer.cornerRadius = 5
-        registerBtn.backgroundColor = UIColor.clear
-        registerBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        registerBtn.layer.borderWidth = 1.5
+        registerBtn.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        registerBtn.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        registerBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        registerBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
         
-        loginBtn.layer.cornerRadius = 5
-        loginBtn.backgroundColor = UIColor.clear
-        loginBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        loginBtn.layer.borderWidth = 1.5        
+        loginBtn.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        loginBtn.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        loginBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        loginBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
         
         let url = NSURL(string: "https://celiakia.zer0def.me/static/images/logo.png")
 
@@ -55,7 +56,7 @@ class LoginViewController: UIViewController {
             if let json = json {
                 if error == false {
                     
-                    let token = json["key"].stringValue
+                    let token = json[Router.keyField].stringValue
                     
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token

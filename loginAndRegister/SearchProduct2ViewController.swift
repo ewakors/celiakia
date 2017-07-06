@@ -52,7 +52,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showProductDetails2Segue" {   
+        if segue.identifier == Product.showProductDetails2Segue {
             if let cell = sender as? UITableViewCell{
                 if let ip = tableView.indexPath(for: cell) {
                     productDetailsVc = segue.destination as? ProductDetailsViewController
@@ -151,7 +151,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                         let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
                         
                         let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                            self.performSegue(withIdentifier: "addProductSegue", sender: nil)
+                            self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
                         })
                         alertController.addAction(yesAction)
                         

@@ -23,15 +23,15 @@ class ProfileViewController: UIViewController {
         usernameLabel.text = ""
         emailLabel.text = ""
         
-        logoutBtn.layer.cornerRadius = 5
-        logoutBtn.backgroundColor = UIColor.clear
-        logoutBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        logoutBtn.layer.borderWidth = 1.5
+        logoutBtn.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        logoutBtn.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        logoutBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        logoutBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
         
-        changePasswordBtn.layer.cornerRadius = 5
-        changePasswordBtn.backgroundColor = UIColor.clear
-        changePasswordBtn.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        changePasswordBtn.layer.borderWidth = 1.5
+        changePasswordBtn.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        changePasswordBtn.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        changePasswordBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        changePasswordBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
 
         let url = NSURL(string: "https://celiakia.zer0def.me/static/images/user.png")
         userImageView.hnk_setImageFromURL(url! as URL)

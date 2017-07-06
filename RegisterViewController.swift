@@ -24,10 +24,10 @@ class RegisterViewController: UIViewController {
         password1Txt.isSecureTextEntry = true
         password2Txt.isSecureTextEntry = true
         
-        registerButton.layer.cornerRadius = 5
-        registerButton.backgroundColor = UIColor.clear
-        registerButton.layer.borderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
-        registerButton.layer.borderWidth = 1.5
+        registerButton.layer.cornerRadius = CGFloat(ButtonStyleClass.buttonCornerRadius)
+        registerButton.backgroundColor = ButtonStyleClass.buttonBackgroundColor
+        registerButton.layer.borderColor = ButtonStyleClass.buttonBorderColor
+        registerButton.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
     }
     
     @IBAction func registerButton(_ sender: Any) {
@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
                     let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                        let token = json["key"].stringValue
+                        let token = json[Router.keyField].stringValue
                         
                         UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                         Router.token = token

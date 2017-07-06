@@ -34,6 +34,7 @@
 		C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */; };
 		C39912A41F067FC000A75696 /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; };
 		C39912A51F067FC700A75696 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C3ABCDE41F0E73850067B2CE /* ButtonStyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */; };
 		C3AE3CC31EF3C2A90021C081 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */; };
 		C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */; };
 		C3B16BA71EBC832E004DCE29 /* MyJSONProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */; };
@@ -116,6 +117,7 @@
 		C382088A1EE14FE60061726E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
 		C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		C39912A31F067FC000A75696 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
+		C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyleClass.swift; sourceTree = "<group>"; };
 		C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../LoginNavigationController.swift; sourceTree = "<group>"; };
 		C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProduct2ViewController.swift; sourceTree = "<group>"; };
 		C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJSONProtocol.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				C3250B441EA64CD50095CD8E /* Router.swift */,
 				C382088A1EE14FE60061726E /* TabBarViewController.swift */,
 				C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */,
+				C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				C3E2D82D1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift */,
 				C355D3161EC5C6F200EC850C /* ProductDetailsViewController.swift */,
 				C3B16BAC1EBCB3CB004DCE29 /* Product.swift */,
+				C365CFE11F0BD346004F9961 /* ProductCell.swift */,
 				C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */,
 			);
 			name = product;
@@ -276,7 +280,6 @@
 				C3B16BA81EBC848A004DCE29 /* Category.swift */,
 				C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */,
 				C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */,
-				C365CFE11F0BD346004F9961 /* ProductCell.swift */,
 				C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */,
 			);
 			name = category;
@@ -424,6 +427,7 @@
 				C31CE6801EB0CCBE0061CBBD /* ChangePasswordViewController.swift in Sources */,
 				C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */,
 				C382088B1EE14FE60061726E /* TabBarViewController.swift in Sources */,
+				C3ABCDE41F0E73850067B2CE /* ButtonStyleClass.swift in Sources */,
 				C37C8D401EA7621800D8380B /* SearchProductViewController.swift in Sources */,
 				C3397D671EA9E4C8009003F1 /* AddProductViewController.swift in Sources */,
 				C3E2D82E1ECF0EE100DA1699 /* ProductDetailsTableViewController.swift in Sources */,
