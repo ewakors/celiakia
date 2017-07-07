@@ -16,6 +16,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    let productCell = ProductCell()
     var productDetailsVc: ProductDetailsViewController?
     var products = [Product]()
     var searchActive: Bool = false
@@ -182,20 +183,9 @@ extension SearchProduct2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
-
-        cell.productNameLabel2.text = products[indexPath.row].getName()
-        cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
-      
-        let glutenImageURL = products[indexPath.row].getGlutenImage()
-        let glutenUrl = NSURL(string: glutenImageURL)
-        cell.productGlutenImageView2.hnk_setImageFromURL(glutenUrl! as URL)
-
-        let productImageURL = products[indexPath.row].getImage()
-        let imageUrl = NSURL(string: productImageURL)
-        cell.productImageView2.hnk_setImageFromURL(imageUrl! as URL)
-
-        cell.selectionStyle = .gray
         
+        cell.setProduct(product: products[indexPath.row])
+
         return cell
     }
 }

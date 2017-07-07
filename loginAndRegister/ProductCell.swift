@@ -22,34 +22,38 @@ class ProductCell: UITableViewCell {
     
     static let identifier = "cell"
 
-    var products = [Product]()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        
+        selectionStyle = .gray
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func setProduct(product: Product) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
+        productNameLabel2.text = product.getName()
+        productBarcodeLabel2.text = product.getBarcode()
         
-        cell.productNameLabel2.text = products[indexPath.row].getName()
-        cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
-        
-        let glutenImageURL = products[indexPath.row].getGlutenImage()
+        let glutenImageURL = product.getGlutenImage()
         let glutenUrl = NSURL(string: glutenImageURL)
-        cell.productGlutenImageView2.hnk_setImageFromURL(glutenUrl! as URL)
+        productGlutenImageView2.hnk_setImageFromURL(glutenUrl! as URL)
         
-        let productImageURL = products[indexPath.row].getImage()
+        let productImageURL = product.getImage()
         let imageUrl = NSURL(string: productImageURL)
-        cell.productImageView2.hnk_setImageFromURL(imageUrl! as URL)
+        productImageView2.hnk_setImageFromURL(imageUrl! as URL)
+    }
+    
+    func setProductInCategory(product: Product) {
         
-        cell.selectionStyle = .gray
+        productNameLabel.text = product.getName()
+        productBarcodeLabel.text = product.getBarcode()
         
-        return cell
+        let glutenImageURL = product.getGlutenImage()
+        let glutenUrl = NSURL(string: glutenImageURL)
+        productGlutenImageView.hnk_setImageFromURL(glutenUrl! as URL)
+        
+        let productImageURL = product.getImage()
+        let imageUrl = NSURL(string: productImageURL)
+        productimageView.hnk_setImageFromURL(imageUrl! as URL)
     }
 }
 

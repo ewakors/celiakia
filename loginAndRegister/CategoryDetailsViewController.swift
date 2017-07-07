@@ -94,7 +94,6 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                 
                 if error == false {
                     if let json = json {
-                        print(json)
                         self.products = Product.arrayFromJSON(json: json)
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -189,18 +188,7 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
         
-        cell.productNameLabel.text = products[indexPath.row].getName()
-        cell.productBarcodeLabel.text = products[indexPath.row].getBarcode()
-        
-        let glutenImageURL = products[indexPath.row].getGlutenImage()
-        let glutenUrl = NSURL(string: glutenImageURL)
-        cell.productGlutenImageView.hnk_setImageFromURL(glutenUrl! as URL)
-        
-        let productImageURL = products[indexPath.row].getImage()
-        let imageUrl = NSURL(string: productImageURL)
-        cell.productimageView.hnk_setImageFromURL(imageUrl! as URL)
-        
-        cell.selectionStyle = .gray
+        cell.setProductInCategory(product: products[indexPath.row])
         
         return cell
     }
