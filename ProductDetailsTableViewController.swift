@@ -42,10 +42,10 @@ class ProductDetailsTableViewController: UITableViewController {
         
         if let gluten = productGlutenBool {
             if gluten == true {
-                productGlutenLabel.text = "Gluten FREE"
+                productGlutenLabel.text = Product.glutenFreeTextField
                 
             } else {
-                productGlutenLabel.text = "Gluten"
+                productGlutenLabel.text = Product.glutenTextField
                 productGlutenLabel.textColor = UIColor.red
             }
         }

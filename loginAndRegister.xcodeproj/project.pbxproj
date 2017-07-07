@@ -34,6 +34,8 @@
 		C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */; };
 		C39912A41F067FC000A75696 /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; };
 		C39912A51F067FC700A75696 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C39912A31F067FC000A75696 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C3A223D31F0F922A00E745B3 /* TableBackgroundClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A223D21F0F922A00E745B3 /* TableBackgroundClass.swift */; };
+		C3A223D51F0F95EA00E745B3 /* SearchBarClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A223D41F0F95EA00E745B3 /* SearchBarClass.swift */; };
 		C3ABCDE41F0E73850067B2CE /* ButtonStyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */; };
 		C3AE3CC31EF3C2A90021C081 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */; };
 		C3AE3CC51EF3D6BB0021C081 /* SearchProduct2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */; };
@@ -117,6 +119,8 @@
 		C382088A1EE14FE60061726E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
 		C392D2871EF7DF230083AA3A /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		C39912A31F067FC000A75696 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
+		C3A223D21F0F922A00E745B3 /* TableBackgroundClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableBackgroundClass.swift; sourceTree = "<group>"; };
+		C3A223D41F0F95EA00E745B3 /* SearchBarClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarClass.swift; sourceTree = "<group>"; };
 		C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyleClass.swift; sourceTree = "<group>"; };
 		C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../LoginNavigationController.swift; sourceTree = "<group>"; };
 		C3AE3CC41EF3D6BB0021C081 /* SearchProduct2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProduct2ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				C382088A1EE14FE60061726E /* TabBarViewController.swift */,
 				C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */,
 				C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */,
+				C3A223D21F0F922A00E745B3 /* TableBackgroundClass.swift */,
+				C3A223D41F0F95EA00E745B3 /* SearchBarClass.swift */,
 			);
 			path = loginAndRegister;
 			sourceTree = "<group>";
@@ -447,6 +453,8 @@
 				C365CFE21F0BD346004F9961 /* ProductCell.swift in Sources */,
 				C392D2881EF7DF230083AA3A /* CategoryDetailsViewController.swift in Sources */,
 				C3795B841ED307C000CEE16B /* Warning.swift in Sources */,
+				C3A223D51F0F95EA00E745B3 /* SearchBarClass.swift in Sources */,
+				C3A223D31F0F922A00E745B3 /* TableBackgroundClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

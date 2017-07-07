@@ -19,6 +19,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet var usernameTxt: UITextField!
     
+    let tabBarViewController = TabBarViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         password1Txt.isSecureTextEntry = true
@@ -44,13 +46,8 @@ class RegisterViewController: UIViewController {
                         
                         UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                         Router.token = token
-                        
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-                        appDelegate.window?.rootViewController = yourVC
-                        appDelegate.window?.makeKeyAndVisible()
+
+                        self.tabBarViewController.appDelegateFunc()
                         
                     })
                     alertController.addAction(defaultAction)

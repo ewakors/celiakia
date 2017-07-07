@@ -1,22 +1,21 @@
 //
-//  TabBarViewController.swift
+//  TableBackgroundClass.swift
 //  loginAndRegister
 //
-//  Created by Ewa Korszaczuk on 02.06.2017.
+//  Created by Ewa Korszaczuk on 07.07.2017.
 //  Copyright © 2017 Ewa Korszaczuk. All rights reserved.
 //
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class TableBackgroundClass {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.tabBar.tintColor = UIColor.white
-        self.tabBar.unselectedItemTintColor = UIColor.white
-        self.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "logo"), selectedImage: UIImage(named: "logo"))
-    }
+    static let labelText = "Nothing found"
+    static let labelNoText = ""
+    static let labelTextColor = UIColor.gray
+    static let labelTextAlignment = NSTextAlignment.center
+    static let tableSeparatorStyle = UITableViewCellSeparatorStyle.none
+    static let tableFooterView = UIView()
     
     func appDelegateFunc() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

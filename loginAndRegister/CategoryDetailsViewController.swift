@@ -24,24 +24,23 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         super.viewDidLoad()
 
         searchBar.delegate = self
-        searchBar.enablesReturnKeyAutomatically = true
-        searchBar.showsCancelButton = false
+        searchBar.enablesReturnKeyAutomatically = SearchBarClass.searchBarEnableReturnKey
+        searchBar.showsCancelButton = SearchBarClass.searchBarShowCancleButton
         searchBar.sizeToFit()
-        searchBar.tintColor = UIColor.white
+        searchBar.tintColor = SearchBarClass.searchBarTintColor
 
         noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        noDataLabel.textColor = UIColor.gray
-        noDataLabel.textAlignment = .center
+        noDataLabel.textColor = TableBackgroundClass.labelTextColor
+        noDataLabel.textAlignment = TableBackgroundClass.labelTextAlignment
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundView = noDataLabel
-        tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = TableBackgroundClass.tableSeparatorStyle
+        tableView.tableFooterView = TableBackgroundClass.tableFooterView
         tableView.reloadData()
 
         showProductsForCategory()
-        //products.sort(by: {$0.getName() < $1.getName()})
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,13 +101,13 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
                         }
                     }                    
                     if (json?.isEmpty)! {
-                        self.noDataLabel.text = "Nothing found"
+                        self.noDataLabel.text = TableBackgroundClass.labelText
                     }
                 }
             })
         } else {
             showProductsForCategory()
-            noDataLabel.text = ""
+            noDataLabel.text = TableBackgroundClass.labelNoText
         }
     }
     
@@ -188,7 +187,7 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
         
         cell.productNameLabel.text = products[indexPath.row].getName()
         cell.productBarcodeLabel.text = products[indexPath.row].getBarcode()

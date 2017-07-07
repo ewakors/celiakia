@@ -54,7 +54,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
    
         if productName != "" {
             
-            let request = Router.findProduct(key: "Aa")
+            let request = Router.findProduct(key: productTextView.text)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == true {

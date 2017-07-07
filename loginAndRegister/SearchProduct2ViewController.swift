@@ -19,31 +19,27 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     var productDetailsVc: ProductDetailsViewController?
     var products = [Product]()
     var searchActive: Bool = false
-    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
     var noDataLabel: UILabel = UILabel()
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchBar.delegate = self
-        searchBar.enablesReturnKeyAutomatically = true
-        searchBar.showsCancelButton = false
+        searchBar.enablesReturnKeyAutomatically = SearchBarClass.searchBarEnableReturnKey
+        searchBar.showsCancelButton = SearchBarClass.searchBarShowCancleButton
         searchBar.sizeToFit()
-        searchBar.tintColor = UIColor.white
+        searchBar.tintColor = SearchBarClass.searchBarTintColor
         
         noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        noDataLabel.textColor = UIColor.gray
-        noDataLabel.textAlignment = .center
+        noDataLabel.textColor = TableBackgroundClass.labelTextColor
+        noDataLabel.textAlignment = TableBackgroundClass.labelTextAlignment
         
         tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.tableView.backgroundView = noDataLabel
-        self.tableView.separatorStyle = .none
-        self.tableView.tableFooterView = UIView()
-        self.tableView.reloadData()
-        
-       // products.sort(by: {$0.getName() < $1.getName()})
+        tableView.dataSource = self        
+        tableView.backgroundView = noDataLabel
+        tableView.separatorStyle = TableBackgroundClass.tableSeparatorStyle
+        tableView.tableFooterView = TableBackgroundClass.tableFooterView
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +105,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                             self.tableView.reloadData()
                         }
                         if (json.isEmpty) {
-                            self.noDataLabel.text = "Nothing found"
+                            self.noDataLabel.text = TableBackgroundClass.labelText
                         }
                     }
                 } else {
@@ -126,7 +122,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                 self.tableView.reloadData()
             }
             products = []
-            self.noDataLabel.text = ""
+            self.noDataLabel.text = TableBackgroundClass.labelNoText
         }
     }
     
@@ -185,7 +181,7 @@ extension SearchProduct2ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
 
         cell.productNameLabel2.text = products[indexPath.row].getName()
         cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()

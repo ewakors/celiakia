@@ -20,7 +20,8 @@ class User: MyJSONProtocol {
     static let userPassword2Field = "password2"
     static let userNewPassword1Field = "new_password1"
     static let userNewPassword2Field = "new_password2"
-    static let userOldPasswordField = "ols_password"
+    static let userOldPasswordField = "old_password"
+    static let userImageURL = "https://celiakia.zer0def.me/static/images/user.png"
     
     typealias T = User
     

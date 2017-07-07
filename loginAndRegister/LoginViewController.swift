@@ -19,8 +19,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var passwordTxt: PasswordTextField!
-    
+        
     var showPassword: Bool!
+    let tabBarViewController = TabBarViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,10 +43,8 @@ class LoginViewController: UIViewController {
         loginBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
         loginBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
         
-        let url = NSURL(string: "https://celiakia.zer0def.me/static/images/logo.png")
-
+        let url = NSURL(string: Router.logoImageURL)
         logoImageView.hnk_setImageFromURL(url! as URL)
-
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -61,12 +60,7 @@ class LoginViewController: UIViewController {
                     UserDefaults.standard.set(token, forKey: AppDelegate.udTokenKey)
                     Router.token = token
                     
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-                    appDelegate.window?.rootViewController = yourVC
-                    appDelegate.window?.makeKeyAndVisible()
+                    self.tabBarViewController.appDelegateFunc()
                     
                 } else {                    
                     let warning = Warning(json: json).getError()

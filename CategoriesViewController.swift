@@ -43,7 +43,7 @@ class CategoriesViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, erorr) in
             if erorr == false {
                 if let json = json {
-                    
+                    print(json)
                     self.categories = Category.arrayFromJSON(json: json)
     
                     DispatchQueue.main.async {

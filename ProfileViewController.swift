@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    let loginNavigatonController = LoginNavigationController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class ProfileViewController: UIViewController {
         changePasswordBtn.layer.borderColor = ButtonStyleClass.buttonBorderColor
         changePasswordBtn.layer.borderWidth = CGFloat(ButtonStyleClass.buttonBorderWidth)
 
-        let url = NSURL(string: "https://celiakia.zer0def.me/static/images/user.png")
+        let url = NSURL(string: User.userImageURL)
         userImageView.hnk_setImageFromURL(url! as URL)
     
         userDetails()
@@ -47,7 +49,6 @@ class ProfileViewController: UIViewController {
             if let json = json {
                 if error == false {
                     let user: User = User(json: json)
-                    
                     self.usernameLabel.text = user.getName()
                     self.emailLabel.text = user.getEmail()
                 } else {
@@ -81,13 +82,7 @@ class ProfileViewController: UIViewController {
                     let alertController = UIAlertController(title: "Success", message: "Logout success", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert :UIAlertAction!) in
                         
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        
-                        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginNavigationController")
-                        appDelegate.window?.rootViewController = yourVC
-                        appDelegate.window?.makeKeyAndVisible()
+                    self.loginNavigatonController.appDelegateFunc()
                         
                     })
                     
