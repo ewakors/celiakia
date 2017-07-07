@@ -12,8 +12,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
+
     var products = [Product]()
     var product: Product?
     var category:Category?
@@ -42,7 +41,7 @@ class CategoryDetailsTableViewController: UIViewController, UISearchBarDelegate 
         tableView.reloadData()
 
         showProductsForCategory()
-        products.sort(by: {$0.getName() < $1.getName()})
+        //products.sort(by: {$0.getName() < $1.getName()})
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -194,23 +193,13 @@ extension CategoryDetailsTableViewController: UITableViewDataSource {
         cell.productNameLabel.text = products[indexPath.row].getName()
         cell.productBarcodeLabel.text = products[indexPath.row].getBarcode()
         
-        if products[indexPath.row].getGluten() == true {
-            let url = NSURL(string: imageUrl + "glutenFree.png")
-            cell.productGlutenImageView.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "gluten.jpg")
-            cell.productGlutenImageView.hnk_setImageFromURL(url! as URL)
-        }
+        let glutenImageURL = products[indexPath.row].getGlutenImage()
+        let glutenUrl = NSURL(string: glutenImageURL)
+        cell.productGlutenImageView.hnk_setImageFromURL(glutenUrl! as URL)
         
         let productImageURL = products[indexPath.row].getImage()
-        let url = NSURL(string: productImageURL)
-        
-        if productImageURL != "" {
-            cell.productimageView.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "znakZap.jpg")
-            cell.productimageView.hnk_setImageFromURL(url! as URL)
-        }
+        let imageUrl = NSURL(string: productImageURL)
+        cell.productimageView.hnk_setImageFromURL(imageUrl! as URL)
         
         cell.selectionStyle = .gray
         

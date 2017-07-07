@@ -43,7 +43,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         self.tableView.tableFooterView = UIView()
         self.tableView.reloadData()
         
-        products.sort(by: {$0.getName() < $1.getName()})
+       // products.sort(by: {$0.getName() < $1.getName()})
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +81,9 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchActive = false
 
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         products = []
     }
     
@@ -176,11 +178,7 @@ extension SearchProduct2ViewController: UITableViewDelegate {
 }
 
 extension SearchProduct2ViewController: UITableViewDataSource {
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
@@ -192,23 +190,14 @@ extension SearchProduct2ViewController: UITableViewDataSource {
         cell.productNameLabel2.text = products[indexPath.row].getName()
         cell.productBarcodeLabel2.text = products[indexPath.row].getBarcode()
       
-        if products[indexPath.row].getGluten() == true {
-            let url = NSURL(string: imageUrl + "glutenFree.png")
-            cell.productGlutenImageView2.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "gluten.jpg")
-            cell.productGlutenImageView2.hnk_setImageFromURL(url! as URL)        }
-        
+        let glutenImageURL = products[indexPath.row].getGlutenImage()
+        let glutenUrl = NSURL(string: glutenImageURL)
+        cell.productGlutenImageView2.hnk_setImageFromURL(glutenUrl! as URL)
+
         let productImageURL = products[indexPath.row].getImage()
-        let url = NSURL(string: productImageURL)
-        
-        if productImageURL != "" {
-            cell.productImageView2.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "znakZap.jpg")
-            cell.productImageView2.hnk_setImageFromURL(url! as URL)
-        }
-        
+        let imageUrl = NSURL(string: productImageURL)
+        cell.productImageView2.hnk_setImageFromURL(imageUrl! as URL)
+
         cell.selectionStyle = .gray
         
         return cell

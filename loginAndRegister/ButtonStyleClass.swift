@@ -14,5 +14,4 @@ class ButtonStyleClass {
     static let buttonBackgroundColor = UIColor.clear
     static let buttonBorderColor = UIColor(red: 108/255.0, green: 176/255.0, blue: 22/255.0, alpha: 1.0).cgColor
     static let buttonBorderWidth = 1.5
-
 }

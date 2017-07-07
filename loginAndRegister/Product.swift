@@ -19,6 +19,7 @@ class Product: MyJSONProtocol {
     static let productGlutenField = "gluten_free"
     static let productCategoryField = "category"
     static let productImageField = "image"
+    static let productGlutenImageField = "gluten_free_image"
     static let showProductDetails2Segue = "showProductDetails2Segue"
     static let addProductSegue = "addProductSegue"
     
@@ -27,6 +28,7 @@ class Product: MyJSONProtocol {
     private var gluten: Bool
     private var category: String
     private var image: String
+    private var glutenImage: String
     
     
     init(json: JSON) {
@@ -35,6 +37,7 @@ class Product: MyJSONProtocol {
         gluten = true
         category = ""
         image = ""
+        glutenImage = ""
         fromJSON(json: json)
     }
     
@@ -58,12 +61,17 @@ class Product: MyJSONProtocol {
         return image
     }
     
+    func getGlutenImage() -> String {
+        return glutenImage
+    }
+    
     func fromJSON(json: JSON) {
         name = json[Product.productNameField].stringValue
         barcode = json[Product.productBarcodeField].stringValue
         gluten = json[Product.productGlutenField].boolValue
         category = json[Product.productCategoryField].stringValue
         image = json[Product.productImageField].stringValue
+        glutenImage = json[Product.productGlutenImageField].stringValue
     }
     
     static func arrayFromJSON(json: JSON) -> [Product] {

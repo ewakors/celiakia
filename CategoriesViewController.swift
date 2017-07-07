@@ -17,8 +17,6 @@ class CategoriesViewController: UIViewController {
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
-    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +32,6 @@ class CategoriesViewController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 5
         categoriesCollectionView!.collectionViewLayout = layout
-
-        categories.sort(by: {$0.getName() < $1.getName()})
 
         displayCategories()
     }
@@ -95,13 +91,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         let categoryImageURL = categories[indexPath.row].getImage()
         let url = NSURL(string: categoryImageURL)
-        
-        if categoryImageURL != "" {
-            cell.categoryImageView.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "znakZap.jpg")
-            cell.categoryImageView.hnk_setImageFromURL(url! as URL)
-        }
+        cell.categoryImageView.hnk_setImageFromURL(url! as URL)
 
         return cell
     }

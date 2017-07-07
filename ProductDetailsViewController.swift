@@ -19,8 +19,6 @@ class ProductDetailsViewController: UIViewController {
     var productImageURL: String!
     var currentProduct: Product?
     
-    let imageUrl: String = "https://celiakia.zer0def.me/static/images/"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,28 +27,14 @@ class ProductDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let product = currentProduct {
-            productImageURL = product.getImage()
-            productGlutenBool = product.getGluten()
+            let glutenImageURL = product.getGlutenImage()
+            let glutenUrl = NSURL(string: glutenImageURL)
+            productGlutenView.hnk_setImageFromURL(glutenUrl! as URL)
+            
+            let productImageURL = product.getImage()
+            let imageUrl = NSURL(string: productImageURL)
+            productImageView.hnk_setImageFromURL(imageUrl! as URL)
         }
-        
-        if productImageURL != "" {
-            let url = NSURL(string: productImageURL)
-            let data = NSData(contentsOf: url as! URL)
-            productImageView.image = UIImage(data: data as! Data)
-        }
-        else {
-            let url = NSURL(string: imageUrl + "znakZap.jpg")
-            productImageView.hnk_setImageFromURL(url! as URL)
-        }
- 
-        if productGlutenBool == true {
-            let url = NSURL(string: imageUrl + "glutenFree.png")
-            productGlutenView.hnk_setImageFromURL(url! as URL)
-        } else {
-            let url = NSURL(string: imageUrl + "gluten.jpg")
-            productGlutenView.hnk_setImageFromURL(url! as URL)
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
