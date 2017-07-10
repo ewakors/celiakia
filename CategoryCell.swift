@@ -14,6 +14,8 @@ class CategoryCell: UICollectionViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
     
     override func awakeFromNib() {
-        super.awakeFromNib()  
+        super.awakeFromNib()
+        
+        layer.cornerRadius = 3
     }
 }

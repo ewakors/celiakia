@@ -61,7 +61,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
         findProductWithAlert()
         searchActive = false
     }
@@ -94,7 +93,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
         productName = searchBar.text!.lowercased()
         
         if productName != "" {
-            
             let request = Router.findProduct(key: productName)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
@@ -137,7 +135,6 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == false {
-                    
                     if let json = json {
                         self.products = Product.arrayFromJSON(json: json)
                         print(json)
@@ -182,8 +179,7 @@ extension SearchProduct2ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell        
         cell.setProduct(product: products[indexPath.row])
 
         return cell

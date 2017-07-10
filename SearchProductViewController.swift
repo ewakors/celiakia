@@ -44,7 +44,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
         }
         
         if segue.identifier == Product.addProductSegue {
-            
             let addProductVC = ((segue.destination) as! AddProductViewController)
             addProductVC.barcodeString = productTextView.text
         }
@@ -53,7 +52,6 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     func findProduct(productName: String) {
    
         if productName != "" {
-            
             let request = Router.findProduct(key: productTextView.text)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 

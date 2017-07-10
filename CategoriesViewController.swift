@@ -43,7 +43,6 @@ class CategoriesViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, erorr) in
             if erorr == false {
                 if let json = json {
-                    print(json)
                     self.categories = Category.arrayFromJSON(json: json)
     
                     DispatchQueue.main.async {
@@ -86,7 +85,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: Category.categoryCell, for: indexPath) as! CategoryCell
         
-        cell.layer.cornerRadius = 3
+        //cell.layer.cornerRadius = 3
         cell.categoryNameLabel.text = categories[indexPath.row].getName()
         
         let categoryImageURL = categories[indexPath.row].getImage()

@@ -10,7 +10,6 @@ import UIKit
 
 class SearchBarClass {
     
-
     static let searchBarEnableReturnKey = true
     static let searchBarShowCancleButton = false
     static let searchBarTintColor = UIColor.white
