@@ -16,13 +16,4 @@ class TableBackgroundClass {
     static let labelTextAlignment = NSTextAlignment.center
     static let tableSeparatorStyle = UITableViewCellSeparatorStyle.none
     static let tableFooterView = UIView()
-    
-    func appDelegateFunc() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-        appDelegate.window?.rootViewController = yourVC
-        appDelegate.window?.makeKeyAndVisible()
-    }
 }

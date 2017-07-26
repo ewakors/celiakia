@@ -201,7 +201,6 @@
 				C3B16BA61EBC832E004DCE29 /* MyJSONProtocol.swift */,
 				C3250B441EA64CD50095CD8E /* Router.swift */,
 				C382088A1EE14FE60061726E /* TabBarViewController.swift */,
-				C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */,
 				C3ABCDE31F0E73850067B2CE /* ButtonStyleClass.swift */,
 				C3A223D21F0F922A00E745B3 /* TableBackgroundClass.swift */,
 				C3A223D41F0F95EA00E745B3 /* SearchBarClass.swift */,
@@ -283,6 +282,7 @@
 		C3F82AC01EC5ECDD00F3E4E3 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				C3AE3CC21EF3C2A90021C081 /* LoginNavigationController.swift */,
 				C3B16BA81EBC848A004DCE29 /* Category.swift */,
 				C3F82AC81EC5FFB100F3E4E3 /* CategoriesViewController.swift */,
 				C3F82AC61EC5FF2300F3E4E3 /* CategoryCell.swift */,
