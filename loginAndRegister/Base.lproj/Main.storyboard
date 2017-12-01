@@ -14,7 +14,7 @@
         <!--Register-->
         <scene sceneID="YNl-EB-CyB">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hCa-z4-tdC" customClass="RegisterViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" title="Rejestracja" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hCa-z4-tdC" customClass="RegisterViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fYQ-Tb-dzB"/>
                         <viewControllerLayoutGuide type="bottom" id="U6m-QR-4NU"/>
@@ -26,7 +26,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="muv-Ge-kgZ">
                                 <rect key="frame" x="40" y="104" width="240" height="168"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Paq-F0-KyI">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nazwa użytkownika" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Paq-F0-KyI">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jNa-hY-Rt9"/>
@@ -44,13 +44,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vpp-h5-jYs" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vpp-h5-jYs" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="92" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TO5-yS-x2j" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Potwierdź hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TO5-yS-x2j" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="138" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -71,7 +71,7 @@
                                     <constraint firstAttribute="height" constant="30" id="82C-Bf-Ojs"/>
                                 </constraints>
                                 <color key="tintColor" red="0.37206677449999997" green="0.64330440759999996" blue="0.072359468080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Register"/>
+                                <state key="normal" title="Zarejestruj konto"/>
                                 <connections>
                                     <action selector="registerButton:" destination="hCa-z4-tdC" eventType="touchUpInside" id="Mio-mi-Qzw"/>
                                 </connections>
@@ -90,7 +90,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Register" id="Hlf-tK-Wbe"/>
+                    <navigationItem key="navigationItem" title="Rejestracja" id="Hlf-tK-Wbe"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailTxt" destination="ECm-fa-oXF" id="tnJ-8u-oWE"/>
@@ -107,7 +107,7 @@
         <!--Product-->
         <scene sceneID="sLi-HM-DLf">
             <objects>
-                <tableViewController storyboardIdentifier="SearchViewController" title="Product" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ogh-HF-Dge" customClass="SearchViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchViewController" title="Produkt" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ogh-HF-Dge" customClass="SearchViewController" customModule="loginAndRegister" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDr-2Z-NuV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKI-6J-T8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search product" id="sOs-t1-ySF">
+                <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Szukaj produktu" id="sOs-t1-ySF">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
@@ -270,7 +270,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbf-It-Cf6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nazwa produktu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbf-It-Cf6">
                                                     <rect key="frame" x="8" y="0.0" width="100.5" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -294,7 +294,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product barcode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvv-Fg-gZb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kod kreskowy:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvv-Fg-gZb">
                                                     <rect key="frame" x="8" y="0.0" width="119" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -318,7 +318,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8U-g4-SHZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status produktu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8U-g4-SHZ">
                                                     <rect key="frame" x="8" y="0.0" width="119" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -366,7 +366,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search product" translatesAutoresizingMaskIntoConstraints="NO" id="GuA-z6-eGs">
+                            <searchBar contentMode="redraw" placeholder="Szukaj produktu" translatesAutoresizingMaskIntoConstraints="NO" id="GuA-z6-eGs">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -515,7 +515,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-PT-oZN">
                                 <rect key="frame" x="40" y="316" width="240" height="76"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqn-oU-i51">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nazwa użytkownika" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqn-oU-i51">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="X3H-6l-VPV"/>
@@ -524,7 +524,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rLB-Fv-CKK" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rLB-Fv-CKK" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="46" width="240" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Ir3-9W-oEA"/>
@@ -542,7 +542,7 @@
                                     <constraint firstAttribute="height" constant="30" id="X1G-Os-fNW"/>
                                 </constraints>
                                 <color key="tintColor" red="0.37206677449999997" green="0.64330440759999996" blue="0.072359468080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Register"/>
+                                <state key="normal" title="Zarejestruj się"/>
                                 <connections>
                                     <segue destination="hCa-z4-tdC" kind="show" identifier="registerSegue" id="ZnX-ze-FOd"/>
                                 </connections>
@@ -554,7 +554,7 @@
                                     <constraint firstAttribute="height" constant="30" id="5my-iT-d2o"/>
                                 </constraints>
                                 <color key="tintColor" red="0.37206677449999997" green="0.64330440759999996" blue="0.072359468080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Logowanie">
                                     <color key="titleColor" red="0.42359620329999997" green="0.68856555220000004" blue="0.084704004230000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -580,7 +580,7 @@
                             <constraint firstItem="toa-UW-tva" firstAttribute="leading" secondItem="kNe-D7-gWD" secondAttribute="leading" id="vPx-wk-sfP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" id="7me-0z-Iqq"/>
+                    <navigationItem key="navigationItem" title="Logowanie" id="7me-0z-Iqq"/>
                     <connections>
                         <outlet property="loginBtn" destination="a54-Eo-w9J" id="skm-l9-vW9"/>
                         <outlet property="logoImageView" destination="J7o-4J-3Ag" id="vak-7M-lx1"/>
@@ -666,7 +666,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="0.42359620329999997" green="0.68856555220000004" blue="0.084704004230000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Change password">
+                                        <state key="normal" title="Zmień hasło">
                                             <color key="titleColor" red="0.42359620329999997" green="0.68856555220000004" blue="0.084704004230000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -676,7 +676,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJR-R2-CkI">
                                         <rect key="frame" x="0.0" y="40" width="240" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Logout">
+                                        <state key="normal" title="Wyloguj się">
                                             <color key="titleColor" red="0.37206677449999997" green="0.64330440759999996" blue="0.072359468080000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -703,7 +703,7 @@
                             <constraint firstItem="37L-Y0-NE7" firstAttribute="leading" secondItem="867-Ag-6vB" secondAttribute="leading" id="ZkB-Mf-HHh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="MOc-Kc-BFW"/>
+                    <navigationItem key="navigationItem" title="Profil" id="MOc-Kc-BFW"/>
                     <connections>
                         <outlet property="changePasswordBtn" destination="feR-p3-p0X" id="nwn-HH-qm2"/>
                         <outlet property="emailLabel" destination="cT8-3e-5um" id="4vf-w9-iyX"/>
@@ -785,7 +785,7 @@
                             <constraint firstItem="LOF-Ya-ibu" firstAttribute="leading" secondItem="HWK-AR-2al" secondAttribute="leading" id="tIE-Ks-58B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="RWX-hg-IDC"/>
+                    <navigationItem key="navigationItem" title="Kategorie produktów" id="RWX-hg-IDC"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="LOF-Ya-ibu" id="s8P-TS-XnP"/>
                     </connections>
@@ -809,19 +809,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="opn-o2-zQk">
                                 <rect key="frame" x="40" y="105" width="240" height="130"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-HK-KZA" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stare hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-HK-KZA" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ft-dD-b1N" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nowe hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ft-dD-b1N" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="50" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObW-Kk-20N" customClass="PasswordTextField" customModule="PasswordTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Potwierdź nowe hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObW-Kk-20N" customClass="PasswordTextField" customModule="PasswordTextField">
                                         <rect key="frame" x="0.0" y="100" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -833,7 +833,7 @@
                                 <rect key="frame" x="40" y="275" width="240" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.42359620329999997" green="0.68856555220000004" blue="0.084704004230000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Save">
+                                <state key="normal" title="Zapisz">
                                     <color key="titleColor" red="0.42359620329999997" green="0.68856555220000004" blue="0.084704004230000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -852,7 +852,7 @@
                             <constraint firstItem="Pte-nZ-jgK" firstAttribute="leading" secondItem="hEa-Nj-FOR" secondAttribute="leading" constant="40" id="XgC-a2-rj6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Change password" id="xcM-DL-HGs"/>
+                    <navigationItem key="navigationItem" title="Zmiana hasła" id="xcM-DL-HGs"/>
                     <connections>
                         <outlet property="confirmPasswordTXT" destination="ObW-Kk-20N" id="cWF-cV-ixs"/>
                         <outlet property="newPasswordTXT" destination="1Ft-dD-b1N" id="Wdh-J2-ivp"/>
@@ -867,7 +867,7 @@
         <!--Search product-->
         <scene sceneID="Gdp-53-1wm">
             <objects>
-                <viewController storyboardIdentifier="SearchProductViewController" title="Search product" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PFm-Xu-4kO" customClass="SearchProductViewController" customModule="loginAndRegister" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchProductViewController" title="Szukaj produktu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PFm-Xu-4kO" customClass="SearchProductViewController" customModule="loginAndRegister" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uyf-AK-zd9"/>
                         <viewControllerLayoutGuide type="bottom" id="hzd-KC-yVO"/>
@@ -907,7 +907,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Scan product" id="awK-5s-F94">
+                    <navigationItem key="navigationItem" title="Skanowanie produktu" id="awK-5s-F94">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4tY-19-36h">
                             <connections>
                                 <segue destination="cgY-is-ExB" kind="show" identifier="addProductSegue" id="0qa-Fn-6lS"/>
@@ -952,13 +952,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGp-Vg-xwF">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="70"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-XS-DOe">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nazwa produktu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-XS-DOe">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product barcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNg-D6-H2V">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kod kreskowy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNg-D6-H2V">
                                                 <rect key="frame" x="0.0" y="40" width="288" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -969,7 +969,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IP0-aD-dkK">
                                         <rect key="frame" x="0.0" y="80" width="288" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gluten free :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-Cu-bBM">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt bez glutenu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-Cu-bBM">
                                                 <rect key="frame" x="0.0" y="0.0" width="268" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -1020,7 +1020,7 @@
                             <constraint firstItem="eH6-j6-4E1" firstAttribute="leading" secondItem="hqp-l7-FSj" secondAttribute="leadingMargin" id="y3W-o1-ErS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add product" id="NVT-gj-A0m">
+                    <navigationItem key="navigationItem" title="Dodawanie produktu" id="NVT-gj-A0m">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MzU-tU-3nq">
                             <connections>
                                 <action selector="addNewProductButton:" destination="cgY-is-ExB" id="x0R-oE-ayM"/>
@@ -1043,8 +1043,7 @@
         <scene sceneID="uyB-4x-HYZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zGd-FU-Ara" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="aVe-NI-XoA"/>
-                    <toolbarItems/>
+                    <tabBarItem key="tabBarItem" title="Wyszukiwanie" systemItem="search" id="aVe-NI-XoA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Uo4-MG-fxC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1075,7 +1074,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search product" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-Iu-LVk">
+                            <searchBar contentMode="redraw" placeholder="Szukaj produktu" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-Iu-LVk">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -1157,7 +1156,7 @@
                             <constraint firstAttribute="trailing" secondItem="rwu-Iu-LVk" secondAttribute="trailing" id="i3n-Ct-FIG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Product" id="ru4-TM-Yew">
+                    <navigationItem key="navigationItem" title="Produkt" id="ru4-TM-Yew">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="qgZ-0C-Fwq">
                                 <connections>
@@ -1183,8 +1182,8 @@
         <!--Scan-->
         <scene sceneID="Rrg-I8-vbE">
             <objects>
-                <navigationController title="Scan" id="c6b-9b-H4I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scan" image="scan" id="oHi-aJ-cqc"/>
+                <navigationController title="Skanowanie" id="c6b-9b-H4I" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Skanowanie" image="scan" id="oHi-aJ-cqc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="uVu-bO-q2t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1206,7 +1205,7 @@
         <scene sceneID="Oi7-BX-vcy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SM5-ON-a1K" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="9rB-Ad-Vff"/>
+                    <tabBarItem key="tabBarItem" title="Profil" image="profile" id="9rB-Ad-Vff"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="5Vn-ep-2kX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1230,7 +1229,7 @@
         <scene sceneID="q8q-wh-9pj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g0C-sU-Ld6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" image="category" id="iFU-jZ-pdT"/>
+                    <tabBarItem key="tabBarItem" title="Kategorie" image="category" id="iFU-jZ-pdT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="cjV-ur-U0s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1254,7 +1253,7 @@
         <scene sceneID="gaa-cm-ToV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hIs-PX-oEj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="sea" systemItem="search" id="Eaa-2V-1gL"/>
+                    <tabBarItem key="tabBarItem" title="Wyszukiwanie" selectedImage="sea" systemItem="search" id="Eaa-2V-1gL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="eDJ-AB-MyO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
