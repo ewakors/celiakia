@@ -29,9 +29,11 @@ enum Router: URLRequestConvertible {
     case getCategory()
     case addNewProduct(name: String, barcode: String, gluten: Bool, category: Int)
     
-   // static let baseURLString = "https://celiakia.zer0def.me/api/"
-    static let baseURLString = "http://127.0.0.1:8000/api/"
-    static let logoImageURL = "https://celiakia.zer0def.me/static/images/logo.png"    
+    static let baseURLString = "https://celiakia.zer0def.me/api/"
+//    static let baseURLString = "http://127.0.0.1:8000/api/"
+    static let logoImageURL = "https://celiakia.zer0def.me/static/images/logo.png"
+    //login supahusah
+    //password e91oltvXRieMj9QTdxaF
     
     var method: HTTPMethod {
         switch self {

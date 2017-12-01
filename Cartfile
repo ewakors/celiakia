@@ -1,5 +1,5 @@
 github "SwiftyJSON/SwiftyJSON"
-github "Alamofire/Alamofire" 
+github "Alamofire/Alamofire"
 github "mikebuss/MTBBarcodeScanner"
 github "hemantasapkota/JSQMessagesViewController"
 github "hackiftekhar/IQKeyboardManager"

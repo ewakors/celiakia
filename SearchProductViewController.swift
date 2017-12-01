@@ -56,7 +56,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
                 if error == true {
-                    let alertController = UIAlertController(title: "Error", message: "Invalid token. You must login.", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Błąd", message: "Nieprawidłowy token. Musisz się zalogować.", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
@@ -68,14 +68,14 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                         print(resultJSON.arrayValue)
 
                         if resultJSON.arrayValue.isEmpty {
-                            let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "Niestety, nie odnaleziono produktu", message: "Czy chcesz dodać nowy produkt do bazy?", preferredStyle: .alert)
                             
-                            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                            let yesAction = UIAlertAction(title: "Tak", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                                 self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
                             })
                             alertController.addAction(yesAction)
                             
-                            let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                            let cancleAction = UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
                             })
                             alertController.addAction(cancleAction)
                             
@@ -114,7 +114,7 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
                     NSLog("Unable to start scanning")
                 }
             } else {
-                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Skanowanie niedostępne", message: "Ta aplikacja nie ma uprawnień do używania kamery", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)

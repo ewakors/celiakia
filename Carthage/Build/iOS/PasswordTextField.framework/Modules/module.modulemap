@@ -7,4 +7,5 @@ framework module PasswordTextField {
 
 module PasswordTextField.Swift {
     header "PasswordTextField-Swift.h"
+    requires objc
 }

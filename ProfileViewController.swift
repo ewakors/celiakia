@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
                     self.usernameLabel.text = user.getName()
                     self.emailLabel.text = user.getEmail()
                 } else {
-                    let alertController = UIAlertController(title: "Error", message: "Invalid token", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Błąd", message: "Nieprawidłowy token", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
@@ -64,9 +64,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logoutButton(_ sender: Any) {
-        let alertController = UIAlertController(title: "Do you want logout?", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Czy chcesz się wylogować?", message: nil, preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+        let yesAction = UIAlertAction(title: "Tak", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
 
             let request = Router.logout()
             
@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController {
                     
                     Router.token = ""
 
-                    let alertController = UIAlertController(title: "Success", message: "Logout success", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Sukces", message: "Wylogowano", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert :UIAlertAction!) in
                         
                     self.loginNavigatonController.appDelegateFunc()
@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                    
                 } else {
-                    let alertController = UIAlertController(title: "Error", message: "Logout error. Invalid token", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Błąd", message: "Błąd wylogowywania. Nieprawidłowy token", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController {
         
         alertController.addAction(yesAction)
         
-        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in })
+        let cancleAction = UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in })
         alertController.addAction(cancleAction)
         
         self.present(alertController, animated: true, completion: nil)

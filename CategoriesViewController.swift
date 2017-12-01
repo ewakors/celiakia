@@ -50,7 +50,7 @@ class CategoriesViewController: UIViewController {
                     }
                 }
             } else {
-                let alertController = UIAlertController(title: "Error", message: "Error category info", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Błąd", message: "Nie odnaleziono kategorii produktów", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)

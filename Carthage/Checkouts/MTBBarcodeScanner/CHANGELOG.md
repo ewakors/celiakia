@@ -4,6 +4,18 @@
 
 There are no unreleased changes.
 
+## 5.0.3
+
+- Fixed blocking issue with scanRect call
+
+## 5.0.2
+
+- Handle deprecation of devicesWithMediaType in iOS 10
+- Fixed an issue where stopScanning() could potentially hang
+- Updated sample project for iOS 10 deprecation warnings
+
+Thanks to @alistra and @shagedorn with their help in this release!
+
 ## 5.0.1
 
 - Fixed issue with orientation changes not registering under some circumstances.

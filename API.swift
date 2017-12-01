@@ -19,7 +19,7 @@ class API: NSObject {
     static let sharedInstance: API = API()
     
     class func Warning(viewController: UIViewController, message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Błąd", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         viewController.present(alert, animated: true, completion: nil)
     }

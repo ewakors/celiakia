@@ -10,7 +10,7 @@ import UIKit
 
 class TableBackgroundClass {
 
-    static let labelText = "Nothing found"
+    static let labelText = "Nie odnaleziono"
     static let labelNoText = ""
     static let labelTextColor = UIColor.gray
     static let labelTextAlignment = NSTextAlignment.center

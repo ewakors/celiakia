@@ -61,7 +61,7 @@ class AddProductViewController: UIViewController {
                     NSLog("Unable to start scanning")
                 }
             } else {
-                let alertController = UIAlertController(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Skanowanie niedostępne", message: "Ta aplikacja nie ma uprawnień do używania kamery", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
@@ -87,7 +87,7 @@ class AddProductViewController: UIViewController {
             API.sharedInstance.sendRequest(request: request) { (json, error) in
                 if let json = json {
                     if error == false {
-                        let alertController = UIAlertController(title: "Success", message: "Add product success", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Dodawanie produktu", message: "Twój produkt został pomyślnie przesłany do bazy", preferredStyle: .alert)
                         
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alertController.addAction(defaultAction)
@@ -132,7 +132,7 @@ class AddProductViewController: UIViewController {
                 }
                 
             } else {
-                let alertController = UIAlertController(title: "Error", message: "Not found category", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Błąd", message: "Nie odnaleziono kategorii", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)

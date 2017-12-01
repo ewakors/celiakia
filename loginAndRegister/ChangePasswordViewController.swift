@@ -30,7 +30,7 @@ class ChangePasswordViewController: UIViewController {
         API.sharedInstance.sendRequest(request: request) { (json, error) in
             if let json = json {
                 if error == false {
-                    let alertController = UIAlertController(title: "Success", message: "Password changed", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Sukces", message: "Hasło zostało zmienione", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)

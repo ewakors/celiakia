@@ -108,7 +108,7 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                         }
                     }
                 } else {
-                    let alertController = UIAlertController(title: "Error", message: "Invalid token", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Błąd", message: "Nieprawidłowy token", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
@@ -144,14 +144,14 @@ class SearchProduct2ViewController: UIViewController, UISearchBarDelegate {
                     }
                     
                     if (json?.isEmpty)! {
-                        let alertController = UIAlertController(title: "Sorry, nothing found", message: "Do you want to add this product?", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Niestety, nie odnaleziono produktu", message: "Czy chcesz dodać nowy produkt do bazy?", preferredStyle: .alert)
                         
-                        let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                        let yesAction = UIAlertAction(title: "Tak", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                             self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
                         })
                         alertController.addAction(yesAction)
                         
-                        let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                        let cancleAction = UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
                         })
                         alertController.addAction(cancleAction)
                         

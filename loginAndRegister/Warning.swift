@@ -52,15 +52,15 @@ class Warning: MyJSONProtocol {
         var result = "\n"
         
         for e in warning {
-            result += "Login or password failed. \(e.1.stringValue)"
+            result += "Login lub hasło nieprawidłowe. \(e.1.stringValue)"
         }
         
         for e in password {
-            result += "Login or password failed. \(e.1.stringValue)"
+            result += "Login lub hasło nieprawidłowe. \(e.1.stringValue)"
         }
         
         for e in username {
-            result += "Username failed. \(e.1.stringValue)\n"
+            result += "Nazwa użytkownika nieprawidłowa. \(e.1.stringValue)\n"
         }
         
         for e in email {
@@ -68,35 +68,35 @@ class Warning: MyJSONProtocol {
         }
         
         for e in detail {
-            result += "Details \(e.1.stringValue)\n"
+            result += "Szczegóły \(e.1.stringValue)\n"
         }
         
         for e in name {
-            result += "Product name failed. \(e.1.stringValue)"
+            result += "Nieprawidłowa nazwa produktu. \(e.1.stringValue)"
         }
         
         for e in category {
-            result += "Product category failed. \(e.1.stringValue)"
+            result += "Nieprawidłowa kategoria produktu . \(e.1.stringValue)"
         }
         
         for e in barcode {
-            result += "Product barcode failed. \(e.1.stringValue)\n"
+            result += "Nieprawidłowy kod kreskowy. \(e.1.stringValue)\n"
         }
         
         for e in new_password1 {
-            result += "New password error. \(e.1.stringValue)\n"
+            result += "Błędne nowe hasło. \(e.1.stringValue)\n"
         }
         
         for e in new_password2 {
-            result += "Confirm password error. \(e.1.stringValue)\n"
+            result += "Niezgodne hasła. \(e.1.stringValue)\n"
         }
         
         for e in password1 {
-            result += "Password field. \(e.1.stringValue)\n"
+            result += "Nieprawidłowe hasło. \(e.1.stringValue)\n"
         }
         
         for e in password2 {
-            result += "Confirm password field. \(e.1.stringValue)\n"
+            result += "Niezgodne hasła. \(e.1.stringValue)\n"
         }
         
         self.error = result

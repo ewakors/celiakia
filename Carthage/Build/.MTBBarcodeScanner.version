@@ -1,18 +1,9 @@
 {
+  "commitish" : "5.0.3",
   "iOS" : [
     {
-      "hash" : "ad1dd6ca93c65e26e684dd845efb227f6794e14f85ec6310eb88e1d86cb7c605",
-      "name" : "MTBBarcodeScanner"
+      "name" : "MTBBarcodeScanner",
+      "hash" : "90b92ea7c02d615b5d8c5325d12326a64002d485628658bb85f5f636c660b875"
     }
-  ],
-  "commitish" : "5.0.1",
-  "watchOS" : [
-
-  ],
-  "tvOS" : [
-
-  ],
-  "Mac" : [
-
   ]
 }

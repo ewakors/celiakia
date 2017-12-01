@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
             
             if let json = json {
                 if error == false {
-                    let alertController = UIAlertController(title: "Success", message: "Register success", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Sukces", message: "Rejestracja zakończona sukcesem", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
                         let token = json[Router.keyField].stringValue
