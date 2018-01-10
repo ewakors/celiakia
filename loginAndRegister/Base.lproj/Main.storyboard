@@ -1253,7 +1253,7 @@
         <scene sceneID="gaa-cm-ToV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hIs-PX-oEj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wyszukiwanie" selectedImage="sea" systemItem="search" id="Eaa-2V-1gL"/>
+                    <tabBarItem key="tabBarItem" title="Wyszukiwanie" image="lupa" id="Eaa-2V-1gL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="eDJ-AB-MyO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

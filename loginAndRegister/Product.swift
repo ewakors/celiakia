@@ -22,7 +22,7 @@ class Product: MyJSONProtocol {
     static let productGlutenImageField = "gluten_free_image"
     static let showProductDetails2Segue = "showProductDetails2Segue"
     static let addProductSegue = "addProductSegue"
-    static let glutenFreeTextField = "Gluten FREE"
+    static let glutenFreeTextField = "Bezglutenowy"
     static let glutenTextField = "Gluten"
     
     private var name: String
