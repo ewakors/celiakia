@@ -20,10 +20,10 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     var scanner: MTBBarcodeScanner?
     var products = [Product]()
     var productDetailsVc: ProductDetailsViewController?
+    var isProductInDatabase: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         scanner = MTBBarcodeScanner(previewView: scanncerView)
     }
 
@@ -40,7 +40,18 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Product.showProductDetails2Segue {
             productDetailsVc = segue.destination as? ProductDetailsViewController
-            productDetailsVc?.title = productDetailsVc?.currentProduct?.getName()
+            
+            for i in 0 ... self.products.count - 1 {
+                if self.products[i].getBarcode() == self.productTextView.text {
+                    productDetailsVc?.title = products[i].getName()
+                    productDetailsVc?.productNameString = products[i].getName()
+                    productDetailsVc?.productBarcodeString = products[i].getBarcode()
+                    productDetailsVc?.productGlutenBool = products[i].getGluten()
+                    productDetailsVc?.productImageURL = products[i].getImage()
+                    productDetailsVc?.productGlutenImageString = products[i].getGlutenImage()
+                }
+            }
+            isProductInDatabase = false
         }
         
         if segue.identifier == Product.addProductSegue {
@@ -48,53 +59,57 @@ class SearchProductViewController: UIViewController, UITextFieldDelegate, UISear
             addProductVC.barcodeString = productTextView.text
         }
     }
-
+    
     func findProduct(productName: String) {
    
         if productName != "" {
             let request = Router.findProduct(key: productTextView.text)
             API.sharedInstance.sendRequest(request: request, completion: { (json, error) in
                 
-                if error == true {
+                if error == false {
+                    if let resultJSON = json {
+                        
+                        print("\(self.productTextView.text)")
+                        if resultJSON.arrayValue.count >= 0 {
+                            for i in 0 ... resultJSON.arrayValue.count - 1 {
+                                self.products = Product.arrayFromJSON(json: resultJSON)
+                                if self.products[i].getBarcode() == self.productTextView.text {
+                                    self.performSegue(withIdentifier: Product.showProductDetails2Segue, sender: nil)
+                                    self.isProductInDatabase = true
+                                }
+                            }
+                            if !self.isProductInDatabase {
+                                let alertController = UIAlertController(title: "Niestety, nie odnaleziono produktu", message: "Czy chcesz dodać nowy produkt do bazy?", preferredStyle: .alert)
+                                
+                                let yesAction = UIAlertAction(title: "Tak", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+                                    self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
+                                })
+                                alertController.addAction(yesAction)
+                                
+                                let cancleAction = UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+                                })
+                                alertController.addAction(cancleAction)
+                                
+                                self.present(alertController, animated: true, completion: nil)
+                                
+                                self.barcodeScanner()
+                            }
+                        }
+                    }
+                } else {
                     let alertController = UIAlertController(title: "Błąd", message: "Nieprawidłowy token. Musisz się zalogować.", preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-                } else {
-                    if let resultJSON = json {
-                        self.products = Product.arrayFromJSON(json: resultJSON)
-                        print(resultJSON.arrayValue)
-
-                        if resultJSON.arrayValue.isEmpty {
-                            let alertController = UIAlertController(title: "Niestety, nie odnaleziono produktu", message: "Czy chcesz dodać nowy produkt do bazy?", preferredStyle: .alert)
-                            
-                            let yesAction = UIAlertAction(title: "Tak", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                                self.performSegue(withIdentifier: Product.addProductSegue, sender: nil)
-                            })
-                            alertController.addAction(yesAction)
-                            
-                            let cancleAction = UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
-                            })
-                            alertController.addAction(cancleAction)
-                            
-                            self.present(alertController, animated: true, completion: nil)
-                            
-                            self.barcodeScanner()
-                        }
-                        else {
-                            if self.products.count == 1 {
-                                self.performSegue(withIdentifier: Product.showProductDetails2Segue, sender: nil)
-                            }
-                        }
-                    }
                 }
             })
         }
     }
     
     func barcodeScanner() {
+        isProductInDatabase = false
         MTBBarcodeScanner.requestCameraPermission(success: { success in
             if success {
                 do {

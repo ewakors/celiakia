@@ -36,8 +36,6 @@ class API: NSObject {
                     if code >= 200 && code < 400 {
                         if let value = result.result.value {
                             let json = JSON(value)
-                            
-                            print("json time \(json.underestimatedCount)")
                             completion(json, false)
                         } else {
                             completion(nil, true)

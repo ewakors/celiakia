@@ -51,15 +51,15 @@ class Warning: MyJSONProtocol {
         
         var result = "\n"
         
-        for e in warning {
+        for _ in warning {
             result += "Login lub hasło nieprawidłowe."
         }
         
-        for e in password {
+        for _ in password {
             result += "Hasła nie są zgodne"
         }
         
-        for e in username {
+        for _ in username {
             result += "Użytkownik o takiej nazwie już istnieje."
 //            result += "Nazwa użytkownika nieprawidłowa. \(e.1.stringValue)\n"
         }
@@ -80,7 +80,7 @@ class Warning: MyJSONProtocol {
             result += "Nieprawidłowa kategoria produktu . \(e.1.stringValue)"
         }
         
-        for e in barcode {
+        for _ in barcode {
             result += "Produkt o podanym kodzie kreskowym już istnieje."
             //result += "Nieprawidłowy kod kreskowy. \(e.1.stringValue)\n"
         }
@@ -89,15 +89,15 @@ class Warning: MyJSONProtocol {
             result += "Błędne nowe hasło. \(e.1.stringValue)\n"
         }
         
-        for e in new_password2 {
+        for _ in new_password2 {
             result += "Niezgodne hasła. " //\(e.1.stringValue)\n
         }
         
-        for e in password1 {
+        for _ in password1 {
             result += "Nieprawidłowe hasło. Hasło musi składać się z co najmniej 8 znaków."
         }
         
-        for e in password2 {
+        for _ in password2 {
             result += "Niezgodne hasła. "//\(e.1.stringValue)\n
         }
         

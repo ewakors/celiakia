@@ -17,15 +17,18 @@ class ProductDetailsViewController: UIViewController {
     var productBarcodeString: String!
     var productGlutenBool: Bool!
     var productImageURL: String!
+    var productGlutenImageString: String!
     var currentProduct: Product?
+    var searchController: SearchProductViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let product = currentProduct {
             let glutenImageURL = product.getGlutenImage()
             let glutenUrl = NSURL(string: glutenImageURL)
@@ -34,6 +37,14 @@ class ProductDetailsViewController: UIViewController {
             let productImageURL = product.getImage()
             let imageUrl = NSURL(string: productImageURL)
             productImageView.hnk_setImageFromURL(imageUrl! as URL)
+        } else {
+            let productImageURL = self.productImageURL
+            let imageUrl = NSURL(string: productImageURL ?? "")
+            productImageView.hnk_setImageFromURL(imageUrl! as URL)
+            
+            let glutenImageURL = self.productGlutenImageString
+            let glutenUrl = NSURL(string: glutenImageURL ?? "")
+            productGlutenView.hnk_setImageFromURL(glutenUrl! as URL)
         }
     }
     
@@ -50,7 +61,11 @@ class ProductDetailsViewController: UIViewController {
                 detailViewController.productNameString = product.getName()
                 detailViewController.productBarcodeString = product.getBarcode()
                 detailViewController.productGlutenBool = product.getGluten()
+            } else {
+                detailViewController.productNameString = productNameString
+                detailViewController.productBarcodeString = productBarcodeString
+                detailViewController.productGlutenBool = productGlutenBool
             }
-        }
+        } 
     }
 }
